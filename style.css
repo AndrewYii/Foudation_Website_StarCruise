@@ -1,0 +1,2293 @@
+/* Description: Cruise Website */
+/* Author: Joanne Chin Jia Xuan */
+/* Date: 25 Mar 2024 */
+/* Vaildated: OK 11 May 2024*/
+
+*{
+	margin: 0;
+	padding: 0;
+}
+article{
+	font-family: "Segoe UI", Arial, Helvetica ,sans-serif;
+	font-size: 20px;
+	background-color:#EEF1F5;
+	padding-top: 60px;
+}
+h2{
+	font-size: 40px;
+	font-family: 'Trebuchet MS', Verdana, sans-serif;
+	color: #162B6D;
+	text-align: center;
+}
+
+/* Main pic */
+.main{
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: auto;
+}
+.main img{
+	width: 100%;
+	/* Masking in image is applied here */
+	mask-image: linear-gradient(black 55%, transparent);
+	background-color: #162B6D;
+}
+h1{
+	font-size: 45px;
+	text-shadow: 1px 1px black;
+}
+.text{
+	position: absolute;
+	text-align:center;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	color:#FDBA13;
+	font-family: 'Trebuchet MS', Verdana, sans-serif;
+	text-wrap: wrap;
+	line-height: 50px;
+	user-select: none;
+	width: 90%;
+}
+.text p, .text a{
+	color: #EEF1F5;
+	font-size: 24px;
+}
+.text a:hover{
+	color: #F4B652;
+}
+
+/* Upper Section */
+.upper-sect{
+	padding: 3vw;
+	text-align: center;
+}
+.upper{
+	color:grey;
+	font-size: 25px;
+	padding-bottom:0.5vw;
+}
+.upper-sect p:not(.upper) {
+	padding: 0.5vw 3.5vw;
+}
+
+/* Headings */
+.headings {
+	display: flex; /**display the element as block-level element */
+	align-items: center;
+	padding-top: 3.5vw;
+	padding-bottom: 1vw;
+}
+.line {
+	flex: 1; 
+	border-top: 1px dotted black;
+	margin: 0 2.5vw;
+}
+
+/* Arrangement of descriptive text & images next to each other */
+.image-text {
+	display: flex;
+	justify-content: space-between;
+	padding: 2vw 7vw;
+}
+.room .image-text, .restaurant .image-text, .aboutus .image-text, .facilities .image-text, .waterpark .image-text, .entertainment .image-text{
+	padding-bottom: 4vw;
+}
+h3{
+	text-align: left;
+	font-size:30px;
+	padding: 0.7vw 0 1.5vw 2vw;
+	color:#2D407B;
+}
+.image-text img{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+}
+.room .desc1, .outlet .desc1, .waterpark .desc1, .entertainment .desc1{
+	padding-top: 4vw;
+}
+ .restaurant .desc1, .facilities .desc1{
+	padding-top: 3vw;
+ }
+/* For descriptive text with icon bullets */
+.room table, .restaurant table, .waterpark table{
+	padding: 0 1.5vw 0 2vw;
+	line-height: 32px;
+	text-align: justify;
+}
+.room table td, .restaurant table td, .waterpark table td{
+	vertical-align: text-top;
+	padding-right: 0.5vw;
+}
+
+/* Timeline */
+	/*Set vertical line for middle part*/
+.tripdate::after, .history::after{
+	content:'';
+	position: absolute;
+	width: 6px;
+	height: 100%;
+	background: #44558A;
+	top: 0;
+	left: 49.5%;
+}
+/* Tripdate timeline */
+.tripdate{
+	position: relative;
+	max-width: 60%;
+	display: block;
+	margin: 0 auto;
+}
+.tripdate img{
+	position: absolute;
+	width: 40px;
+	border-radius: 50%;
+	z-index: 10;
+}
+.tripdate .left-component img{
+	right: -20px;
+}
+.tripdate .right-component img{
+	left: -20px;
+}
+.tripdate .left-component{
+	left: -17%;
+}
+.tripdate .right-component{
+	left: 50%;
+}
+.tripdate .left-component, .tripdate .right-component{
+	padding: 3vw 5vw;
+	position: relative;
+	width: 50%;
+	z-index:500;
+}
+.tripdate .tripdate_textbox{
+	padding: 1.5vw;
+	background: #44558A;
+	color: white;
+	position: relative;
+	border-radius: 6px;
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+}
+
+/* history timeline */
+.history{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+}
+.year{
+	position: absolute;
+	background-color: #263a74;
+	color: white;
+	padding: 10px;
+	border-radius: 10px;
+	z-index: 10;
+	font-size: 24px;
+	font-weight: bold;
+}
+.left-component .year{
+	right: -20px;
+}
+.right-component .year{
+	left: -20px;
+}
+.history .left-component{
+	left: 16%;
+}
+.history .right-component{
+	left: 48.5%;
+}
+.history .left-component, .history .right-component{
+	width: 30%;
+	padding: 2vw 0;
+	position: relative;
+	z-index:10;
+}
+.history .left-component{
+	padding-right: 5vw;
+}
+.history .right-component{
+	padding-left: 5vw;
+}
+.history .tripdate_textbox{
+	font-weight: normal;
+	text-align: justify;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 0;
+	background: white;
+	color: black;
+}
+.history img{
+	width: 100%;
+}
+.history .tripdate_textbox p{
+	padding: 1vw 3vw 2vw 3vw;
+}
+	/* Reveal tripdate over scroll */
+.reveal{
+	position: relative;
+	transform: translateY(-70px);
+	opacity: 0;
+	transition: all 0.5s ease-out;
+}
+.reveal.active{
+	transform: translateY(0);
+	opacity: 1;
+}
+
+/* Slideshows */
+	/* Arrangement of dots & images vertically center */
+.slideshow_images {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+	/* Dots change colour together with the picture changing */
+.dot1, .dot2, .dot3, .dot4 {
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color:#bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+	cursor:pointer;
+}
+.dot1.active, .dot2.active, .dot3.active, .dot4.active {
+	background-color: #717171;
+}
+
+/* Scrollbar */
+.Slideshow{
+	max-width: 1300px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+    width: 100%;
+	position: relative;
+}
+.slider-wrapper{
+    display: flex;
+    align-items: center;
+}
+.image-list{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 30px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-bottom: 10px;
+}
+.image-item{
+    width: 500px;
+    height: 350px;
+    object-fit: cover;
+}
+.slider-scrollbar{
+    height: 24px;
+    display: flex;
+}
+.scrollbar-track{
+    height: 2px;
+    width: 100%;
+    background: white;
+    position: relative;
+    border-radius: 4px;
+}
+.slider-scrollbar:hover .scrollbar-track{
+    height: 4px;
+}
+.scrollbar-thumb{
+    position: absolute;
+    height: 100%;
+    width: 35%;
+    background: black;
+    border-radius: inherit;
+    cursor: grab;
+}
+.scrollbar-track:active {
+    cursor: grabbing;
+    height: 8px;
+}
+.slidebutton{
+    font-size: 3vw;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.slidebutton#prev_slide{
+    left: -20px;
+    display: none;
+}
+.slidebutton#next_slide{
+    right: -20px;
+	display: none;
+}
+.imgBx{
+    position: relative;
+	z-index:1;
+	user-select: none;
+}
+.imgBx:hover .content {
+    transform: translateY(0);
+	opacity: 1;
+}
+.content{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: white;
+    padding: 10px;
+    transition: opacity 0.3s;
+    opacity: 0;
+	font-size: 16px;
+	text-align:center;
+}
+
+/* Table */
+.adv_table{
+	border-collapse: collapse;
+	text-align: center;
+	position: relative;
+	line-height: 14pt;
+	margin: 2vw 7vw;
+	box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	caption-side: bottom;
+}
+.adv_table caption {
+	padding-top: 1.5vw;
+}
+.adv_table td, .adv_table th {
+	padding: 1vw;
+}
+.adv_table, .adv_table td , .adv_table th{
+	border: 1px solid black;
+}
+.adv_table tr:first-child {
+	background-color:#18375E;
+	color:white;
+}
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+.trip table, .outlet table, .facilities table, .entertainment table{
+	margin: 2vw auto 0 auto;
+}
+
+/* Grid Box */
+.gridbox {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 2vw 5vw;
+}
+div.gallery{
+	margin: 2vw;
+	border: 1px solid #CCC;
+}
+div.gallery img{
+	width: 100%;
+	padding-bottom: 30px;
+}
+h4{
+	text-align: center;
+	font-size: 20px;
+	color: #2D407B;
+	font-family: "Trebuchet MS",Verdana, sans-serif;
+	padding: 0 25px;
+}
+.desc{
+	padding: 25px;
+	text-align: justify;
+}
+.sect2{
+	text-align: center;
+	padding: 1vw 7vw;
+}
+.top-sect2{
+	padding-bottom: 1vw;
+}
+
+/* /Header/ */
+header{
+	list-style: none;
+	background: #162B6D;
+	background-size: auto;
+	font-family: Helvetica, Arial, sans-serif;
+	width: 100%;
+	position: fixed;
+	height: 60px;
+	z-index: 10000;
+}
+/* Arrangement of the menu elements next to each other */
+header ul li {
+	display: inline-block;
+	position: relative;
+}
+/* To style the navbar elements */
+ul.menu li a, ul.menu li span{
+	display: block;
+	padding: 1vw 2.2vw;
+	color: #FFF;
+	text-decoration: none;
+	text-align: left;
+	font-size: 18px;
+}
+ul.contact li a {
+	display: block;
+	padding: 0.3vw 0.8vw;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 12pt;
+}
+/* Arrangement of the navbar elements */
+.logo {
+	height: 50px;
+	position: relative;
+	top: 2.5px;
+	left: 3px;
+}
+ul.contact {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1100;
+}
+ul.menu {
+	display: flex;
+	justify-content: center;
+	font-weight: bold;
+	margin-top: -45px;
+	margin-left: -10vw;
+}
+/* To display the dropdown menu */
+.menubar:hover .dropdown-content{
+	display: block;
+}
+/* Dropdown-content design; place above all other webpage elements */
+.dropdown-content{
+	width:100%;
+	background: #F1F1F1;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	position: absolute;
+	top: 50px;
+	z-index: 999;
+	display: none;
+}
+/* Dropdown-content elements place properly inside the block */
+.dropdown-content li{
+	display: block;
+}
+/* Font-colour of the dropdown-content */
+ul .menubar ul.dropdown-content a {
+	color: #2D407B;
+}
+/* Design for hovered items(except booking) in navbar */
+.menubar>a:after, .menubar>span:after {
+	content: "";
+	height: 6px;
+	width: 0;
+	background: #D99323;
+	position: absolute;
+	left: 0;
+	top: 45px;
+	transition: width 0.15s ease-in;
+}
+.menubar>a:hover:after, .menubar>span:hover:after {
+	width: 100%;
+}
+/* The navbar will remain the design when hover thorugh the dropdown-content */
+.menubar:hover>span:after {
+	width: 100%;
+}
+/* Design for hovered dropdown-content elements */
+.dropdown-content a:hover{
+	background-color: #CED2E0;
+}
+/* Design for booking */
+ul li.special a{
+	margin-top: 0.35vw;
+	margin-left: 2.5vw;
+	border: 2pt solid #EB970F;
+	border-radius: 16pt;
+	padding: 6px 18px;
+	transition: background-color 0.15s ease-in;
+	background-color: #EB970F;
+}
+ul li.special a:hover{
+	background-color: #FFF;
+	color: #2D407B;
+	border-color: #FFF;
+}
+/* Hide from the dropdown menu */
+#home{
+	display: none;
+}
+.open-menu, .close-menu{
+	position: absolute;
+	color: white;
+	cursor: pointer;
+	font-size: 1.5rem;
+	display: none;
+	z-index: 100;
+	top: 25px;
+	right: 20px;
+}
+#open-check, #close-check{
+	display: none;
+}	
+/* /End of header/ */
+
+/* /Footer/ */
+footer {
+	clear: both;
+	background: #162B6D;
+	padding-bottom: 2vw;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+/* To remove the bullets in the nested list elements */
+.footer-content, .footer-content2, .social_media{
+	list-style: none;
+}
+
+/* Arrangement of the elements next to each other */
+.footer-list{
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	margin: 0 4.5vw;
+	padding: 50px 0;
+}
+
+.social_media li{
+	display: inline-block;
+	position: relative;
+	padding-right: 2.5vw;
+}
+
+.ft-bottom{
+	text-align: center;
+}
+
+/* Alignment of ft-bottom elements */
+.footer-content, .social_media {
+	margin-top: 1.3vw;
+	line-height: 1.8vw;
+}
+
+/* Adjust the line-height between the elements in footer-content2 */
+.footer-content2 li~li{
+	padding-top: 1.3vw;
+}
+
+/* Font design */ 
+.footer-list>a, .footer-content2>li a, #connected, #experience-ft{
+	font-size: 14pt;
+	color: #F4B652;
+}
+
+footer p, footer a {
+	text-decoration: none;
+	color: #EEF1F5;
+	font-size: 12pt;
+	line-height: 20pt;
+}
+
+.social_media li a {
+	font-size: 15pt;
+}
+/* /End of footer/ */
+
+/* /Feedback sticky button/ */
+.feedback-button {
+	position: fixed;
+	bottom: 10vw;
+	right: 0;
+	background-color: #D8D8D8;
+	box-shadow: 0px 0px 18px 5px rgba(0,0,0,0.3);
+	padding: 1vw 0.4vw;
+	border-radius: 0 0.3vw 0.3vw 0;
+	border-style: hidden;
+	cursor: pointer;
+	transform: rotate(-180deg);
+	z-index: 1000; 
+}
+.feedback-button a {
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #2D407B;
+	writing-mode: vertical-lr;
+}
+/* /End of feedback sticky button/ */
+
+/* /Wheels Pop-up window/ */
+#popup-window {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 20%;
+	border: 5px solid #FFF;
+	border-radius: 0.8vw;
+	text-align: center;
+	padding: 1.5vw;
+	color: #162B6D;
+	background: linear-gradient(360deg, #FFCE82, 60%,  #FFECCE);
+	z-index: 999;
+	box-shadow: 0px 0px 1px 5000px rgba(0,0,0,0.4);
+	display:none;
+}
+#popup-window p {
+	padding-bottom: 2vw;
+	font-size: 22px;
+	font-weight: 1000;
+}
+#popup-window i {
+	float: right;
+	color: #808080;
+	transition: color 0.1s ease-in;
+	transform: scale(1.3);
+}
+#popup-window i:hover {
+	float: right;
+	color: #595959;
+}
+#luckydraw {
+	width: 80%;
+	padding-bottom: 2vw;
+}
+#popup-window a {
+	text-decoration: none;
+	border: solid #162B6D;
+	border-radius: 16pt;
+	padding: 0.45vw 1.3vw;
+	transition: background-color 0.15s ease-in;
+	background-color: #FFF;
+}
+#popup-window a:hover {
+	background-color: #162B6D;
+	color: #FFF;
+}
+/* Wheels sidekey */
+.wheel-container {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	right:5px;
+	top:-3vw;
+	z-index: 90;
+	user-select: none;
+}
+.wheel-icon {
+	width: 70px; 
+	height: auto; 
+	cursor: pointer;
+	transition: transform 0.3s ease; 
+}
+.wheel-icon:hover {
+	transform: scale(1.3); 
+}
+/* /End of Wheel Popup-window/ */
+
+/* /Homepage/ */
+/* Image fit with the screen size */
+.get-started img {
+	width: 100%;
+}
+/* Add gradient overlay on image */
+.get-started::after {
+	display: block;
+	position: relative;
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, black 100%);
+	margin-top: -200px;
+	height: 200px;
+	width: 100%;
+	content: '';
+}
+/* Text overlay */
+.text-startup {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-weight: bold;
+	white-space: nowrap;
+	font-family: 'Trebuchet MS', Verdana, sans-serif;
+	color: #162B6D;
+	font-size: 30px;
+	user-select: none;
+}
+#intro {
+	background: black;
+	color: #EEF1F5;
+	padding: 5vw 7vw;
+	display: flex;
+	justify-content: space-between;
+}
+.intro-text{
+	text-align: justify;
+	padding: 2vw 5vw 2vw 0;
+	line-height: 24pt;
+}
+/* Youtube video frame */
+iframe{
+	padding: 2vw 0;
+	border: none;
+}
+/* Destination section */
+.destination{
+	text-align: center;
+}
+.destination .image-link {
+	position: relative;
+	display: inline-block;
+}
+.destination img{
+	margin: 2vw 3vw;
+	transition: transform 0.3s ease;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+}
+.destination .image-link:hover img{
+	transform:scale(1.05);
+	box-shadow: 4px 6px 8px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+}
+.destination_overlay {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+	transition: border-bottom 0.1s ease;
+}
+.destination .image-link:hover .destination_overlay {
+	border-bottom: 4px solid white;
+}
+.homepage_exp{
+	margin-top: 5vw;
+	padding: 2vw 0;
+	/*Taken from https://www.nodestinations.com/blog/seabourn-odyssey-luxury-cruise*/
+	background: url(Images/cruiseexperience.jpg);
+	background-size: cover;
+	background-position: center;
+	color: white;
+}
+.homepage_exp h2{
+	color: white;
+}
+/* Image Accordion */
+.exp_imagelink{
+	width: 80%;
+	height: 500px;
+	display: flex;
+	margin: 0 auto;
+	gap: 10px;
+	padding: 2vw;
+}
+.card{
+	width: 20%;
+	border-radius: 10px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: 0.5s ease-in-out;
+}
+.card:hover{
+	width: 80%;
+	transition: 0.5s ease-in-out;
+}
+.card img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.card .layer{
+	width: 100%;
+	height: 60%;
+	margin-top: -300px;
+	position: relative;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent)
+}
+.card .layer .info{
+	width: 350px;
+	position: absolute;
+	bottom: 20px;
+	padding: 20px;
+	opacity: 0;
+	transition: 0.3s ease-in-out;
+	text-align: justify;
+}
+.info h3{
+	padding: 0;
+	padding-bottom: 20px;
+	color: white;
+}
+.info a{
+	color: white;
+}
+.info a:hover{
+	color: #F4B652;
+}
+.card:hover .layer .info{
+	opacity: 1;
+	transition: 0.3s ease-in-out;
+}
+/* Grid Layout */
+.moment{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-areas: 
+	"free_at_sea free_at_sea shore_excursion family_time"
+	"free_at_sea free_at_sea shopping_member openbar";
+	padding: 2vw 8vw;
+}
+.free_at_sea{
+	grid-area: free_at_sea;
+	margin: 1vw;
+	border: 1px solid #CCC;
+}
+.shore_excursion, .family_time, .shopping_member, .openbar{
+	margin: 1vw;
+	border: 1px solid #CCC;
+}
+.moment img{
+	width: 100%;
+}
+.moment h4{
+	text-align: left;
+	padding: 0 0 20px 0;
+}
+.moment a{
+	font-size: 18px;
+	color: chocolate;
+}
+.moment a:hover{
+	text-decoration: none;
+	color: #ffae42;
+}
+#disclaimer{
+	text-align: center;
+	margin: 0vw 9vw;
+	padding: 2vw;
+	border: 2px solid #bbb;
+	color: #71797E;
+}
+/* /End of Homepage/ */
+
+/* /Deals/ */
+	/* Main */
+.overlay-text{
+	position: absolute;
+	top: 30%;
+	left: 5%;
+	color:white;
+	text-shadow: 1px 1px black;
+	font-family: 'Trebuchet MS', Verdana, sans-serif;
+	font-weight: bold;
+	user-select: none;
+}
+.b1f1{
+	font-size: 7vw;
+	color: #FDBA13;
+}
+.desc1 ul{
+	text-align: justify;
+	padding: 0 2vw 0 3.5vw;
+	line-height: 32px;
+	list-style-type: circle;
+}
+
+	/* Table Arrangement */
+.deals .hide1 {
+	border-right: none;
+}
+.deals .hide2 {
+	border-left: none;
+}
+.deals .activities {
+	list-style-position: outside;
+	text-align: justify;
+	line-height: 24pt;
+	padding: 0 8pt 0 18pt;
+}
+.deals tr .column1 {
+	white-space: nowrap;
+}
+	/* Picture under special packages */
+.sp_fig {
+	display: flex;
+	justify-content: center;
+	padding: 0 4vw;
+}
+.andaman img, .skyline img{
+	width: 100%;
+}
+.andaman, .skyline {
+	width: fit-content;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin: 2vw 3vw;
+}
+.deals figcaption {
+	text-align: center;
+	padding: 1vw;
+	font-family: "Trebuchet MS",Verdana, sans-serif;
+}
+/* /End of deals/ */
+
+/* /Wheels/ */
+.wheel{
+	/*Taken from https://hospitalityinsights.ehl.edu/disruptive-cruise-market-trends*/
+	background: url(Images/wheel_sea.jpg);
+	background-size: cover;
+	background-position: center;
+}
+.wheel h2{
+	padding-top: 2vw;
+}
+.mainbox{
+	position: relative;
+	margin: auto;
+	padding: 5vw 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+}
+	/* CSS adjust the wheel */
+.box{
+	width:460px;
+	height:460px;
+	border-radius:50%;
+	border:6px solid whitesmoke;
+	overflow:hidden;
+	transition: all ease-in-out 5s;
+	transform:rotate(90deg);
+}
+.box div{
+	position:absolute;
+	display:inline-block;
+	width:460px;
+	height:460px;
+}
+	/* CSS to adjust the option in the wheel */
+.box1 .option1{
+	clip-path: polygon(0% 10%,0 50%,50% 50%);
+	background-color:#A2BEE4;
+}
+.box1 .option2{
+	clip-path: polygon(0 24%,15% 0,50% 50%);
+	background-color:#FAECB8;
+}
+.box1 .option3{
+	clip-path: polygon(13% 0,38% 0%,50% 50%);
+	background-color:#A2BEE4;
+}
+.box1 .option4{
+	clip-path: polygon(38% 0%,60% 0,50% 50%);
+	background-color:#FAECB8;
+}
+.box1 .option5{
+	clip-path: polygon(60% 0%,83% 0%,50% 50%);
+	background-color:#A2BEE4;
+}
+.box1 .option6{
+	clip-path: polygon(83% 0%,100% 19%,50% 50%);
+	background-color:#FAECB8;
+}
+.box1 .option7{
+	clip-path: polygon(100% 19%,100% 50%,50% 50%);
+	background-color:#A2BEE4;
+}
+.box2 .option1{
+	clip-path: polygon(100% 50%,100% 75%,50% 50%);
+	background-color:#FAECB8;
+}
+.box2 .option2{
+	clip-path: polygon(100% 75%,100% 110%,50% 50%);
+	background-color:#A2BEE4;
+}
+.box2 .option3{
+	clip-path: polygon(100% 110%,100% 200%,50% 50%);
+	background-color:#FAECB8;
+}
+.box2 .option4{
+	clip-path: polygon(100% 200%,40% 600%,50% 50%);
+	background-color:#A2BEE4;
+}
+.box2 .option5{
+	clip-path: polygon(40% 600%,0% 150%,50% 50%);
+	background-color:#FAECB8;
+}
+.box2 .option6{
+	clip-path: polygon(0% 150%,0% 80%,50% 50%);
+	background-color:#A2BEE4;
+}
+.box2 .option7{
+	clip-path: polygon(0% 80%,0% 50%,50% 50%);
+	background-color:#FAECB8;
+}
+.font{
+	color:black;
+	font-size: 17px;
+	font-family: Helvetica,Roboto,sans-serif;
+}
+.box1 .option1 h5{
+	position:absolute;
+	top:41%;
+	right:70%;
+	transform: rotate(196deg);
+	text-align:center;
+}
+.box1 .option2 h5{
+	position:absolute;
+	top:30%;
+	right:55%;
+	transform: rotate(-140deg);
+	text-align:center;
+}
+.box1 .option3 h5{
+	position:absolute;
+	top:22%;
+	right:54%;
+	transform: rotate(-110deg);
+	text-align:center;
+}
+.box1 .option4 h5{
+	position:absolute;
+	top:20%;
+	right:39%;
+	transform: rotate(-90deg);
+	text-align:center;
+}
+.box1 .option5 h5{
+	position:absolute;
+	top:20%;
+	right:22%;
+	transform: rotate(-70deg);
+	text-align:center;
+}
+.box1 .option6 h5{
+	position:absolute;
+	top:28%;
+	right:20%;
+	transform: rotate(-45deg);
+	text-align:center;
+}
+.box1 .option7 h5{
+	position:absolute;
+	top:40%;
+	right:15%;
+	transform: rotate(-25deg);
+	text-align:center;
+}
+.box2 .option1 h5{
+	position:absolute;
+	top:54%;
+	right:2%;
+	transform: rotate(8deg);
+	text-align:center;
+}
+.box2 .option2 h5{
+	position:absolute;
+	top:68%;
+	right:17%;
+	transform: rotate(34deg);
+	text-align:center;
+}
+.box2 .option3 h5{
+	position:absolute;
+	top:78%;
+	right:19%;
+	transform: rotate(62deg);
+	text-align:center;
+}
+.box2 .option4 h5{
+	position:absolute;
+	top:82%;
+	right:36%;
+	transform: rotate(80deg);
+	text-align:center;
+}
+.box2 .option5 h5{
+	position:absolute;
+	top:79%;
+	right:49%;
+	transform: rotate(105deg);
+	text-align:center;
+}
+.box2 .option6 h5{
+	position:absolute;
+	top:70%;
+	right:61%;
+	transform: rotate(130deg);
+	text-align: center;
+}
+.box2 .option7 h5{
+	position: absolute;
+	top: 56%;
+	right: 59%;
+	transform: rotate(165deg);
+	text-align: center;
+}
+	/* CSS to adjust the spin button */
+.spin{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	border: 4px solid white;
+	background:#FFFADA;
+	color:black;
+	box-shadow: 0 5px 20px #000;
+	font-weight: bold;
+	cursor: pointer;
+	z-index: 999;
+}
+.spin:active{
+	font-size:20px;
+}
+	/* CSS to hide the audio */
+audio{
+	display: none;
+}
+/* CSS to put the arrow for spin */
+.arrow{
+	width:0;
+	height:0;
+	border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #000;
+	position:absolute;
+	top:40%;
+	left:50%;
+	transform:translateX(-50%);
+	display:none;
+	color:transparent;
+}
+.wheel p{
+	padding:0 3vw 0 3vw;
+	text-align: center;
+	line-height:30px;
+}
+/* /End of Wheels/ */
+
+/* /Booking/ */
+.partner_list, .enquiry{
+	padding: 2vw 7vw 1vw 7vw;
+	line-height: 26px;
+}
+.booking h3{
+    padding: 1.5vw 0;
+    color:#2D407B;
+}
+.enquiry{
+	padding-top: 3vw;
+	padding-bottom: 5vw;
+	text-align: justify;
+}
+/* /End for booking/ */
+
+/* /Rooms/ */
+.service-container{
+	display: flex;
+	justify-content: center;
+	grid-template-rows: repeat(3, 1fr);
+    grid-gap: 7vw; 
+	padding-top: 3vw;
+}
+.service-list li{
+	padding-bottom: 3vw;
+}
+.request>p{
+	padding: 1vw 7vw;
+	text-align: center;
+}
+.request-container{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 2vw 5vw;
+}
+.request .gallery{
+	border: none;
+}
+.request .desc{
+	text-align: justify;
+	padding: 1vw 0;
+}
+/* /End of Rooms/ */
+
+/* /Trips/ */
+.subtitle{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 1vw 5vw;
+}
+.title h3{
+	text-align: center;
+}
+/* /End of Trips/ */
+
+/* /Outlets/ */
+.desc1 p{
+	text-align: justify;
+	padding: 0 2vw;
+	line-height: 32px;
+}
+.shop_events{
+	text-align: center;
+}
+.shop_events h3{
+	text-align: center;
+    padding: 3vw 7vw 1vw 7vw;
+}
+.shop_events p{
+	padding: 0 7vw 2vw 7vw;
+}
+.trunk_images img{
+	padding: 1.2vw;
+	width: 300px;
+	border-radius: 30px;
+}
+.thai_images img{
+	padding: 1.4vw;
+	border-radius: 30px;
+}
+.shop_events ul{
+	padding: 2vw 10vw;
+	text-align: justify;
+	list-style-type: circle;
+	line-height: 24pt;
+}
+/* /End of Outlets/ */
+
+/* /Feedback form/ */
+form{
+	padding: 1vw 0 3vw 0;
+	line-height: 24pt;
+}
+fieldset{
+	margin: 0 auto;
+	width: 40%;
+	border-radius: 10px;
+}
+legend{
+	text-align: center;
+	font-family: 'Trebuchet MS', Verdana, sans-serif;
+	font-size: 30px;
+	color: #162B6D;
+}
+.feedbackform p{
+	padding: 1.5vw 3vw;
+	text-align: justify;
+}
+.feedback{
+	padding: 0 3vw 2vw 3vw;
+	width: 100%;
+	text-align: justify;
+}	
+.feedback td{
+	padding: 5px;
+}
+input[type="email"], textarea{
+	outline: none;
+	border-radius: 5px;
+}
+input[type="email"]{
+	height: 20px;
+	border: 1px solid #8e8e8e;
+}
+input[type="email"]:focus, textarea:focus{
+	border: 2px solid #EB970F;
+	border-radius: 5px;
+}
+textarea{
+	width: 100%;
+}
+select{
+	height: 25px;
+	border: 1px solid #8e8e8e;
+	border-radius: 5px;
+	outline: none;
+}
+select:focus{
+	border: 2px solid #EB970F;
+	border-radius: 5px;
+}
+.feedback_range{
+	text-align: center;
+}
+input[type="range"]{
+	width: 60%;
+	accent-color: chocolate;
+}
+input[type="checkbox"], input[type="radio"]{
+	margin: 0 15px;
+	width: 16px;
+	height: 16px;
+	accent-color: chocolate;
+}
+.checkbox li{
+	list-style-type: none;
+}
+	/* Star Rating */
+.star-widget{
+	text-align: center;
+	transform: rotateY(180deg);
+}
+.star-widget input{
+	display: none;
+}
+.star-widget label{
+	font-size: 40px;
+	color: #EEF1F5;
+	display: inline-block; /* To make the first star at the left */
+	text-shadow:
+	3px 3px 0 #EB970F,
+    -1px -1px 0 #EB970F,
+    1px -1px 0 #EB970F,
+    -1px 1px 0 #EB970F,
+    1px 1px 0 #EB970F; 
+	padding: 10px;
+	transition: all 0.2s ease;
+}
+.star-widget input:not(:checked)~label:hover,
+.star-widget input:not(:checked)~label:hover~label, .star-widget input:checked~label{
+	color: #FDDA0D;
+}
+/* Submit & Reset Button */
+input[type="submit"], input[type="reset"]{
+	font-size: 20px;
+	padding: 0.5vw;
+	border-radius: 8px;
+	border: 2px solid #EB970F;
+	margin: 5px;
+}
+input[type="submit"]{
+	border: none;
+	background-color: #EB970F;
+	color: white;
+}
+input[type="reset"]{
+	color: #EB970F;
+}
+input[type="submit"]:hover, input[type="reset"]:hover{
+	transition: transform 0.1s ease-in;
+	transform: scale(1.1);
+}
+/* /End of Feedback/ */
+
+/*/Restaurants/*/
+	/* Top-rated Menu */
+#top-ratedmenu1{
+    width: 90%;
+    margin: auto;
+    table-layout: fixed;
+    border-collapse: separate;
+	border-spacing: 10px;
+	padding-bottom: 4vw;
+}
+#top-ratedmenu2{
+	display: none;
+	width: 90%;
+    margin: auto;
+    table-layout: fixed;
+    border-collapse: separate;
+	border-spacing: 10px;
+	padding-bottom: 4vw;
+}
+.food{
+    position: relative;
+    overflow: hidden;
+}
+.foodcolumn1{
+	/*From https://cdn.vox-cdn.com/thumbor/TksyWvWfhydvF0X-z_LFSKcOqVI=/0x0:1080x1056/1200x800/filters:focal(454x442:626x614)/cdn.vox-cdn.com/uploads/chorus_image/image/64982161/pepper_lunch.0.jpg*/
+	background-image: url('Images/sizzlingteppanyaki.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.foodcolumn2{
+	/*From https://t4.ftcdn.net/jpg/06/04/84/93/360_F_604849394_hcuEDBcPA2C6wsuT4EPw3w5cHMpQ5ehy.jpg*/
+	background-image: url('Images/beefrendang.jpeg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.foodcolumn3{
+	/*From https://i0.wp.com/www.qiuqiufood.com/wp-content/uploads/2017/06/IMG_20170513_145008_mh1495222578448-01.jpeg?resize=700%2C700&ssl=1*/
+	background-image: url('Images/greenteatiramisu.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.foodcolumn4 {
+	/*From https://allasiarecipes.com/recipe/peking-duck-recipe/#google_vignette*/
+	background-image: url('Images/Peking-duck.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.foodcolumn2below1{
+	/*From https://fabulousarizona.com/wp-content/uploads/sites/2/2020/08/Sushi-Vibe-Phoenix-Restaurant-of-the-Week.jpg*/
+	background-image: url('Images/sushi.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+
+.foodcolumn2below2{
+	/*From https://www.traeger.com/learn/how-to-sear-meat*/
+	background-image: url('Images/mesquite-grilled-steaks.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.foodcolumn4below1{
+	/*From https://www.shutterstock.com/image-photo/malaysian-desserts-called-cendol-made-600nw-2129956493.jpg*/
+	background-image: url('Images/cendol.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.foodcolumn4below2{
+	/*From https://static01.nyt.com/Images/2011/04/06/dining/06ribs-span/06ribs-span-articleLarge.jpg*/
+	background-image: url('Images/tenderribs.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.overlay-menu {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	text-align: center;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+.food:hover .overlay-menu {
+	opacity: 1;
+}
+
+/* High Tea */
+#hightea {
+    width: 90%;
+    margin: auto;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 10px;
+    padding-bottom: 4vw;
+}
+.hightea {
+    height: 24vw;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3%;
+    position: relative; 
+}
+/*From https://i0.wp.com/www.explorewithed.co.uk/wp-content/uploads/2019/02/Afternoon-Tea-Cruise-Ships-0990.jpg?resize=930%2C620&ssl=1*/
+.highteacolumn1 {
+    background-image: url('Images/hightea1.jpg');
+}
+
+/*From https://media.tacdn.com/media/attractions-splice-spp-674x446/09/c7/dc/fa.jpg*/
+.highteacolumn2 {
+    background-image: url('Images/hightea2.jpg');
+}
+
+/*From https://www.aemstelland.nl/wp-content/uploads/2021/03/high-tea-cruise_2.jpg*/
+.highteacolumn3 {
+    background-image: url('Images/hightea3.jpg');
+}
+
+/*From https://lh3.googleusercontent.com/proxy/f7U4f8Yq5a9BBZAGx1qnOb4hf8AzDnw8BCIrEWrUjqSKt0b6xVvImf0BMQCZ0Kww5zfNfllwBWvXGItfAkPnCe84wWP4agREDMaNokL6TI206CaqORchX3JaSg*/
+.highteacolumn4 {
+    background-image: url('Images/hightea4.jpg');
+}
+
+/*From https://i.pinimg.com/originals/47/22/39/4722392735a11e2bb280ac087c24ed06.jpg*/
+.highteacolumn5 {
+    background-image: url('Images/hightea5.jpg');
+}
+/*/End of Restaurants/*/
+
+/* /Group page/ */
+.grouppage h4{
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	text-align: left;
+	color: #636e8f;
+	padding: 0 2vw 0.5vw;
+}
+.leftdesc{
+	padding-left: 5vw;
+	padding-top: 2.5vw;
+}
+.rightdesc{
+	padding-right: 5vw;
+	padding-top: 2.5vw;
+}
+/* /End of Group page/ */
+
+/* /About Us/ */
+.captains{
+	padding: 2vw;
+	text-align: center;
+}
+.captains figcaption{
+	text-align: center;
+}
+.awards_images{
+	padding: 2vw 0;
+	text-align: center;
+}
+.awards_images img{
+	width: 300px;
+}
+/* /End of About Us/ */
+
+/* /Experience/ */
+.tab-menu{
+	position: relative;
+	text-align: center;
+	color: #fff;
+	list-style-type:none;
+	background: #162B6D;
+	max-width: 800px;
+	padding:10px;
+	white-space:nowrap;
+	border-radius: 30px;
+	margin: 0 auto;
+}
+.tab-btn{
+	display:inline-block;
+	margin:0 5vw;
+	cursor:pointer;
+	user-select:none; /*disable user select the text*/
+}
+.tab-btn:hover{
+	border-bottom:3px solid #D99323;
+}
+.tab-btn.active{
+	border-bottom:4px solid #D99323;
+}
+.tab{
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: justify;
+	content-visibility: hidden;
+	opacity:0;
+	line-height: 24pt;
+}
+.tab.active{
+	content-visibility: visible;
+	opacity:1;
+	padding: 2vw 7vw;
+}
+.desc_tab p{
+	padding-left: 2vw;
+}
+.img-card img{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+}
+/* /End of experiences/ */
+
+/* /Waterpark/ */
+	/* Polygon */
+.waterpark .upper-sect{
+	padding-bottom: 0;
+}
+.polygon{
+	position: relative;
+	display: block;
+	height: auto;
+}
+.polygon img{
+	display: block;
+	margin: 0 auto;
+	width: 70%;
+}
+.polygon-text{
+	position: relative;
+}
+.text1{
+	position: absolute;
+	top: -35vw;
+	left: 58%;
+	width: 30%;
+}
+.text2{
+	position: absolute;
+	top: -18vw;
+	left: 18%;
+	width: 25%;
+}
+	/* Signature Drinks */
+.signaturedr h3{
+	text-align: center;
+}
+.signaturedr{
+	text-align: center;
+	padding-bottom: 3vw;
+}
+#sign_drinks1{
+	width: 90%;
+	margin: auto;
+	table-layout: fixed;
+	border-collapse: separate;
+	border-spacing: 10px;
+	padding-bottom: 4vw;
+}
+#sign_drinks2{
+	display: none;
+	width: 90%;
+	margin: auto;
+	table-layout: fixed;
+	border-collapse: separate;
+	border-spacing: 10px;
+	padding-bottom: 4vw;
+}
+.drink{
+	position: relative;
+	overflow: hidden;
+}
+.drinkcolumn1{
+	/* From https://press.fourseasons.com/kualalumpur/hotel-news/2024/new-colour-me-curious-cocktail-menu-at-bar-trigona/ */
+	background-image: url('Images/inca.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.drinkcolumn2{
+	/* From https://www.fourseasons.com/kualalumpur/dining/lounges/bar-trigona/ */
+	background-image: url('Images/pastel.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.drinkcolumn3{
+	/* From https://press.fourseasons.com/kualalumpur/hotel-news/2024/new-colour-me-curious-cocktail-menu-at-bar-trigona/ */
+	background-image: url('Images/bumblebee.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.drinkcolumn4 {
+	/* From https://www.fourseasons.com/kualalumpur/dining/lounges/bar-trigona/ */
+	background-image: url('Images/iris.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.drinkcolumn2below1{
+	/*From https://www.fourseasons.com/kualalumpur/dining/lounges/bar-trigona/ */
+	background-image: url('Images/ginger.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.drinkcolumn2below2{
+	/* From https://press.fourseasons.com/kualalumpur/hotel-news/2024/new-colour-me-curious-cocktail-menu-at-bar-trigona/ */
+	background-image: url('Images/ambrosia.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.drinkcolumn4below1{
+	/* From https://www.fourseasons.com/kualalumpur/dining/lounges/bar-trigona/ */
+	background-image: url('Images/scarlet.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.drinkcolumn4below2{
+	/*From https://www.fourseasons.com/kualalumpur/dining/lounges/bar-trigona/ */
+	background-image: url('Images/zen.jpg');
+	background-size: cover;
+	background-position: center;
+	border-radius: 3%;
+}
+.drink:hover .overlay-menu {
+	opacity: 1;
+}
+	/* SwimMart */
+.waterpark .gallery li{
+	list-style-type: circle;
+	list-style-position: inside;
+	padding: 0 2vw;
+}
+.waterpark .gallery ul{
+	padding-bottom: 2vw;
+}
+/* /End of Waterpark/ */
+
+/* /Entertainment/ */
+	/* movie */
+.banner{
+	min-height: 100vh;
+	margin-top: 2vw;
+	padding: 0 100px;
+	display: flex;
+	align-items: center;
+	background: black no-repeat center;
+	background-size: cover;
+	overflow:hidden;
+	transition: 0.5s;
+}
+.movie{
+	position: relative;
+	width: 700px;
+	height:600px;
+	display: none;
+	visibility: hidden;
+	transform: scale(0);
+	padding-right: 2vw;
+}
+.movie.active{
+	display: block;
+	visibility: visible;
+	transform: scale(1);
+	transition: 0.5s;
+}
+.movie-title{
+	max-width: 250px;
+}
+.time span{
+	color:rgba(255, 255, 255, 0.6);
+	font-weight: 400;
+	font-size: 30px;
+	padding: 0 10px;
+	border-right: 1px solid rgba(255, 255, 255, 0.6);
+}
+.banner .movie h5 span:first-child{
+	padding-left: 0;
+}
+.banner .movie h5 span:last-child{
+	border-right: none;
+}
+.banner .movie p{
+	font-weight: 350;
+	line-height: 30px;
+	color:white;
+}
+.movie-container{
+    display: flex;
+    overflow: hidden;
+	position: relative;
+	height: 100vh;
+}
+.movieimgcontainer{
+	display: flex;
+	transition: 0.5s;
+	position: relative;
+  	transform: translateX(-30%);
+}
+.slide_div{
+	display: flex;
+	align-items: center;
+	margin:0 10px;
+}
+.slide_div img{
+	border-radius: 15px;
+	user-select: none;
+}
+.button{
+	position: absolute;
+	border-radius: 15px;
+}
+.button:hover{
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.slider-nav{
+	display:flex;
+	column-gap: 1rem;
+	position: absolute;
+	bottom: 1.25rem;
+	left:50%;
+	transform: translateX(-50%);
+	z-index:1;
+}
+.slider-nav a{
+	width: 10px;
+	height:10px;
+	border-radius: 50%;
+	background-color: white;
+	opacity: 0.75;
+	transition: opacity ease 250ms;
+}
+.slider-nav .dot-movie:hover,.dot-movie.active{
+	background-color: #D99323;
+}
+@media (min-width: 1000px) {
+    .slider-nav {
+        display: none;
+    }
+}
+	/* Theatre */
+.box-area{
+	display: flex;
+	margin: 0 auto;
+	gap: 10px;
+	padding: 2vw 5vw;
+}
+.theatre{
+	overflow: hidden;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.theatre img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: 0.3s ease-in-out;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.theatre .layer{
+	width: 100%;
+	position: relative;
+	transition: 0.5s ease-in-out;
+}
+.desc_theatre{
+	position:absolute;
+	text-align: center;
+	color:white;
+	bottom: 0;
+	padding: 20px 10px;
+	opacity: 0;
+	transition: 0.3s ease-in-out;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+.theatre:hover .desc_theatre{
+	opacity: 1;
+	transition: 0.3s ease-in-out;
+}
+.theatre:hover img{
+	filter: blur(4px) brightness(60%);
+	transition: 0.3s ease-in-out;
+}
+	/* Performance Picture*/
+.performance_container{
+	padding: 3vw 10vw 7vw 10vw;
+}
+.slider_performance{
+	width: 100%;
+	display: flex;
+	aspect-ratio: 16/9;
+	overflow: hidden;
+	scroll-snap-type:x mandatory;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius:10px;
+}
+/* /End of Entertainment/ */
+
+/* for smaller screen */
+@media screen and (max-width:1350px){
+	/* Icon for sidebar */
+	.open-menu{
+		display: block;
+	}
+	#open-check:checked ~ .menu{
+		right: 0;
+	}
+	#open-check:checked ~ .open-menu{
+		display: none;
+	}
+	#open-check:checked ~ .close-menu{
+		display: block;
+		z-index: 1005;
+		position: fixed;
+	}
+	/* Sidebar design */
+	.menubar:hover .dropdown-content {
+		display: none;
+	}
+	#home{
+		display: block;
+	}
+	.menu{
+		flex-direction: column;
+		width: 250px;
+		height: 110vh;
+		position:fixed;
+		top: 0;
+		right:-100%;
+		z-index:1000;
+		background-color:#162B6D;
+		transition: all 0.2s ease-in;
+	}
+	.menubar{
+		padding: 8px 0;
+	}
+	.dropdown-content{
+		background-color:#162B6D;
+	}
+	.menubar a:hover, .menubar span:hover, ul li.special a:hover{
+		color: #F4B652;
+	}
+	.menubar .active{
+		color: #F4B652;
+	}
+	ul .menubar ul.dropdown-content a {
+		color: white;
+	}
+	ul .menubar ul.dropdown-content a:hover{
+		color: #f6c474;
+	}
+	.dropdown-content a:hover{
+		background: none;
+	}
+	.menubar>a:after, .menubar>span:after{ /* To hide the animation for dropdown on hover */
+		display: none;
+	}
+	/* Change the design for booking button*/
+	ul li.special a{
+		border: none;
+		background: none;
+		padding: 8px 0;
+	}
+	ul li.special a:hover{
+		background: none;
+	}
+
+	/* Homepage */
+	#intro{
+		flex-direction: column;
+	}
+	.intro-text{
+		padding-right: 0;
+	}
+	.yt{
+		text-align: center;
+	}
+
+	/* Image Text */
+	.image-text, .tab{
+		flex-direction: column;
+	}
+	.slideshow_images img, .img-card img{
+		width: 100%;
+	}
+	.image-text figure{
+		order:1;
+		text-align: center;
+	}
+	.desc1{
+		order: 2;
+	}
+
+	/* Table */
+	.deals tr .column1 {
+		white-space: pre-wrap;
+	}
+
+	/* Scrollbar */
+	.slidebutton{
+		display: none!important;
+	}
+	.image-list{
+		gap: 10px;
+	}
+	.image-item{
+		width:300px;
+		height: 210px;
+	}
+	.imgBx .content {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	/* Room */
+	.service-container{
+		display: block;
+		padding: 2vw 9vw;
+	}
+	/* Form */
+	fieldset{
+		width: 60%;
+	}
+	.leftdesc, .rightdesc{
+		padding: 0;
+	}
+	.awards_images{
+		padding: 2vw 18vw;
+	}
+	.desc_theatre{
+		font-size: 18px;	
+	}
+	/* movie */
+	.banner, .movie-container{
+		flex-direction: column;
+	}
+	.movie-title{
+		display: block;
+		margin: 30px auto;
+	}
+	.movie p{
+		padding: 20px 0;
+	}
+	.movie-container{
+		padding: 50px;
+		height: 60vh;
+	}
+	.movieimgcontainer{
+		transform: translateX(-10%);
+	}
+	.captains img{
+		width: 80%;
+	}
+}
+@media screen and (max-width:1000px){
+	.history::after{
+		left: 15%;
+	}
+	.left-component .year, .right-component .year{
+		top: 10%;
+		left: -20px;
+		width: 20%;
+		text-align: center;
+	}
+	.history .left-component, .history .right-component{
+		width: 450px;
+		padding: 3vw 10vw;
+		left: 15%;
+	}
+	.card:hover{
+		width: 100%;
+	}
+	.card .layer .info{
+		width: 300px;
+	}
+	.desc_theatre{
+		font-size: 16px;	
+	}
+	.text1, .text2{
+		font-size: 25px;
+	}
+	.text-startup{
+		top: 17%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-wrap: wrap;
+		width:90%;
+	}
+	.startup1{
+		display: none;
+	}
+	h1{
+		font-size: 30px;
+	}
+	.text{
+		top: 25%;
+		left: 50%;
+		transform: translate(-50%, 0);
+		line-height: 24pt;
+	}
+	.text p, .text a{
+		font-size: 20px;
+	}
+}
+@media screen and (max-width:860px){
+	.box-area{
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+	.theatre{
+		margin: 0 auto;
+	}
+	.desc_theatre{
+		font-size: 20px;
+	}
+	.polygon img{
+		width: 80%;
+	}
+	.text1{
+		position: absolute;
+		top: -40vw;
+		left: 58%;
+	}
+	.text2{
+		position: absolute;
+		top: -21vw;
+		left: 14%;
+	}
+}
+@media screen and (max-width:768px){
+	#popup-window{
+		width: 35%;
+		border-radius: 14px;
+	}
+	.sp_fig{
+		flex-direction: column;
+		position:relative;
+	}
+	.gridbox {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+	.image-text figure img, iframe{
+		width: 100%;
+	}
+	.grouppage .image-text img{
+		width: 50%;
+	}
+	.thai_images img{
+		width: 85%;
+	}
+	.request-container{
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	.mainbox{
+		margin:10px auto;
+	}
+	fieldset{
+		width: 70%;
+	}
+	#top-ratedmenu1, #sign_drinks1{
+		display: none;
+	}
+	#top-ratedmenu2, #sign_drinks2{
+		display: table;
+		width: 90%;
+		margin: auto;
+		table-layout: fixed;
+		border-collapse: separate;
+		border-spacing: 10px;
+		padding-bottom: 4vw;
+	}
+	.tab-menu{
+		margin: 0 3vw;
+	}
+	.history::after{
+		left: 10%;
+	}
+	.history .left-component, .history .right-component{
+		width: 320px;
+		left: 10%;
+	}
+	.destination{
+		padding: 0 5vw;
+	}
+	.destination img{
+		width: 90%;
+	}
+	.card .layer .info{
+		width: 200px;
+	}
+	.moment{
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas: 
+		"free_at_sea free_at_sea"
+		"free_at_sea free_at_sea"
+		"shore_excursion family_time"
+		"shopping_member openbar";
+		padding: 2vw 10vw;
+	}
+	.banner{
+		padding: 0 80px;
+	}
+	.movie{
+		width:100%;
+	}
+	.polygon img{
+		width: 90%;
+	}
+	.text1{
+		position: absolute;
+		top: -47.5vw;
+		left: 58%;
+	}
+	.text2{
+		position: absolute;
+		top: -25vw;
+		left: 10%;
+	}
+	.text-startup{
+		font-size: 24px;
+	}
+}
+@media screen and (max-width:600px){
+	.gridbox {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	fieldset{
+		width: 90%;
+	}
+	.dot1, .dot2, .dot3, .dot4 {
+		height: 10px;
+		width: 10px;
+	}
+	.adv_table{
+		margin: 0;
+		font-size: 16px;
+	}
+	.deals .activities {
+		line-height: 22px;
+	}
+	.info h3{
+		font-size:24px;
+	}
+	.card .layer .info{
+		font-size: 16px;
+		width: 150px;
+	}
+	.movie{
+		font-size:16px;
+		line-height: 1.2vw;
+	}
+	.movie span{
+		font-size: 16px;
+	}
+	.text1{
+		position: absolute;
+		top: -50vw;
+		left: 58%;
+		font-size: 20px;
+	}
+	.text2{
+		position: absolute;
+		top: -25vw;
+		left: 10%;
+		font-size: 20px;
+	}
+	.text-startup{
+		top: 20%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: #FDBA13;
+		text-shadow: 1px 1px black;
+	}
+	.text p, .text a{
+		display: none;
+	}
+	.booking .text p, .booking .text a{
+		display: inline;
+	}
+}

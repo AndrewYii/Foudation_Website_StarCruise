@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Trip -->
+<!-- Author: Andrew Yii Teck Foon -->
+<!-- Date 28/03/2024 -->
+<!-- Validated: Ok 11/05/2024-->
+
+<head>
+	<title>Trips | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Andrew Yii Teck Foon">
+	<meta name="description" content="Embark on the journey of a lifetime with our luxury cruise trips! Discover unforgettable experiences on our website, including cruise dates and exciting shore excursion destinations. Explore exotic locales, historical sites, and breathtaking landscapes. Book your dream vacation today!">
+	<meta name="keywords" content="star,cruise,holiday,trip,ship,travel,langkawi,phuket">
+	<link rel="icon" type="image/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage header -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+	
+<body>
+<header>
+	<nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+			<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+	<script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="trip">
+	<!-- Feedback sticky button -->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+		<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);	
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+
+	<div class="main">
+		<!--Taken from https://www.rivieratravel.co.uk/blog/celebrating-40-years-travel-->
+		<img src="Images/Cruise_trip.jpg" alt="Cruise Picture">
+		<div class="text">
+			<h1>Adventures across Various Locations</h1>
+			<p>Experience nature's wonders and immerse in Langkawi and Singapore's culture. Get ready for an unforgettable adventure.</p>
+		</div>
+	</div>
+
+	<div class="upper-sect">
+		<p class="upper">START YOUR JOURNEY</p>
+		<h2>Make Your Plans Real</h2>
+		<p>Take pleasure in your voyage with these destinations. transforming your dream vacation into a thrilling real.</p>
+	</div>
+
+	<div class="subtitle">
+		<div class="title">
+			<h3>Singapore - Langkawi - Singapore</h3>
+		</div>
+		<div class="title">
+			<h3>Singapore - Langkawi - Phuket - Singapore</h3>
+		</div>
+	</div>
+	<div class="tripdate">
+		<div class="left-component reveal">
+			<!--Taken from https://www.freepik.com/icon/cruise-ship_3324599-->
+			<img src="Images/smallcruise.png" alt="small_cruise">
+			<div class="tripdate_textbox">
+				<p>2 April 2024 - 5 April 2024</p>
+			</div>
+		</div>
+		<div class="right-component reveal">
+			<!--Taken from https://www.freepik.com/icon/cruise-ship_3324599-->
+			<img src="Images/smallcruise.png" alt="small_cruise">
+			<div class="tripdate_textbox">
+				<p>12 April 2024 - 20 April 2024</p>
+			</div>
+		</div>
+		<div class="left-component reveal">
+			<!--Taken from https://www.freepik.com/icon/cruise-ship_3324599-->
+			<img src="Images/smallcruise.png" alt="small_cruise">
+			<div class="tripdate_textbox">
+				<p>5 May 2024 - 8 May 2024</p>
+			</div>
+		</div>
+		<div class="right-component reveal">
+			<!--Taken from https://www.freepik.com/icon/cruise-ship_3324599-->
+			<img src="Images/smallcruise.png" alt="small_cruise">
+			<div class="tripdate_textbox">
+				<p>15 May 2024 - 23 May 2024</p>
+			</div>
+		</div>
+		<div class="left-component reveal">
+			<!--Taken from https://www.freepik.com/icon/cruise-ship_3324599-->
+			<img src="Images/smallcruise.png" alt="small_cruise">
+			<div class="tripdate_textbox">
+				<p>10 June 2024 - 13 June 2024</p>
+			</div>
+		</div>
+		<div class="right-component reveal">
+			<!--Taken from https://www.freepik.com/icon/cruise-ship_3324599-->
+			<img src="Images/smallcruise.png" alt="small_cruise">
+			<div class="tripdate_textbox">
+				<p>20 June 2024 - 28 June 2024</p>
+			</div>
+		</div>
+		<script>
+			//scroll animation for tripdate
+			function reveal() {
+  				var reveals = document.querySelectorAll(".reveal");
+
+  				for (var i = 0; i < reveals.length; i++) {
+    				var windowHeight = window.innerHeight;
+    				var elementTop = reveals[i].getBoundingClientRect().top;
+    				var elementVisible = 150;
+
+    				if (elementTop < windowHeight - elementVisible) {
+      				reveals[i].classList.add("active");
+    				} else {
+      				reveals[i].classList.remove("active");
+    				}
+  				}
+			}
+
+			window.addEventListener("scroll", reveal);
+		</script>
+	</div>
+
+	<div class="headings" id="shore">
+		<span class="line"></span>
+		<h2>Shore Excursion Package</h2>
+		<span class="line"></span>
+	</div>
+	<table class="adv_table">
+		<caption>Table: City Tour Package</caption>
+		<tr>
+			<th>Destination</th>
+			<th colspan="2">Langkawi</th> 
+			<th colspan="2">Phuket</th>
+		</tr>
+		<tr>
+			<th>Transportation Fee</th>
+			<td colspan="2">RM80/person</td>
+			<td colspan="2">RM120/person</td>
+		</tr>
+		<tr>
+			<th rowspan="6">Schedule</th>
+			<td>10:00 a.m. - 11:00 a.m.</td>
+			<td>Beach Hopping</td>
+			<td>10:00 a.m. - 11:00 a.m.</td>
+			<td>Elephant Sanctuaries</td>
+		</tr>
+		<tr>
+			<td>12:00 a.m. - 3:00 p.m.</td>
+			<td>Mangrove Tour</td>
+			<td>12:00 a.m. - 3:00 p.m.</td>
+			<td>Phuket Old Town</td>
+		</tr>
+		<tr>
+			<td>5:00 p.m. - 6:30p.m.</td>
+			<td>Underwater World Langkawi</td>
+			<td>5:00 p.m. - 6:30p.m.</td>
+			<td>Night Markets</td>
+		</tr>
+		<tr>
+			<td>10:00 a.m. - 11:00 a.m.</td>
+			<td>Trekking & Nature Walks</td>
+			<td>10:00 a.m. - 11:00 a.m.</td>
+			<td>Visit Temples</td>
+		</tr>
+		<tr>
+			<td>12:00 a.m. - 3:00 p.m.</td>
+			<td>Cable Car</td>
+			<td>12:00 a.m. - 3:00 p.m.</td>
+			<td>Phuket Fanta Sea</td>
+		</tr>
+		<tr>
+			<td>5:00 p.m. - 6:30p.m.</td>
+			<td>Duty-Free Shopping</td>
+			<td>5:00 p.m. - 6:30p.m.</td>
+			<td>Spa & Wellness</td>
+		</tr>
+	</table>
+	<div class="headings" id="Langkawi">
+		<span class="line"></span>
+		<h2>First Destination (Langkawi)</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p class="top-sect2"><strong> Malaysia's 'GEM'</strong></p>
+		<p> Explore the enchanting island of Langkawi on this captivating shore excursion. From the iconic Sky Bridge to the mysterious mangrove forests, this adventure offers a perfect blend of relaxation and discovery. </p>
+	</div>
+	<section class="gridbox">
+		<div class="gallery">
+			<!--Taken from -->
+			<img src="Images/beach_hopping.jpeg" alt="Beach Hopping">
+			<h4>Beach Hopping</h4>
+			<p class="desc"> Explore stunning beaches like Pantai Cenang and Tanjung Rhu.</p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://cdn.getyourguide.com/img/tour/6352219db9552.jpeg/99.jpg-->
+			<img src="Images/mangrove_tour.png" alt="Mangrove Tours">
+			<h4>Mangrove Tours</h4>
+			<p class="desc">Discover the island's rich biodiversity on mangrove tours.</p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://today.line.me/hk/v2/article/oqn9rQw-->
+			<img src="Images/under_water.jpeg" alt="Underwater World Langkawi">
+			<h4>Underwater World Langkawi</h4>
+			<p class="desc">Visit Southeast Asia's largest aquarium to marvel at marine life. </p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://www.klook.com/zh-CN/experiences/list/langkawi-rock-climbing/c190-cate174/-->
+			<img src="Images/treking.jpeg" alt="Trekking and Nature Walks">
+			<h4>Trekking & Nature Walks</h4>
+			<p class="desc"> Explore Langkawi's lush rainforests through hiking trails.</p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/cp6pw9peve2ygwlxoxfo/Tiket%20SkyCab%20Cable%20Car%20Langkawi%20(SkyRex%2C%20Skydome%2C%203D%20Art).jpg-->
+			<img src="Images/cable_car.jpeg" alt="Cable Car Ride">
+			<h4>Cable Car Ride</h4>
+			<p class="desc">Take a thrilling ride on the Langkawi SkyCab to witness breathtaking views of the island. </p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://tw.hotels.com/go/malaysia/best-shopping-langkawi-->
+			<img src="Images/dutyfree.jpeg" alt="Duty-free Shopping">
+			<h4>Duty-free Shopping</h4>
+			<p class="desc">Enjoy shopping for souvenirs, chocolates, alcohol, and electronics at duty-free outlets. </p>
+		</div>
+	</section>
+
+	<div class="headings" id="Phuket">
+		<span class="line"></span>
+		<h2>Second Destination (Phuket)</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p class="top-sect2"><strong>Thailand's Tropical Paradise</strong></p>
+		<p>Embark on a thrilling Phuket shore excursion and dive into vibrant culture as you explore ancient temples and bustling markets. With rich history and tropical beauty, Phuket promises an unforgettable experience for every traveler. </p>
+	</div>
+	<section class="gridbox">	
+		<div class="gallery">
+			<!--Taken from https://www.holidaygogogo.com/3d2n-phuket-family-getaway-tour-package/-->
+			<img src="Images/elephant_sanctuaries.jpeg" alt="Elephant Sanctuaries">
+			<h4>Elephant sanctuaries</h4>
+			<p class="desc">Interact with rescued elephants in ethical sanctuaries where you can feed and bathe them. </p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://simpleball.pixnet.net/blog/post/221875363-->
+			<img src="Images/phuketoldtown.jpeg" alt="Phuket Old Town">
+			<h4>Phuket Old Town</h4>
+			<p class="desc">Wander through Phuket Old Town, which is adorned with colorful Sino-Portuguese buildings. </p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://www.tripadvisor.com/AttractionProductReview-g293920-d18925226-Phuket_City_Tour_Karon_View_Big_Buddha_Wat_Chalong_SHA_Plus-Phuket.html-->
+			<img src="Images/phukettemples.jpeg" alt="Phuket Temples">
+			<h4>Visit Temples</h4>
+			<p class="desc"> Explore Phuket's cultural heritage by visiting temples like Wat Chalong. </p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://www.ettoday.net/dalemon/post/19887-->
+			<img src="Images/nightmarket.jpeg" alt="Phuket Night Market">
+			<h4>Night Markets</h4>
+			<p class="desc">Experience the vibrant atmosphere of Phuket's night markets.</p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://zh.hotels.com/go/thailand/great-phuket-luxury-spas-->
+			<img src="Images/spa.jpeg" alt="Spa and Wellness">
+			<h4>Spa & Wellness</h4>
+			<p class="desc">Indulge in relaxation with a spa treatment or yoga session. </p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://www.cleverthai.com/koh-samui-vs-phuket-which-island-is-better-for-tourists/-->
+			<img src="Images/phuketfantase.jpeg" alt="Phuket FantaSea">
+			<h4>Phuket FantaSea</h4>
+			<p class="desc">Experience Thailand's rich culture and mythology through a dazzling show at Phuket FantaSea. </p>
+		</div>
+	</section>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Homepage -->
+<!-- Author: Joanne Chin Jia Xuan -->
+<!-- Date 25/03/2023 -->
+<!-- Validated: OK 11/05/2023-->
+
+<head>
+	<title>Star Cruise | Sail Your Dreams</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Joanne Chin Jia Xuan">
+	<meta name="description" content="Discover unforgettable cruise experiences with our premium cruise line. Explore exotic destinations, luxurious accommodations, and exciting onboard activities. Book your dream cruise vacation today and set sail on an adventure of a lifetime.">
+	<meta name="keywords" content="star, cruise, cruise vacation, luxury cruise, family cruise, romantic cruise, cruise ship, onboard activities, shore excursions, cruise packages">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage head -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+	
+<body>
+<header>
+	<nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+			<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+	<script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article>
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+		<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);	
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+
+	<div class="home-startup">
+		<div class="get-started">
+			<!--Taken from https://www.vogue.com.tw/lifestyle/article/disney-cruise-wish-->
+			<img src="Images/homepage_cruise.jpg" alt="Cruise Picture">
+		</div>
+		<div class="text-startup">
+			<p class="startup1">Embark on a journey of luxury, adventure, and discovery.</p> 
+			<p>Welcome aboard, where every horizon promises a new story to unfold.</p>
+		</div>
+	</div>	
+	<div id="intro">
+		<div class="intro-text">
+			<p>Welcome to the epitome of luxury and adventure on the high seas! Prepare to set sail on an unforgettable journey with our exclusive cruise experiences. We've been a pioneer and a trendsetter in hospitality for 80 years and we know luxury cruising like no other. From stunning sunsets to exhilarating excursions, our cruise offers a blend of relaxation and exploration like no other. Discover breathtaking destinations, indulge in world-class cuisine, and create memories that will last a lifetime. Whether you're seeking a romantic getaway, a family adventure, or simply a moment of serenity amidst the waves, we invite you to join us on board. Your extraordinary voyage awaits. Bon voyage!</p>
+		</div>
+		<div class="yt">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/UVom0DOlTdM?si=wwa0OjTG_-qG2EDw&autoplay=1&mute=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+	</div>
+	<div class="headings">
+		<span class="line"></span>
+		<h2>Destinations</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p>Star Cruise offers a delightful voyage to enchanting destinations like Langkawi and Phuket. Whether you're longing for the turquoise waters and lush landscapes of Langkawi or the vibrant culture and stunning beaches of Phuket, this cruise brings you closer to some of the most captivating spots in Southeast Asia.</p>
+	</div>
+	<div class="destination">
+		<a href="trip.html#Langkawi" class="image-link">
+			<!--Taken from https://haw126.wpcomstaging.com/2023/11/10/%E6%B5%AE%E7%BD%97%E4%BA%A4%E6%80%A1%E6%B2%A6%E4%B8%BA%E9%AC%BC%E9%95%87%E5%85%A8%E6%98%AF%E6%B8%A1%E8%BD%AE%E6%9D%A5%E8%BF%9F%E5%92%8Clada%E5%A4%B1%E8%B4%A3-%E4%BA%A4%E6%80%A1/-->
+			<img src="Images/homepage_langkawi.webp" alt="Langkawi" title="Langkawi">
+			<div class="destination_overlay">LANGKAWI</div>
+		</a>
+		<a href="trip.html#Phuket" class="image-link">
+			<!--Taken from https://amimagazine.global/Meeting-Event-Venues/Phuket-City-Thailand/Hotels?pg=3-->
+			<img src="Images/homepage_phuket.webp" alt="Phuket" title="Phuket">
+			<div class="destination_overlay">PHUKET</div>
+		</a>
+	</div>
+
+	<div class="homepage_exp">
+		<h2>Experiences</h2>
+		<div class="sect2">
+			<p>You'll find endless opportunities on our cruise to make the most of every moment — like game-changing activities, world-class dining, show-stopping entertainment, and plenty of ways to unwind in the sun.</p>
+		</div>
+		<div class="exp_imagelink">
+			<div class="card">
+				<!--Taken from https://www.esquire.com/entertainment/a22801333/cruise-entertainers/-->
+				<img src="Images/performance.jpg" alt="Events">
+				<div class="layer">
+					<div class="info">
+						<h3>Shows & Entertainment</h3>
+						<p>When it comes to live entertainment, the options are as varied as the thrills and attractions onboard. </p>
+						<a href="entertainment.html">Click to learn more</a>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<!--Taken from https://www.istockphoto.com/hk/%E7%85%A7%E7%89%87 dessert-buffet-in-a-cruise-ship-restaurant-gm616223212-107118931-->
+				<img src="Images/restaurant.jpg" alt="Restaurants">
+				<div class="layer">
+					<div class="info">
+						<h3>Onboard Dining</h3>
+						<p>When you cruise with us, the dining options are as diverse as the flavors you'll find on each menu. </p>
+						<a href="dining.html">Click to learn more</a>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<!--Taken from https://thebetteraging.businesstoday.com.tw/article/detail/201707200001-->
+				<img src="Images/facilities.jpg" alt="Facilities">
+				<div class="layer">
+					<div class="info">
+						<h3>Facilities</h3>
+						<p>Whatever thrills or chills you seek, you'll find all sorts of ways to fill your days onboard.</p>
+						<a href="lifeonboard.html">Click to learn more</a>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<!--Taken from https://cruiseable.com/images/Allure-of-the-Seas-Royal-Promenade-->
+				<img src="Images/outlets.jpg" alt="Outlets">
+				<div class="layer">
+					<div class="info">
+						<h3>Onboard Shopping</h3>
+						<p>On our ships you'll find a wide selection of the best boutiques at sea stocked with all your favourite premium brands.</p>
+						<a href="shopping.html">Click to learn more</a>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<!--Taken from https://www.pinterest.com/pin/cruise-ships-get-extreme-makeovers-water-parks-bars-shows--434245589056956386/-->
+				<img src="Images/waterpark.jpg" alt="Waterpark">
+				<div class="layer">
+					<div class="info">
+						<h3>WaveSplash Waterworld</h3>
+						<p>Splash around WaveSplash Waterworld, a waterpark featuring some of the fastest, wettest rides you can find at sea.</p>
+						<a href="waterpark.html">Click to learn more</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="headings">
+		<span class="line"></span>
+		<h2>Once-in-a-Lifetime Moment</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p>Embark on a cruise where every moment is a once-in-a-lifetime experience. Create unforgettable memories aboard with breathtaking views and extraordinary experiences.</p>
+	</div>
+	<div class="moment">
+		<div class="free_at_sea">
+			<!--Taken from https://www.celebritycruises.com/blog/what-is-wave-season-->
+			<img src="Images/free_at_sea.jpg" alt="Free At Sea">
+			<div class="desc">
+				<h4>Get More with Free At Sea</h4>
+				<p>Enrich your cruise holiday with up to 6 Free Offers with Star Cruise's Free At Sea package. Choose from Free Unlimited Open Bar, Free Specialty Dining, Free Shore Excursions, Free WiFi, Free Room Upgrade and Free Onboard Shopping Credits.</p>
+				<br>
+				<a href="deals.html#package">Find Out More &#10142;</a>
+			</div>
+		</div>
+		<div class="shore_excursion">
+			<!--Taken from https://medium.com/@gojordantours.online/petra-cruise-ship-2022-2023-everything-you-need-to-know-72e6b4737bbe-->
+			<img src="Images/shore_excursion.jpg" alt="Shore Excursion">
+			<div class="desc">
+				<h4>Discover Local Treasures</h4>
+				<a href="trip.html#shore">Shore Excursions &#10142;</a>
+			</div>
+		</div>
+		<div class="family_time">
+			<!--Taken from https://www.royalcaribbean.com/blog/cruising-with-family-can-still-make-for-a-romantic-getaway/-->
+			<img src="Images/family.png" alt="Family">
+			<div class="desc">
+				<h4>Build Memories Together</h4>
+				<a href="lifeonboard.html#family">Family Time &#10142;</a>
+			</div>
+		</div>
+		<div class="shopping_member">
+			<!--Taken from https://www.flickr.com/photos/carnivalcruiselines/3950163339-->
+			<img src="Images/cruiseshopping.webp" alt="Shopping">
+			<div class="desc">
+				<h4>Exclusive Shopper Club</h4>
+				<a href="shopping.html#member">Privileged Members &#10142;</a>
+			</div>
+		</div>
+		<div class="openbar">
+			<!--Taken from https://www.linkedin.com/pulse/my-trip-series-cruise-korea-hong-kong-4-jenny-guan-->
+			<img src="Images/cruise_openbar.webp" alt="Open Bar">
+			<div class="desc">
+				<h4>Raise A Glass</h4>
+				<a href="waterpark.html#openbar">Open Bar &#10142;</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="disclaimer">
+		<P>Disclaimer, This website is created for education and non-commercial use only. It is an assignment for completion of unit, FST10011 Web Technologies for Foundation course from Swinburne University of Technology Sarawak Campus.</P>
+	</div>
+	<br>
+	<br>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>

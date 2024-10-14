@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Entertainment for Cruise Website -->
+<!-- Author: Fam Sin Mim -->
+<!-- Date: 25/05/2024 -->
+<!-- Validated: OK 25/05/2024 -->
+
+<head>
+	<title>Entertainment | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Fam Sin Mim">
+	<meta name="description" content="Discover world-class entertainment options aboard Star Cruise. Enjoy a variety of shows, movies, and theatrical performances that will make your cruise experience unforgettable.">
+	<meta name="keywords" content="star, cruise, entertainment, events, theatre, movies, shows, upcoming">
+	<link rel="icon" type="Images/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage head -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+	
+<body>
+<header>
+	<nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+		<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+	<script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+		
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+					btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+					btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="entertainment">
+	<!-- Feedback sticky button -->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+	<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);	
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+
+	<div class="main">
+		<!-- Taken from https://pojiegraphy.com/pengalaman-menaiki-genting-dream-cruise-ke-phuket/ -->
+		<img src="Images/entertainment.jpg" alt="Banner for Entertainment"> 
+		<div class="text">
+			<h1>Unforgettable Onboard Entertainment Awaits</h1>
+			<p>Surround yourself with the greatest entertainment at sea</p>
+		</div>
+	</div>
+
+	<div class="upper-sect">
+		<p class="upper">THE BEST SHOW</p>
+		<h2>Spotlight on Special Guests</h2>
+		<p>Experience the excitement of K-pop, the thrill of Taylor Swift's live concert, enchanting orchestral performances, and engaging rap music. Don't miss these unforgettable moments aboard our cruise! </p>
+		<p>All performances will be held in the Open Space, Deck 9.</p>
+	</div>
+	<div class="image-text">
+		<figure>
+			<!-- Taken from https://www.billboard.com/music/music-news/best-k-pop-girl-groups-decade-7865168/ -->
+			<img src="Images/kpop.jpg" alt="K-Pop"> 
+		</figure>
+		<div class="desc1">
+			<h3>Unmissable K-Pop Extravaganza</h3>
+			<p>We have a special invitation to top K-pop groups to perform live! Experience thrilling performances with dynamic dance routines and stunning visuals. Do enjoy live music and game session with them. There's something for everyone on Star Cruise, making every moment unforgettable.</p>
+			<p><strong>Show Time:</strong> Tuesday and Thursday at 9:00 PM</p>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>A Night with Taylor Swift</h3>
+			<p>Experience the magic of a live performance by Taylor Swift on board! Join us for an unforgettable evening filled with her greatest hits, captivating stage presence, and memorable moments. Don't miss this exclusive opportunity to see Taylor Swift live in concert during your cruise.</p>
+			<p><strong>Show Time:</strong> Wednesday at 11:00 PM</p>
+		</div>
+		<figure>
+			<!-- Image is taken from https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.forbes.com%2Fsites%2Fhughmcintyre%2F2023%2F12%2F18%2Ftaylor-swifts-concert-film-rollout-plan-is-going-to-make-her-much-richer%2F&psig=AOvVaw2Pv20BV_0QQtIpSWOEf4TC&ust=1716550626202000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKCW7cPXo4YDFQAAAAAdAAAAABAI-->
+			<img src="Images/taylor.jpg" alt="Taylor Swift"> 
+		</figure>
+	</div>
+	<div class="image-text">
+		<figure>
+			<!-- Taken from https://www.google.com/url?sa=i&url=https%3A%2F%2Fcalperformances.org%2Fevents%2F2022-23%2Forchestra%2Fvienna-philharmonic-orchestra-christian-thielemann-conductor%2F&psig=AOvVaw1eTkCqiDXWvjaYHFT9G625&ust=1716550725614000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJiCqvPXo4YDFQAAAAAdAAAAABAE -->
+			<img src="Images/vienna.jpg" alt="Vienna Philharmonic"> 
+		</figure>
+		<div class="desc1">
+			<h3>Symphonic Wonders</h3>
+			<p>Let the harmonious sounds of our orchestra sweep you away. From powerful symphonies to delicate chamber music, our orchestra's performances promise an enchanting auditory experience that will resonate long after the final note, leaving you captivated by the timeless beauty of classical music.</p>
+			<p><strong>Show Time:</strong> Saturday and Sunday at 9:00 PM</p>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>Rhythmic Rhymes</h3>
+			<p>Feel the beat and immerse yourself in the world of rap music. Our talented artists deliver sharp, thought-provoking lyrics with rhythm and flow that will keep you engaged and entertained, ensuring an unforgettable experience for all hip-hop enthusiasts.</p>
+			<p><strong>Show Time:</strong> Monday and Friday at 10:30 PM</p>
+		</div>
+		<figure>
+			<!-- Taken from https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.okayplayer.com%2Foriginals%2Fnicki-minaj-rolling-loud-2022-nyc-recap.html&psig=AOvVaw2AAcYXOpgc6KPaY6RRi9Pa&ust=1716550959493000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKij4-LYo4YDFQAAAAAdAAAAABAh -->
+			<img src="Images/nicki-minaj.jpg" alt="Nicki Minaj"> 
+		</figure>
+	</div>
+	
+	<div class="headings">
+		<span class="line"></span>
+		<h2>Cinematic Adventures</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p>Explore our full list of currently available movies. With a wide range of genres and titles, there's something for every movie lover. Grab your popcorn and settle in for a cinematic experience like no other.
+		</p>
+		<p>Our movie selection rotates weekly, so there's always something new to watch!</p>
+	</div>
+
+	<div class="banner" id="movie">
+		<div class="movie mermaid active">
+			<!--Taken from https://disney.fandom.com/wiki/The_Little_Mermaid_(franchise)-->
+			<img src="Images/mermaid_logo.png" alt="The Little Mermaid Logo" class="movie-title">
+			<h5 class="time">
+				<span>2023</span><span><em>12+</em></span><span>2h 14min</span><span>7:00 pm-9:15 pm</span>
+			</h5>
+			<p>This live-action musical remake is a new take on Disney's classic tale of a young mermaid's desires to explore the human world. Princess Ariel is a mermaid who dreams of exploring the human world. As she falls in love with a prince above-ground, she's desperate enough to make a dangerous deal with sea witch Ursula. Ursula gives Ariel human legs in exchange for her beautiful voice, but the catch is: if the prince doesn't kiss her within the next three days, Ariel is to be Ursula's slave forever.</p>
+		</div>
+		<div class="movie if">
+			<!--Taken from https://www.deviantart.com/mironka241/art/IF-2024-Logo-1038134007-->
+			<img src="Images/if_logo.png" alt="IF Logo" class="movie-title">
+			<h5 class="time">
+				<span>2024</span><span><em>12+</em></span><span>1h 45min</span><span>8:00 pm-9:45 pm</span>
+			</h5>
+			<p>From writer and director John Krasinski, IF is about a girl who discovers that she can see everyone's imaginary friends — and what she does with that superpower — as she embarks on a magical adventure to reconnect forgotten IFs with their kids.</p>
+		</div>
+		<div class="movie garfield">
+			<!--Taken from https://logos.fandom.com/wiki/The_Garfield_Movie-->
+			<img src="Images/garfield_logo.png" alt="The Garfield Logo" class="movie-title">
+			<h5 class="time">
+				<span>2024</span><span><em>12+</em></span><span>1h 41min</span><span>8:00 pm-9:50 pm</span>
+			</h5>
+			<p>Garfield, the fat, lazy, lasagna-loving, Monday-hating feline, has everything a cat could want. But when his human, Jon Arbuckle (Breckin Meyer), in an effort to impress veterinarian and old high-school crush Liz, adopts a dog named Odie and brings him home, Garfield gets the one thing he doesn't want: competition. One night, Odie runs away and gets abducted after Garfield locks him outside. In an out-of-character move, Garfield goes to search for and rescue him with help from a variety of animal friends.</p>
+		</div>
+		<div class="movie luca">
+			<!--Taken from https://ar.m.wikipedia.org/wiki/%D9%85%D9%84%D9%81:Luca_logo.png-->
+			<img src="Images/luca_logo.png" alt="Luca Logo" class="movie-title">
+			<h5 class="time">
+				<span>2021</span><span><em>12+</em></span><span>1h 35min</span><span>8:00 pm-9:35 pm</span>
+			</h5>
+			<p>Set in a beautiful seaside town on the Italian Riviera, the original animated feature is a coming-of-age story about one young boy experiencing an unforgettable summer filled with gelato, pasta and endless scooter rides. Luca shares these adventures with his newfound best friend, but all the fun is threatened by a deeply held secret: he is a sea monster from another world just below the water's surface.</p>
+		</div>
+		<div class="movie raya">
+			<!--Taken from https://ms.m.wikipedia.org/wiki/Fail:Raya_and_the_Last_Dragon_logo.png-->
+			<img src="Images/raya_logo.png" alt="Raya Logo" class="movie-title">
+			<h5 class="time">
+				<span>2021</span><span><em>12+</em></span><span>1h 47min</span><span>1:00 pm-2:50 pm</span>
+			</h5>
+			<p>Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. However, when sinister monsters known as the Druun threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, those same monsters have returned, and it's up to a lone warrior to track down the last dragon and stop the Druun for good.</p>
+		</div>
+		<div class="movie red">
+			<!--Taken from https://www.disney.co.uk/movies/turning-red-->
+			<img src="Images/red_logo.png" alt="Turning Red Logo" class="movie-title">
+			<h5 class="time">
+				<span>2022</span><span><em>12+</em></span><span>1h 40min</span><span>3:00 pm-4:40 pm</span>
+			</h5>
+			<p>In Toronto, Canada, 2002, 13-year-old high-achiever Mei Lee struggles to balance her independence with her family's expectations. Things get even more complicated when Mei discovers that her intense emotions trigger a strange transformation. As her teenage hormones take over, Mei must navigate the challenges of puberty and growing up, all while trying not to turn red.</p>
+		</div>
+		<div class="movie-container">
+			<span id="slider1"></span>
+			<span id="slider2"></span>
+			<span id="slider3"></span>
+			<span id="slider4"></span>
+			<span id="slider5"></span> 
+			<span id="slider6"></span>
+			<div class="movieimgcontainer">
+				<div class="slide_div" id="slide_1" onClick="changeBg('bg_mermaid.jpg','mermaid');">
+					<!--Taken from https://www.imdb.com/title/tt5971474/-->
+					<img src="Images/mermaid_slide.jpg" alt="The Little Mermaid" id="img1">
+					<a href="#/slider1" class="button" id="button1"></a>
+				</div>
+				<div class="slide_div" id="slide_2" onClick="changeBg('bg_if.jpg','if');">
+					<!--Taken from https://desktop.cinema.com.my/movies/details.aspx?search=2024.17912.if.37252&lang=eng-->
+					<img src="Images/if.jpg" alt="IF" id="img2">
+					<a href="#/slider2" class="button" id="button2"></a>
+				</div>
+				<div class="slide_div" id="slide_3" onClick="changeBg('bg_garfield.jpg','garfield');">
+					<!--Taken from https://x.com/ToonHive/status/1775953102509604898-->
+					<img src="Images/thegarfield.jpg" alt="The Garfield" id="img3">
+					<a href="#/slider3" class="button" id="button3"></a>
+				</div>
+				<div class="slide_div" id="slide_4" onClick="changeBg('bg_luca.jpg','luca');">
+					<!--Taken from https://www.wattpad.com/1088680399-various-disney-pixar-luca-giulia-twin-sister-oc-->
+					<img src="Images/luca.jpg" alt="Luca" id="img4">
+					<a href="#/slider4" class="button" id="button4"></a>
+				</div>
+				<div class="slide_div" id="slide_5" onClick="changeBg('bg_raya.jpg','raya');">
+					<!--Taken from https://www.imdb.com/title/tt5109280/-->
+					<img src="Images/raya.jpg" alt="Raya" id="img5">
+					<a href="#/slider5" class="button" id="button5"></a>
+				</div>
+				<div class="slide_div" id="slide_6" onClick="changeBg('bg_red.jpg','red');">
+					<!--Taken from https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO1pXY2RDiE4W5PUXOGmYv-l_BJ5shfsF7uRQu91ueXaybBYMx-->
+					<img src="Images/red.jpg" alt="Turning Red" id="img6">
+					<a href="#/slider6" class="button" id="button6"></a>
+				</div>
+			</div>
+			<div class="slider-nav">
+				<a href="#/slider1" class="dot-movie active"></a>
+				<a href="#/slider2" class="dot-movie"></a>
+				<a href="#/slider3" class="dot-movie"></a>
+				<a href="#/slider4" class="dot-movie"></a>
+				<a href="#/slider5" class="dot-movie"></a>
+				<a href="#/slider6" class="dot-movie"></a>
+			</div>
+		</div>
+	</div>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+        // Set the default background to "Mermaid" and activate slide 1
+        changeBg('bg_mermaid.jpg', 'mermaid');
+        activateSlide(0);
+
+        const dots = document.querySelectorAll('.slider-nav .dot-movie');
+        const slides = document.querySelectorAll('.slide_div');
+        const buttons = document.querySelectorAll('.movieimgcontainer .button');
+        let currentIndex = 0;
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                activateSlide(index);
+            });
+        });
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                activateSlide(index);
+            });
+        });
+    });
+
+    function activateSlide(index) {
+        const dots = document.querySelectorAll('.slider-nav .dot-movie');
+        const slides = document.querySelectorAll('.slide_div');
+
+        // Remove the active class from all dots and slides
+        dots.forEach(d => d.classList.remove('active'));
+        slides.forEach(s => s.classList.remove('active'));
+
+        // Add the active class to the clicked dot and corresponding slide
+        dots[index].classList.add('active');
+        slides[index].classList.add('active');
+
+        // Change the background based on the index
+        switch (index) {
+            case 0:
+                changeBg('bg_mermaid.jpg', 'mermaid');
+                break;
+            case 1:
+                changeBg('bg_if.jpg', 'if');
+                break;
+            case 2:
+                changeBg('bg_garfield.jpg', 'garfield');
+                break;
+            case 3:
+                changeBg('bg_luca.jpg', 'luca');
+                break;
+            case 4:
+                changeBg('bg_raya.jpg', 'raya');
+                break;
+            case 5:
+                changeBg('bg_red.jpg', 'red');
+                break;
+            default:
+                changeBg('bg_mermaid.jpg', 'mermaid');
+        }
+	}
+
+		function changeBg(bg, title) {
+			const banner = document.querySelector(".banner");
+			const movies = document.querySelectorAll(".movie");
+			banner.style.background = `url("Images/${bg}")`;
+			banner.style.backgroundSize = 'cover';
+			banner.style.backgroundPosition = "30% 50%";
+
+			movies.forEach(movie => {
+				movie.classList.remove("active");
+				if (movie.classList.contains(title)) {
+					movie.classList.add("active");
+				}
+			});
+
+			const movieContainer = document.querySelector(".movieimgcontainer");
+			const images = document.querySelectorAll(".movieimgcontainer img");
+			const buttons = document.querySelectorAll(".movieimgcontainer .button");
+
+			// Reset all images and buttons to default size
+			images.forEach(img => {
+				img.style.width = '200px';
+				img.style.height = '308px';
+			});
+			buttons.forEach(button => {
+				button.style.width = '200px';
+				button.style.height = '308px';
+			});
+
+			// Adjust the position of the movie container and resize the targeted image and button
+			switch (title) {
+				case 'mermaid':
+					movieContainer.style.left = '60%';
+					document.getElementById('img1').style.width = '260px';
+					document.getElementById('img1').style.height = '400px';
+					document.getElementById('button1').style.width = '260px';
+					document.getElementById('button1').style.height = '400px';
+					break;
+				case 'if':
+					movieContainer.style.left = '40%';
+					document.getElementById('img2').style.width = '260px';
+					document.getElementById('img2').style.height = '400px';
+					document.getElementById('button2').style.width = '260px';
+					document.getElementById('button2').style.height = '400px';
+					break;
+				case 'garfield':
+					movieContainer.style.left = '20%';
+					document.getElementById('img3').style.width = '260px';
+					document.getElementById('img3').style.height = '400px';
+					document.getElementById('button3').style.width = '260px';
+					document.getElementById('button3').style.height = '400px';
+					break;
+				case 'luca':
+					movieContainer.style.left = '0%';
+					document.getElementById('img4').style.width = '260px';
+					document.getElementById('img4').style.height = '400px';
+					document.getElementById('button4').style.width = '260px';
+					document.getElementById('button4').style.height = '400px';
+					break;
+				case 'raya':
+					movieContainer.style.left = '-20%';
+					document.getElementById('img5').style.width = '260px';
+					document.getElementById('img5').style.height = '400px';
+					document.getElementById('button5').style.width = '260px';
+					document.getElementById('button5').style.height = '400px';
+					break;
+				case 'red':
+					movieContainer.style.left = '-40%';
+					document.getElementById('img6').style.width = '260px';
+					document.getElementById('img6').style.height = '400px';
+					document.getElementById('button6').style.width = '260px';
+					document.getElementById('button6').style.height = '400px';
+					break;
+				default:
+					movieContainer.style.left = '60%';
+			}
+		}
+		document.addEventListener('DOMContentLoaded', (event) => {
+        const dots = document.querySelectorAll('.slider-nav .dot');
+        const slides = document.querySelectorAll('.slide_div');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentIndex = index;
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });   
+    });
+	</script>
+
+	<div class="headings" id="theatre_section">
+		<span class="line"></span>
+		<h2>World-Class Theater Productions</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p class="top-sect2">All performances will be held in the Grand Theatre, Deck 5.</p>
+	</div>
+	<div class="box-area">
+		<div class="theatre">
+			<!--Taken from https://www.episodi.fi/wp-content/uploads/2021/02/wicked.jpg-->
+			<img src="Images/theatre1.jpg" alt="Wicked Show">
+			<div class="layer">
+				<div class="desc_theatre">
+					<p>A thrilling journey of the untold story of the witches of Oz, revealing how one came to be called 'good' and the other 'wicked'.</p>
+				</div>
+			</div>
+		</div>
+		<div class="theatre">
+			<!--Taken from https://www.pinterest.com/pin/AT9rwl7vCUKY3m9LIH6_CAwrT1u1J_j7KODsQ5MP5q7EkhmfBYRHpg2U5aPdNrbQZvMKgycLhUzJJQiu5Z7dIf4/-->
+			<img src="Images/theatre2.png" alt="Frozen">
+			<div class="layer">
+				<div class="desc_theatre">
+					<p>Experience the magical world of Arendelle with the heartwarming tale of sisterly love, adventure, and self-discovery.</p>
+				</div>
+			</div>
+		</div>
+		<div class="theatre">
+			<!--Taken from https://www.facebook.com/ThePhantomOfTheOpera/posts/dayseats-a-limited-number-of-2500-day-seats-are-available-on-thursday-matinee-pe/10156199263397051/-->
+			<img src="Images/theatre3.jpg" alt="The Phantom of the Opera">
+			<div class="layer">
+				<div class="desc_theatre">
+					<p>A haunting tale of love, obsession, and mystery unfolds in the catacombs of a Paris opera house, featuring a masked phantom.</p>
+				</div>
+			</div>
+		</div>
+		<div class="theatre">
+			<!--Taken from https://dk.pinterest.com/pin/455989530992563436/?amp_client_id=CLIENT_ID%28_%29&mweb_unauth_id=%7B%7Bdefault.session%7D%7D&simplified=true-->
+			<img src="Images/theatre4.jpg" alt="Annie">
+			<div class="layer">
+				<div class="desc_theatre">
+					<p>The beloved story of a plucky orphan girl with a big heart, showcasing timeless songs and her journey to find family and hope.</p>
+				</div>
+			</div>
+		</div>
+		<div class="theatre">
+			<!--Taken from https://www.dresscircle.london/a-little-night-music-garrick-theatre-poster-11885-p.asp-->
+			<img src="Images/theatre5.jpg" alt="Little Night Music">
+			<div class="layer">
+				<div class="desc_theatre">
+					<p>A sophisticated and enchanting musical that explores the tangled web of love affairs among the elite, set to the waltz of Stephen Sondheim.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<table class="adv_table">
+		<caption>Showtimes for Musical Shows</caption>
+		<tr>
+			<th>Musical</th>
+			<th>Duration</th>
+			<th>Showtimes</th>
+			<th>Price Per Ticket</th>
+		</tr>
+		<tr>
+			<td>Wicked Show</td>
+			<td>2 hrs 45 mins</td>
+			<td>4:00 PM</td>
+			<td>SGD 50</td>
+		</tr>
+		<tr>
+			<td>Frozen</td>
+			<td>2 hrs 30 mins</td>
+			<td>7:00 PM</td>
+			<td>SGD 45</td>
+		</tr>
+		<tr>
+			<td>The Phantom of the Opera</td>
+			<td>2 hrs 20 mins</td>
+			<td>10:00 PM</td>
+			<td>SGD 55</td>
+		</tr>
+		<tr>
+			<td>Annie</td>
+			<td>1 hrs 45 mins</td>
+			<td>12:00 AM</td>
+			<td>SGD 40</td>
+		</tr>
+		<tr>
+			<td>Little Night Music</td>
+			<td>1 hrs 45 mins</td>
+			<td>2:00 AM</td>
+			<td>SGD 60</td>
+		</tr>
+	</table>
+
+	<div class="headings">
+		<span class="line"></span>
+		<h2>Highlights from Theatre Performances</h2>
+		<span class="line"></span>
+	</div>
+	<section class="performance_container">
+		<div class="slider_performance">
+			<!--Taken from https://www.livingconcord.com/event/razzle-dazzle-broadway-for-teens/-->
+			<img id="slide-1" src="Images/perf_1.jpg" alt="Performance1">
+			<!--Taken from https://www.backstage.com/magazine/article/head-heels-choreographers-dream-means-actors-451/-->
+			<img id="slide-2" src="Images/perf_2.jpg" alt="Performance2">
+			<!--Taken from https://thecosmiccircus.com/review-six-the-musical-north-american-tour-boleyn/-->
+			<img id="slide-3" src="Images/perf_3.jpg" alt="Performance3">
+			<!--Taken from https://www.musicaltheatreeducators.org/blog/music-theory-training-for-the-musical-theatre-student-->
+			<img id="slide-4" src="Images/perf_4.jpg" alt="Performance4">
+			<!--Taken from https://hecmedia.org/posts/review-of-a-chorus-line-at-stages-st-louis-->
+			<img id="slide-5" src="Images/perf_5.jpg" alt="Performance5">
+		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				let currentIndex = 0;
+				const slides = document.querySelectorAll(".slider_performance img");
+				const totalSlides = slides.length;
+
+				function showSlide(index) {
+					// Hide all slides
+					slides.forEach(slide => slide.style.display = "none");
+					// Show the slide at the given index
+					slides[index].style.display = "block";
+				}
+
+				function nextSlide() {
+					currentIndex = (currentIndex + 1) % totalSlides;
+					showSlide(currentIndex);
+				}
+				showSlide(currentIndex);
+				setInterval(nextSlide, 2000);
+			});
+		</script>
+	</section>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>

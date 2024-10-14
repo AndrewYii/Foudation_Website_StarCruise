@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Booking -->
+<!-- Author: Joanne Chin Jia Xuan -->
+<!-- Date 25/03/2024 -->
+<!-- Validated: OK 11/05/2024-->
+
+<head>
+    <title>Book a Cruise | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Joanne Chin Jia Xuan">
+	<meta name="description" content="Book your dream cruise vacation with ease! Explore our selection of luxurious cruise packages and embark on an unforgettable journey. Find the perfect itinerary, accommodations, and activities to make your cruise experience truly exceptional. Start planning your adventure today!">
+	<meta name="keywords" content="star, cruise, cruise vacation, luxury cruise, family cruise, romantic cruise, cruise ship, onboard activities, shore excursions, cruise packages, book">
+	<link rel="icon" type="image/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage head -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<header>
+	<nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+			<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+	<script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="booking">
+	<!-- Feedback sticky button -->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+		<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);	
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+
+	<div class="main">
+		<!--Taken from https://www.travelpulse.com/news/cruise/msc-cruises-new-year-s-sale-offers-cruises-starting-at-279-->
+		<img src="Images/bookacruise.jpg" alt="Star Cruise">
+		<div class="text">
+			<h1>Book Our Cruise Now!</h1>
+			<p>via <a href="https://www.klook.com/en-MY/" target="_blank">Klook <i class="fa-solid fa-arrow-up-right-from-square"></i></a> or <a href="#partners">Authorised Partners</a></p>
+		</div>
+	</div>
+	<div class="headings" id="partners">
+		<span class="line"></span>
+		<h2>Authorised Partners</h2>
+		<span class="line"></span>
+	</div>
+	<div class="partner_container">
+		<div class="partner_list">
+			<h3>Star Travel Malaysia</h3>
+			<p>Address: Wisma Star Travel, No 42-44, Jalan Raja Abdullah, 50300 Kuala Lumpur, Kuala Lumpur, Malaysia.</p>
+			<p>Contact: +603 2786 7555</p>
+			<p>Email: tours@startravel.com.my</p>
+		</div>
+		<div class="partner_list">
+			<h3>Airworld Travel & Tours Sdn. Bhd.</h3>
+			<p>Address: Lot 166, 1st Floor, Jalan Song Thian Cheok, 93150 Kuching, Sarawak, Malaysia.</p>
+			<p>Contact: +6085 430 996</p>
+			<p>Email: info@airworld.com.my</p>
+		</div>
+		<div class="partner_list">
+			<h3>Borneo Escapade Tours Sdn. Bhd.</h3>
+			<p>Address: Lot No. 44, 2nd Floor, Plaza Grand Millennium Bypass, Penampang, 88300 Kota Kinabalu, Sabah, Malaysia.</p>
+			<p>Contact: +6017 800 8455</p>
+			<p>Email: info@borneoescapade.tours</p>
+		</div>
+		<div class="partner_list">
+			<h3>Megaworld Holidays Sdn. Bhd.</h3>
+			<p>Address: No 114, Jalan Dedap 13, Taman Johor Jaya, Johor Bahru 81100, Johor, Malaysia.</p>
+			<p>Contact: +607 351 6331</p>
+			<p>Email: enquiry@megaworldjb.com</p>
+		</div>
+		<div class="partner_list">
+			<h3>Holiday Tours & Travel Sdn. Bhd.</h3>
+			<p>Address: 30-A, Lorong Abu Siti, 10400 Penang, Penang, Malaysia.</p>
+			<p>Contact: +603 2303 9100</p>
+			<p>Email: sales.advisor@holidaytours.com.my</p>
+		</div>
+		<div class="partner_list">
+			<h3>New Shan Travel</h3>
+			<p>Address: Chinatown Point, 133 New Bridge Road, #22-03 Chinatown Point, Singapore 059413</p>
+			<p>Contact: +65 6481 1181</p>
+			<p>Email: travel@newshan.com</p>
+		</div>
+	</div>
+	<p class="enquiry">If there is any special requests or enquiries, feel free to contact us at <a href="tel:+6088537840">+6088537840</a> or email us at <a href="mailto:starcruise@gmail.com">starcruise@gmail.com</a>.</p>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>

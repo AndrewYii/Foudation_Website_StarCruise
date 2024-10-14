@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Restaurants -->
+<!-- Author:Andrew Yii Teck Foon -->
+<!-- Date: 29/04/2024 -->
+<!-- Validated: OK 11/05/2024 -->
+
+<head>
+	<title>Onboard Dining | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Andrew Yii Teck Foon">
+	<meta name="description" content="Embark on a Gastronomic Journey at Our Cruise Restaurant! Delight in delectable dishes crafted by our talented chefs while enjoying stunning views of the sea. From elegant dinners to casual brunches, our restaurant offers an unforgettable culinary experience at sea. Reserve your table and elevate your cruise adventure today!">
+	<meta name="keywords" content="star, cruise, cruise vacation ">
+	<link rel="icon" type="images/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage head -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<header>
+    <nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+			<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+	<script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="restaurant">
+    <!-- Feedback sticky button -->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+		<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src=Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);	
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+
+    <div class="main">
+		<!--Taken from https://www.blinkcomag.com/at-mosphere-dubai-burj-khalifa/-->
+        <img src="Images/Diningonacruise.jpeg" alt="Dining on Cruise Picture">
+        <div class="text">
+            <h1>Dining on the Cruise</h1>
+            <p>Dining on a cruise can be an exquisite experience. Blending the pleasures of fine cuisine with the unique ambiance of being at sea. </p>
+        </div>
+    </div>
+    <div class="upper-sect">
+        <p class="upper">LET US INDULGE IN THE </p>
+        <h2>Free Oceanview Buffet</h2>
+        <p> Embark on a culinary journey aboard our luxury cruise ship, where dining options abound. From elegant dining rooms to casual eateries and our complimentary buffet, we offer diverse culinary delights to satisfy every palate.</p>
+        <p>The buffet starts from 6:00 a.m. to 3:00 p.m. every day and is located at Deck 3, Main Deck.</p>
+    </div>
+	<div class="Slideshow">
+		<div class="slider-wrapper">
+			<button id="prev_slide" class="slidebutton"><i class="fa-solid fa-caret-left"></i></button>
+			<div class="image-list">
+				<div class="imgBx">
+                    <!--From https://www.travelagewest.com/Travel/Cruise/A-Look-at-the-Future-of-Ocean-and-River-Cruise-Buffets-->
+					<img src="Images/westernbuffet.jpg" alt="Western Buffet" class="image-item">
+					<div class="content">
+						<p>Savor a tantalizing Western buffet experience aboard our cruise</p>
+					</div>
+				</div>
+				<div class="imgBx">
+                    <!--From https://www.cruisecritic.com/articles/what-to-expect-on-a-cruise-the-cruise-buffet?stay=1&posfrom=2-->
+					<img src="Images/asianbuffet.jpg" alt="Asian Buffet" class="image-item">
+					<div class="content">
+						<p>Delight in the flavors of Chinese with our enticing Chinese buffet onboard the cruise</p>
+					</div>
+				</div>
+				<div class="imgBx">
+                    <!--From https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.northborneocruises.com%2Fnorth-borneo-cruises-sunset-dinner-cruise&psig=AOvVaw0anMjpD2gH31D0vnwwTP_e&ust=1714810267444000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJiSwKmE8YUDFQAAAAAdAAAAABAE-->
+					<img src="Images/malaysianbuffet.jpg" alt="Malaysian Buffet" class="image-item">
+					<div class="content">
+						<p>Experience the rich and diverse flavors of Malaysia with our exquisite Malaysian buffet served onboard the cruise</p>
+					</div>
+				</div>
+				<div class="imgBx">
+                    <!--From https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thairivercruise.com%2Falangka-cruise-luxury-bangkok-dinner-cruise-iconsiam&psig=AOvVaw26QDnhtvJa8fxN9G_3ui-z&ust=1714810765713000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNiRtYSG8YUDFQAAAAAdAAAAABAE-->
+					<img src="Images/thaibuffet.jpg" alt="Thai Buffet" class="image-item">
+					<div class="content">
+						<p>Indulge in the vibrant and aromatic tastes of Thailand with our tantalizing Thai buffet available onboard the cruise</p>
+					</div>
+				</div>
+				<div class="imgBx">
+                    <!--From https://boards.cruisecritic.co.uk/topic/2376998-sushi-in-lido/-->
+					<img src="Images/JapaneseBuffet.jpg" alt="Japanese Buffet" class="image-item">
+					<div class="content">
+						<p>Immerse yourself in the exquisite tastes of Japan with our captivating Japanese buffet offered onboard the cruise.</p>
+					</div>
+				</div>
+				<div class="imgBx">
+                    <!--From https://www.escape.com.au/experiences/cruises/how-to-survive-a-cruise-ship-buffet/news-story/b73015a837cb3e7321500473bf9b878a-->
+					<img src="Images/fruit&vegetablesbuffet.jpg" alt="Fruit & Vegetables Buffet" class="image-item">
+					<div class="content">
+						<p>Explore a bountiful selection of fresh fruits and vegetables at our enticing buffet onboard the cruise.</p>
+					</div>
+				</div>
+				<div class="imgBx">
+                    <!--From https://www.express.co.uk/travel/cruise/1782892/cruise-holiday-buffet-avoid-->
+					<img src="Images/DessertBuffet.jpg" alt="Dessert Buffet" class="image-item">
+					<div class="content">
+						<p>Delight your sweet tooth with an array of decadent desserts at our indulgent dessert buffet onboard the cruise</p>
+					</div>
+				</div>
+				<div class="imgBx">
+					<!--Taken from https://cruiseline.com/advice/cruising-101/all-about-cruising/how-to-make-cocktails-with-contraband-liquor-->
+					<img src="Images/DrinksBuffet.jpg" alt="Drinks Buffet" class="image-item">
+					<div class="content">
+						<p>Quench your thirst with a diverse selection of beverages at our refreshing drinks buffet onboard the cruise.</p>
+					</div>
+				</div>
+			</div>
+			<button id="next_slide" class="slidebutton"><i class="fa-solid fa-caret-right"></i></button>
+		</div>
+		<div class="slider-scrollbar">
+			<div class="scrollbar-track">
+				<div class="scrollbar-thumb"></div>
+			</div>
+		</div>
+		<script>
+			const initSlider = () => {
+    		const imageList = document.querySelector(".slider-wrapper .image-list");
+    		const sliderScrollbar = document.querySelector(".Slideshow .slider-scrollbar");
+    		const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
+    		const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+    		const slideButtons = document.querySelectorAll(".slider-wrapper .slidebutton"); 
+			// Handle scrollbar thumb drag
+			scrollbarThumb.addEventListener("mousedown", (e) => {
+				const startX = e.clientX;
+				const thumbPosition = scrollbarThumb.offsetLeft;
+
+				// Calculate the maximum thumb position based on the slider width and thumb width
+				const maxThumbPosition = sliderScrollbar.offsetWidth - scrollbarThumb.offsetWidth;
+
+				// Update thumb position on mouse move
+				const handleMouseMove = (e) => {
+					const deltaX = e.clientX - startX;
+					let newThumbPosition = thumbPosition + deltaX;
+
+					// Constrain the thumb position within the slider bounds
+					newThumbPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
+					const scrollPosition =  (newThumbPosition/ maxThumbPosition) * maxScrollLeft;
+
+					scrollbarThumb.style.left = `${newThumbPosition}px`;
+					imageList.scrollLeft = scrollPosition;
+				}
+
+				// Remove event listeners on mouse up
+				const handleMouseUp = () => {
+					document.removeEventListener("mousemove", handleMouseMove);
+					document.removeEventListener("mouseup", handleMouseUp);
+				}
+
+				// Add event listeners for drag interaction
+				document.addEventListener("mousemove", handleMouseMove);
+				document.addEventListener("mouseup", handleMouseUp, { once: true });
+			});
+
+   		 // Slide images according to the slide button clicks
+    		slideButtons.forEach(button => {
+        		button.addEventListener("click", () => {
+            	const direction = button.id === "prev_slide" ? -1 : 1;
+            	const scrollAmount = imageList.clientWidth * direction;
+            	imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+       			 });
+   			 });
+
+    		const handleSlideButtons = () => {
+        		slideButtons[0].style.display = imageList.scrollLeft <= 0 ? "none" : "block";
+        		slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? "none" : "block";
+    		}
+
+    	// Update scrollbar thumb position based on image scroll
+    		const updateScrollThumbPosition = () => {
+        		const scrollPosition = imageList.scrollLeft;
+        		const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
+        		scrollbarThumb.style.left = `${thumbPosition}px`;
+    		}
+
+    		imageList.addEventListener("scroll", () => {
+        		handleSlideButtons();
+        		updateScrollThumbPosition(); 
+    		});
+
+    	// Initial check for slide buttons visibility
+   			 	handleSlideButtons();
+			}
+
+			window.addEventListener("load", initSlider);
+		</script>
+	</div>	
+
+    <div class="headings">
+        <span class="line"></span>
+        <h2>Premiere Restaurants</h2>
+        <span class="line"></span>
+    </div>
+    <div class="sect2">
+        <p>Experience exquisite dining at our premiere restaurant onboard the cruise, where impeccable service and delectable cuisine merge to create unforgettable culinary moments. All the food will be chagred to the respective restaurants.</p>
+    </div>
+
+    <div class="image-text">
+		<figure>
+            <!--Taken from https://www.mundycruising.co.uk/cruise-news/cruise-advice/best-cruise-ship-restaurants-->
+			<img src="Images/westernrestaurantinthecruise.jpg" alt="Western Restaurant In The Cruise">
+		</figure>
+		<div class="desc1">
+			<h3>Pioneer Palate</h3>
+			<table>
+				<tr>
+					<td>&#127869;</td> 
+					<td>Western Food Restaurant</td>
+				</tr>
+				<tr>
+					<td><i class='fas fa-map-marker-alt'></i></td>
+					<td>Deck 3, Main Deck</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-clock"></i></td>
+					<td>3:00 p.m. - 10.30 p.m.</td>
+				</tr>
+                <tr>
+                    <td><i class="fa fa-thumbs-up"></i></td>
+					<td>Saddle up for a culinary adventure as we serve up sizzling, mesquite-grilled steaks, tender BBQ ribs slathered in tangy sauce, and hearty chili simmered to perfection.</td>
+                </tr>
+			</table>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>Sakura Seafare</h3>
+			<table>
+				<tr>
+					<td>&#127843;</td> 
+					<td>Japanese Food Restaurant</td>
+				</tr>
+				<tr>
+					<td><i class='fas fa-map-marker-alt'></i></td>
+					<td>Deck 8, Promenade</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-clock"></i></td>
+					<td>6:00 p.m. - 2:00 a.m.</td>
+				</tr>
+                <tr>
+                    <td><i class="fa fa-thumbs-up"></i></td>
+					<td> Enjoy fresh sushi, sizzling teppanyaki, and traditional favorites like tempura and edamame. Sip on sake and indulge in sweet treats like green tea tiramisu.</td>
+                </tr>
+			</table>
+		</div>
+		<figure>
+            <!--Taken from https://www.royalcaribbeanblog.com/2020/10/05/japanese-hibachi-restaurant-confirmed-wonder-of-the-seas-cruise-ship-->
+			<img src="Images/japaneserestaurant.jpg" alt="Japanese Restaurant in the Cruise">
+		</figure>
+	</div>
+	<div class="image-text">
+		<figure>
+            <!--Taken from https://www.cruiseagency.com.au/news/cruise-ship-cuisine-best-asian-restaurants/-->
+			<img src="Images/Chinesefoodrestaurant.jpg" alt="Chinese Restaurant in the Cruise">
+		</figure>
+		<div class="desc1">
+			<h3>Yurui Restaurant</h3>
+			<table>
+				<tr>
+					<td>&#129378;</td> 
+					<td>Chinese Food Restaurant</td>
+				</tr>
+				<tr>
+					<td><i class='fas fa-map-marker-alt'></i></td>
+					<td>Deck 5, Atrium</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-clock"></i></td>
+					<td>12:00 p.m. - 10:00 p.m.</td>
+				</tr>
+                <tr>
+                    <td><i class="fa fa-thumbs-up"></i></td>
+					<td>Indulge in classics like Peking duck and Sichuan hot pot, expertly prepared by our chefs. Experience the elegance of China amidst the sea.</td>
+                </tr>
+			</table>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>MaMa's Taste</h3>
+			<table>
+				<tr>
+					<td><i class="fa-solid fa-utensils"></i></td> 
+					<td>Local Food Restaurant</td>
+				</tr>
+				<tr>
+					<td><i class='fas fa-map-marker-alt'></i></td>
+					<td>Deck 3, Main Deck</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-clock"></i></td>
+					<td>12:00 p.m. - 12:00 a.m.</td>
+				</tr>
+                <tr>
+                    <td><i class="fa fa-thumbs-up"></i></td>
+					<td> Dive into classics like Nasi Lemak and Char Kway Teow, or savor the rich spices of Beef Rendang. Indulge in the sweet delights of Cendol. Join us for a taste of Malaysia's culinary heritage.</td>
+                </tr>
+			</table>
+		</div>
+		<figure>
+            <!--Taken from https://www.cruisetasikputrajaya.com/dine_cruise.html-->
+			<img src="Images/malaysianrestaurant.png" alt="Malaysian Food Restaurant in the Cruise">
+		</figure>
+	</div>
+	<div class="image-text">
+		<figure>
+            <!--Taken from https://thepointsguy.com/guide/best-cruise-ship-bars/-->
+			<img src="Images/cruisebar.jpg" alt="Velvet Vine">
+		</figure>
+		<div class="desc1">
+			<h3>Velvet Vine</h3>
+			<table>
+				<tr>
+					<td><i class="fa-solid fa-champagne-glasses"></i></td> 
+					<td>Wine Bar</td>
+				</tr>
+				<tr>
+					<td><i class='fas fa-map-marker-alt'></i></td>
+					<td>Deck 8, Promenade</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-clock"></i></td>
+					<td>8:00 p.m. - 5:00 a.m.</td>
+				</tr>
+                <tr>
+                    <td><i class="fa fa-thumbs-up"></i></td>
+					<td> Immerse yourself in a world of fine wines from around the globe, expertly paired with delectable bites. Sit back, sip and enjoy the stunning views of the open sea as you indulge in the finer things in life.</td>
+                </tr>
+			</table>
+		</div>
+	</div>
+
+<!--Main Title of Top-rated Menu-->	
+    <div class="headings">
+        <span class="line"></span>
+        <h2>Top-rated Menu</h2>
+        <span class="line"></span>
+    </div>
+    <div class="sect2">
+        <p>Embark on a flavorful journey aboard our cruise. Indulge in iconic dishes like Beef Rendang, Cendol, and Peking Duck. Experience the fiery depths of Sichuan Hot Pot and the sizzle of Teppanyaki. End your meal with the delightful fusion of Green Tea Tiramisu. Bon appétit!</p>
+    </div>
+    <br>
+
+<!--Layout of Top-rated Menu-->
+	<table id="top-ratedmenu1">
+		<tr>
+			<td rowspan="2"  class="food foodcolumn1">
+				<div class="overlay-menu">Sizzling Teppanyaki</div>
+			</td>
+			<td colspan="2" class="food foodcolumn2">
+				<div class="overlay-menu">Beef Rendang</div>
+			</td>
+			<td rowspan="2" class="food foodcolumn3" >
+				<div class="overlay-menu">Green Tea Tiramisu</div>
+			</td>
+			<td colspan="2" class="food foodcolumn4">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Peking Duck</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="food foodcolumn2below1">
+				<div class="overlay-menu">Sushi</div>
+			</td>
+			<td class="food foodcolumn2below2">
+				<div class="overlay-menu">Mesquite-Grilled Steaks</div>
+			</td>
+			<td class="food foodcolumn4below1">
+				<div class="overlay-menu">Cendol</div>
+			</td>
+			<td class="food foodcolumn4below2">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Tender BBQ Ribs Slathered in Tangy Sauce</div>
+			</td>
+		</tr>
+	</table>
+	<!-- for screenwidth smaller than 760px-->
+	<table id="top-ratedmenu2">
+		<tr>
+			<td rowspan="2"  class="food foodcolumn1">
+				<div class="overlay-menu">Sizzling Teppanyaki</div>
+			</td>
+			<td colspan="2" class="food foodcolumn2">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Beef Rendang</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="food foodcolumn2below1">
+				<div class="overlay-menu">Sushi</div>
+			</td>
+			<td class="food foodcolumn2below2">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Mesquite-Grilled Steaks</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="food foodcolumn4">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Peking Duck</div>
+			</td>
+			<td rowspan="2" class="food foodcolumn3" >
+				<div class="overlay-menu">Green Tea Tiramisu</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="food foodcolumn4below1">
+				<div class="overlay-menu">Cendol</div>
+			</td>
+			<td class="food foodcolumn4below2">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Tender BBQ Ribs Slathered in Tangy Sauce</div>
+			</td>
+		</tr>
+	</table>
+
+<!--Main Title of Must-Visited -->
+	<div class="headings">
+		<span class="line"></span>
+		<h2>High Tea Buffet</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p>Savor a 5-Michelin Star High Tea buffet aboard the cruise.</p>
+		<p>The buffet starts from 3:00 a.m. to 5:00 p.m. every day and is located at Deck 3, Main Deck.</p>
+	</div>
+	<table id="hightea">
+		<tr>
+			<td class="hightea highteacolumn1">
+			</td>
+			<td class="hightea highteacolumn2">
+			</td>
+			<td class="hightea highteacolumn3">
+			</td>
+			<td class="hightea highteacolumn4">
+			</td>
+			<td class="hightea highteacolumn5">
+			</td>
+		</tr>
+	</table>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>

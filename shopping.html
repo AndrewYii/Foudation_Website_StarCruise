@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Outlets -->
+<!-- Author:Fam Sin Mim -->
+<!-- Date: 17/04/2024 -->
+<!-- Validated: OK 11/05/2024 -->
+
+<head>
+	<title>Onboard Shopping | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Fam Sin Mim">
+	<meta name="description" content="Discover the Ultimate Cruise Shopping Experience! Find everything you need for your cruise adventure, from apparel and accessories to travel essentials and souvenirs. Explore our wide selection and make your cruise shopping hassle-free and enjoyable. Start packing for your next voyage today!">
+	<meta name="keywords" content="star, cruise, cruise vacation, ">
+	<link rel="icon" type="images/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage head -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<header>
+    <nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+			<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+    <script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="outlet">
+    <!-- Feedback sticky button -->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+		<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+        <!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);	
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+        <!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+
+    <div class="main">
+        <!--Taken from https://event.travel.com.tw/majesticPrincess/taste.htm-->
+        <img src="Images/shoppingcruise.jpg" alt="Shopping on Cruise Picture">
+        <div class="text">
+            <h1>Sail into Onboard Shopping Bliss</h1>
+            <p>Discover a world of shopping delights from luxury brands to specialty items, our outlets have something for everyone.</p>
+        </div>
+    </div>
+    <div class="upper-sect">
+        <p class="upper">WELCOME TO OUR</p>
+        <h2>Onboard Shopping</h2>
+        <p>Embark on a journey of retail indulgence as you explore the exquisite onboard shopping experience aboard our luxury cruise ship. From high-end boutiques to charming souvenir shops, we offer a diverse array of shopping options to cater everyone's taste and preference.</p>
+    </div>
+
+    <div class="image-text">
+        <div class="luxury_slideShow">
+            <div class="slideshow_images">
+                <div class="mySlides_luxury">
+                    <!--Taken From https://www.le-court.com/french-brands-seeking-new-hands/-->
+                    <img src="Images/luxury1.jpg" alt="Luxury Boutiques">
+                </div>
+                <div class="mySlides_luxury">
+                    <!--Taken From https://www.dfnionline.com/lead-stories/harding-hails-retail-launch-onboard-three-new-vessels-04-07-2023/-->
+                    <img src="Images/luxury2.jpg" alt="Luxury Boutiques">
+                </div>
+                <br>
+                <div class="groupdot-luxury">
+                    <span class="dot1" onclick="currentSlideLuxury(1)"></span>
+                    <span class="dot1" onclick="currentSlideLuxury(2)"></span>
+                </div>
+            </div>
+            <script>
+                let slideIndexLuxury = 1;
+                showSlidesLuxury(slideIndexLuxury);
+
+                // Function to move to the next slide automatically
+                function autoSlideLuxury() {
+                    plusSlidesLuxury(1);
+                }
+
+                // Set Interval to call autoSlide function every 3 seconds
+                let slideIntervalLuxury = setInterval(autoSlideLuxury, 3000);
+
+                function plusSlidesLuxury(n) {
+                    clearInterval(slideIntervalLuxury); // Clear Interval before moving to the next slide
+                    slideIntervalLuxury = setInterval(autoSlideLuxury, 3000); // Reset interval after manual slide change
+                    showSlidesLuxury(slideIndexLuxury += n);
+                }
+
+                function currentSlideLuxury(n) {
+                    clearInterval(slideIntervalLuxury); // Clear interval before moving to the selected slide
+                    showSlidesLuxury(slideIndexLuxury = n);
+                }
+
+                function showSlidesLuxury(n) {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides_luxury");
+                    let dots = document.getElementsByClassName("dot1"); // Assuming you have dots for pagination
+
+                    if (n > slides.length) { slideIndexLuxury = 1; }
+                    if (n < 1) { slideIndexLuxury = slides.length; }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace("active", "");
+                    }
+                    slides[slideIndexLuxury - 1].style.display = "block";
+                    dots[slideIndexLuxury - 1].className += " active";
+                }
+            </script>
+        </div>
+        <div class="desc1">
+            <h3>Luxury Boutiques</h3>
+            <p>Indulge in high-end fashion and accessories at our luxury boutiques, featuring renowned designer labels and exclusive collections. From elegant evening wear to sophisticated accessories, these boutiques cater to discerning shoppers seeking luxury and style.</p>
+        </div>
+    </div>
+    <div class="image-text">
+        <div class="desc1">
+            <h3>Duty-Free Emporium</h3>
+            <p>Our duty-free stores offer an extensive selection of products, including cosmetics, fragrances, spirits, tobacco, confectionery, alcohol, and more. Discover top brands and exclusive items at unbeatable prices, with savings of up to 30% off regular retail prices.</p>
+        </div>
+        <div class="duty_slideShow">
+            <div class="slideshow_images">
+                <div class="mySlides_duty">
+                    <!--Taken from https://engoo.com.tw/app/daily-news/article/duty-free-deals-how-to-save-on-airport-purchases/mF-MJizyEe618LOvXieiGA-->
+                    <img src="Images/duty1.jpg" alt="Duty-Free Emporium">
+                </div>
+                <div class="mySlides_duty">
+                    <!--Taken from https://www.cruzely.com/explained-duty-free-shopping-and-bringing-alcoholcigarettes-back-from-a-cruise/-->
+                    <img src="Images/duty2.jpg" alt="Duty-Free Emporium">
+                </div>
+                <br>
+                <div class="groupdot-duty">
+                    <span class="dot2" onclick="currentSlideduty(1)"></span>
+                    <span class="dot2" onclick="currentSlideduty(2)"></span>
+                </div>
+            </div>
+            <script>
+                let slideIndexduty = 1;
+                showSlidesduty(slideIndexduty);
+
+                function autoSlideduty() {
+                    plusSlidesduty(1);
+                }
+
+                let slideIntervalduty = setInterval(autoSlideduty, 3000);
+
+                function plusSlidesduty(n) {
+                    clearInterval(slideIntervalduty); 
+                    slideIntervalduty = setInterval(autoSlideduty, 3000); 
+                    showSlidesduty(slideIndexduty += n);
+                }
+
+                function currentSlideduty(n) {
+                    clearInterval(slideIntervalduty); 
+                    showSlidesduty(slideIndexduty = n);
+                }
+
+                function showSlidesduty(n) {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides_duty");
+                    let dots = document.getElementsByClassName("dot2"); 
+
+                    if (n > slides.length) { slideIndexduty = 1; }
+                    if (n < 1) { slideIndexduty = slides.length; }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace("active", "");
+                    }
+                    slides[slideIndexduty - 1].style.display = "block";
+                    dots[slideIndexduty - 1].className += " active";
+                }
+            </script>
+        </div>
+    </div>
+
+    <div class="image-text">
+        <div class="souvenir_slideShow">
+            <div class="slideshow_images">
+                <div class="mySlides_souvenir">
+                    <!--Taken from https://www.pinterest.co.uk/pin/carnival-dream-gift-shop-first-ever-cruise--533324780843396130/-->
+                    <img src="Images/souvenir1.jpg" alt="Souvenir Shops">
+                </div>
+                <div class="mySlides_souvenir">
+                    <!--Taken from https://www.trbusiness.com/regional-news/europe/mycorner-travel-and-souvenir-shop-opens-at-munich-airports-t2/219562-->
+                    <img src="Images/souvenir2.jpg" alt="Souvenir Shops">
+                </div>
+                <br>
+                <div class="groupdot-souvenir">
+                    <span class="dot3" onclick="currentSlidesouvenir(1)"></span>
+                    <span class="dot3" onclick="currentSlidesouvenir(2)"></span>
+                </div>
+            </div>
+            <script>
+                let slideIndexsouvenir = 1;
+                showSlidessouvenir(slideIndexsouvenir);
+
+                // Function to move to the next slide automatically
+                function autoSlidesouvenir() {
+                    plusSlidessouvenir(1);
+                }
+
+                // Set Interval to call autoSlide function every 3 seconds
+                let slideIntervalsouvenir = setInterval(autoSlidesouvenir, 3000);
+
+                function plusSlidessouvenir(n) {
+                    clearInterval(slideIntervalsouvenir); // Clear Interval before moving to the next slide
+                    slideIntervalsouvenir = setInterval(autoSlidesouvenir, 3000); // Reset interval after manual slide change
+                    showSlidessouvenir(slideIndexsouvenir += n);
+                }
+
+                function currentSlidesouvenir(n) {
+                    clearInterval(slideIntervalsouvenir); // Clear interval before moving to the selected slide
+                    showSlidessouvenir(slideIndexsouvenir = n);
+                }
+
+                function showSlidessouvenir(n) {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides_souvenir");
+                    let dots = document.getElementsByClassName("dot3"); // Assuming you have dots for pagination
+
+                    if (n > slides.length) { slideIndexsouvenir = 1; }
+                    if (n < 1) { slideIndexsouvenir = slides.length; }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace("active", "");
+                    }
+                    slides[slideIndexsouvenir - 1].style.display = "block";
+                    dots[slideIndexsouvenir - 1].className += " active";
+                }
+            </script>
+        </div>
+        <div class="desc1">
+            <h3>Souvenir Shops</h3>
+            <p>Take home a piece of your cruise experience with unique souvenirs and mementos from our souvenir shops. Choose from a variety of themed gifts, apparel, accessories, and novelty items that capture the essence of your journey and destination.</p>
+        </div>
+    </div>
+    <div class="image-text">
+        <div class="desc1">
+            <h3>Art Galleries</h3>
+            <p>Immerse yourself in a world of artistic expression at our onboard art galleries, showcasing a diverse collection of paintings, sculptures, and other works of art. Browse through exhibitions featuring both established and emerging artists, and perhaps even acquire a masterpiece to adorn your home.</p>
+        </div>
+        <div class="art_slideShow">
+            <div class="slideshow_images">
+                <div class="mySlides_art">
+                    <!--Taken from https://www.ncl.com/in/en/travel-blog/art-of-cruising-park-west-gallery-interview-->
+                    <img src="Images/art1.jpg" alt="Art Galleries">
+                </div>
+                <div class="mySlides_art">
+                    <!--Taken from https://news.artnet.com/market/cruise-ship-auction-1626928-->
+                    <img src="Images/art2.jpg" alt="Art Galleries">
+                </div>
+                <br>
+                <div class="groupdot-art">
+                    <span class="dot4" onclick="currentSlideart(1)"></span>
+                    <span class="dot4" onclick="currentSlideart(2)"></span>
+                </div>
+            </div>
+            <script>
+                let slideIndexart = 1;
+                showSlidesart(slideIndexart);
+    
+                // Function to move to the next slide automatically
+                function autoSlideart() {
+                    plusSlidesart(1);
+                }
+    
+                // Set Interval to call autoSlide function every 3 seconds
+                let slideIntervalart = setInterval(autoSlideart, 3000);
+    
+                function plusSlidesart(n) {
+                    clearInterval(slideIntervalart); // Clear Interval before moving to the next slide
+                    slideIntervalart = setInterval(autoSlideart, 3000); // Reset interval after manual slide change
+                    showSlidesart(slideIndexart += n);
+                }
+    
+                function currentSlideart(n) {
+                    clearInterval(slideIntervalart); // Clear interval before moving to the selected slide
+                    showSlidesart(slideIndexart = n);
+                }
+    
+                function showSlidesart(n) {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides_art");
+                    let dots = document.getElementsByClassName("dot4"); // Assuming you have dots for pagination
+    
+                    if (n > slides.length) { slideIndexart = 1; }
+                    if (n < 1) { slideIndexart = slides.length; }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace("active", "");
+                    }
+                    slides[slideIndexart - 1].style.display = "block";
+                    dots[slideIndexart - 1].className += " active";
+                }
+            </script>
+        </div> 
+    </div>
+
+    <div>
+        <table class="adv_table">
+            <caption>Table: Outlets Location & Operation Time</caption>
+            <tr>
+                <th>Shops</th>
+                <th>Location</th>
+                <th colspan="2">Operating Hours</th>
+            </tr>
+            <tr>
+                <td>Luxury Boutique - Boutique 1</td>
+                <td>Deck 5, Atrium</td>
+                <td rowspan="3">Monday - Friday: 10:00 a.m. - 8:00 p.m.</td>
+                <td rowspan="3">Weekend: 11:00 a.m. - 6:00 p.m.</td>
+            </tr>
+            <tr>
+                <td>Luxury Boutique - Boutique 2</td>
+                <td>Deck 6, AFT</td>
+            </tr>
+            <tr>
+                <td>Luxury Boutique - Boutique 3</td>
+                <td>Deck 8, Promenade</td>
+            </tr>
+            <tr>
+                <td>Duty-free Emporium</td>
+                <td>Deck 7, Promenade</td>
+                <td colspan="2">Daily: 9:00 a.m. - 10:00 p.m.</td>
+            </tr>
+            <tr>
+                <td>Souvenir Shop</td>
+                <td>Deck 9, Lido Deck</td>
+                <td colspan="2">Daily: 9:00 a.m. - 7:00 p.m.</td>
+            </tr>
+            <tr>
+                <td>Art Gallery</td>
+                <td>Deck 12, Sky Deck</td>
+                <td>Monday - Friday: 10:00 a.m. - 6:00 p.m.</td>
+                <td>Weekend: 11:00 a.m. - 7:00 p.m.</td>
+            </tr>
+            <tr>
+                <td colspan="4">&ast;Please note that opening hours may vary on port days.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="headings">
+        <span class="line"></span>
+        <h2>Discover Exclusive Shopping Events</h2>
+        <span class="line"></span>
+    </div>
+    <div class="sect2">
+        <p>Explore more ways to indulge in onboard shopping excitement with our array of special events and activities.</p>
+    </div>
+    <div class="shop_events">
+        <h3>Trunk Show</h3>
+        <p>Explore unique and limited-edition pieces from emerging designers and renowned brands at our curated trunk shows. Enjoy special previews of upcoming trends and personalized styling recommendations to elevate your wardrobe.</p>
+        <div class="trunk_images">
+            <!--Taken from https://vogue.sg/louis-vuitton-spring-summer-2023/-->
+            <img src="Images/trunk1.jpg" alt="Trunk Show for Louis Vuitton">
+            <!--Taken from https://vogue.sg/louis-vuitton-spring-summer-2023/-->
+            <img src="Images/trunk2.jpg" alt="Trunk Show for Louis Vuitton">
+            <!--Taken from https://vogue.sg/louis-vuitton-spring-summer-2023/-->
+            <img src="Images/trunk3.jpg" alt="Trunk Show for Louis Vuitton">
+            <!--Taken from https://vogue.sg/louis-vuitton-pre-fall-2024-review/-->
+            <img src="Images/trunk4.jpg" alt="Trunk Show for Louis Vuitton">
+        </div>
+        <ul>
+            <li>Schedule: Every Monday, Wednesday, Saturday, and Sunday</li>
+            <li>Time: 1 p.m. - 4 p.m.</li>
+            <li>Location: Deck 7, Promenade</li>
+            <li>Entry Requirements: Open to all onboard passengers; no additional fees required.</li>
+        </ul>
+    </div>
+    <div class="shop_events">
+        <h3>Thai Tropical Night</h3>
+        <p>Experience the essence of Thailand aboard the cruise ship with our Thai Tropical Night. Immerse yourself in vibrant colors, tantalizing scents, and lively sounds at themed market stalls adorned with traditional Thai décor. Discover unique treasures from bustling markets, including intricate handicrafts and elegant silk garments.</p>
+        <div class="thai_images">
+            <!--Taken from https://www.siamdiscovery.co.th/tourist/ICONCRAFT-lines-up-Thai-chic-items/155-->
+            <img src="Images/thai1.jpg" alt="Thai Tropical Night ">
+            <!--Taken from https://www.trip.com/travel-guide/attraction/don-kruai/royal-thai-handicraft-center-company-99589904/-->
+            <img src="Images/thai2.jpg" alt="Thai Tropical Night ">
+            <!--Taken from https://www.trip.com/travel-guide/attraction/don-kruai/royal-thai-handicraft-center-company-99589904/-->
+            <img src="Images/thai3.jpg" alt="Thai Tropical Night ">
+            <!--Taken from https://www.holidify.com/pages/what-to-buy-in-thailand-2447.html-->
+            <img src="Images/thai4.jpg" alt="Thai Tropical Night ">
+        </div>
+        <ul>
+            <li>Schedule: Daily</li>
+            <li>Time: 10 a.m. - 8 p.m.</li>
+            <li>Location: Deck 5, Atrium</li>
+            <li>Entry Requirements: Open to 9 Days 8 Night trip passengers only; no additional fees required.</li>
+        </ul>
+    </div>
+
+    <div class="headings" id="member">
+        <span class="line"></span>
+        <h2>Privileged Members</h2>
+        <span class="line"></span>
+    </div>
+    <div class="sect2">
+        <p>Join our membership only at SDG 200 (RM 700) to enjoy our exclusive shopping events.</p>
+    </div>
+    <section class="gridbox">
+        <div class="gallery">
+            <!--Taken from https://retaildesignblog.net/2020/01/10/personal-luxury-shopping-suite-in-macau-by-pmdl-architecture-design/-->
+            <img src="Images/vip1.jpg" alt="Private Shopping Room">
+            <h4>Private Shopping Receptions</h4>
+            <p class="desc">VIP guests are invited to exclusive receptions where they can browse and shop in a more intimate setting, away from the crowds. </p>
+        </div>
+        <div class="gallery">
+            <!--Taken from https://tripadvisor.com/Attraction_Review-g187791-d191368-Reviews-or10-Via_del_Corso-Rome_Lazio.html-->
+            <img src="Images/vip2.jpg" alt="Exclusive Discount">
+            <h4>Exclusive Discount</h4>
+            <p class="desc">Enjoy a 10% discount at all onboard shopping outlets throughout your cruise. </p>
+        </div>
+        <div class="gallery">
+            <!--Taken from https://www.canva.cn/learn/wine-day/-->
+            <img src="Images/vip3.jpg" alt="Champagne Toasts">
+            <h4>Champagne Toasts</h4>
+            <p class="desc">Guests can enjoy complimentary champagne while they shop, adding a touch of luxury to the experience. </p>
+        </div>
+        <div class="gallery">
+            <!--Taken from https://shopee.com.my/CHANEL-2021-Limited-Edition-AS2326-Mini-Classic-Diamond-Cover-Bag-bag-for-women-original-bag-bags-bag-shouider-bag-for-w-i.324388496.6987092619-->
+            <img src="Images/vip4.jpg" alt="Limited-Edition Items">
+            <h4>Priority Access to Limited-Edition Items</h4>
+            <p class="desc">VIP members get priority access to limited-edition merchandise and exclusive collections, ensuring they never miss out on coveted items.</p>
+        </div>
+        <div class="gallery">
+            <!--Taken from https://www.brownsatbroadbeach.com.au/common-job-titles-and-responsibilities-of-hotel-staff-members/-->
+            <img src="Images/vip5.jpg" alt="Dedicated Concierge Service">
+            <h4>Dedicated Concierge Service</h4>
+            <p class="desc">VIP members enjoy the convenience of a dedicated concierge service to assist with all their shopping needs, from making reservations to arranging special deliveries.</p>
+        </div>
+        <div class="gallery">
+            <!--Taken from https://www.pinterest.com/pin/shopping-spree--170292429643377928/-->
+            <img src="Images/vip6.jpg" alt="Exclusive Product Previews">
+            <h4>Exclusive Product Previews</h4>
+            <p class="desc">VIP members get early access to preview upcoming collections and products before they are available to the general public, allowing them to stay ahead of the latest trends.</p>
+        </div>
+    </section>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>

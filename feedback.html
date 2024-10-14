@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Feedback -->
+<!-- Author: Joanne Chin Jia Xuan -->
+<!-- Date 25 Mar 2023 -->
+<!-- Validated: Ok 11 May 2023-->
+
+<head>
+    <title>Feedback | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Joanne Chin Jia Xuan">
+	<meta name="description" content="Help us improve! Share your thoughts with our feedback form. Your valuable feedback guides us to better serve you. Fill out our form and make a difference today!">
+	<meta name="keywords" content="star,cruise,holiday,trip,ship,travel">
+	<link rel="icon" type="image/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage header -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<header>
+	<nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+			<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+	<script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="feedbackform">
+	<!-- Feedback sticky button -->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+		<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);	
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+
+	<div class="headings">
+		<span class="line"></span>
+		<h2>Feedback</h2>
+		<span class="line"></span>
+	</div>
+	<form name="feedback" method="post" action="mailto:starcruise@gmail.com" enctype="text/plain">
+		<fieldset>
+			<legend>Send us your feedback!</legend>
+			<p>Your opinion is important to us. This way we can keep improving our website.</p>
+			<table class="feedback">
+				<tr>
+					<td>Age group: </td>
+					<td>
+						<select name="age group">
+							<option value="teenagers">Teenagers</option>
+							<option value="young adults">Young Adults</option>
+							<option value="adults">Adults</option>
+							<option value="seniors">Seniors</option>
+							<option value="prefer_not_to_say">Prefer not to say</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="email">Email: </label></td>
+					<td><input type="email" name="email" size="30" id="email" required="required"></td>
+				</tr>
+				<tr>
+					<td colspan="2">How did you find out about our website?</td>
+				</tr>
+				<tr>
+					<td class="checkbox" colspan="2">
+						<ul>
+							<li><input type="checkbox" name="social_media" value="social_media" id="social_media"><label for="social_media">Social media</label></li>
+							<li><input type="checkbox" name="friends_family" value="friends_family" id="friends"><label for="friends">Friends & Family</label></li>
+							<li><input type="checkbox" name="newspaper" value="newspaper" id="newspaper"><label for="newspaper">Newspaper</label></li>
+							<li><input type="checkbox" name="leaflets" value="leaflets" id="leaflets"><label for="leaflets">Leaflets</label></li>
+							<li><input type="checkbox" name="matta_fair" value="matta_fair" id="matta_fair"><label for="matta_fair">MATTA Fair</label></li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">Did you find what you were looking for today?</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="radio" name="goal" value="yes" checked="checked" id="yes"><label for="yes">Yes</label>
+						<input type="radio" name="goal" value="no" id="no"><label for="no">No</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">How easy or difficult was it to find what you were looking for on our website?</td>
+				</tr>
+				<tr>
+					<td class="feedback_range" colspan="2">Difficult <input type="range" name="size" min="1" max="20" value="1"> Easy</td>
+				</tr>
+				<tr>
+					<td colspan="2">Please rate your overall satisfaction of this page.</td>
+				</tr>
+				<tr>
+					<td class="star-widget" colspan="2">
+						<input type="radio" name="ratings" value="rate-5" id="rate-5"><label for="rate-5" class="fa-solid fa-star"></label>
+						<input type="radio" name="ratings" value="rate-4" id="rate-4"><label for="rate-4" class="fa-solid fa-star"></label>
+						<input type="radio" name="ratings" value="rate-3" id="rate-3"><label for="rate-3" class="fa-solid fa-star"></label>
+						<input type="radio" name="ratings" value="rate-2" id="rate-2"><label for="rate-2" class="fa-solid fa-star"></label>
+						<input type="radio" name="ratings" value="rate-1" id="rate-1"><label for="rate-1" class="fa-solid fa-star"></label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><label for="comment">Please let us know why you gave us this score and how we can improve your experience.</label></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<textarea name="comment" rows="5" cols="55" required="required" id="comment"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="Submit">
+						<input type="reset" value="Clear">
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+
+</html>

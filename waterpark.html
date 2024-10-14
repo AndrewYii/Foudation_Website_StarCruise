@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Waterpark for Cruise Website -->
+<!-- Author: Daphne Tang Li Yun -->
+<!-- Date: 11/04/2024 -->
+<!-- Validated: OK 11/04/2024 -->
+
+<head>
+	<title>Waterpark | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Daphne Tang Li Yun">
+	<meta name="description" content="Get ready for the ultimate on-water experience aboard Star Cruises! Our water park is a haven of excitement and relaxation, with exciting slides and refreshing pools. Whether you're looking for thrilling excitement or peaceful relaxation, you'll find it here. Immerse yourself in it and make memories that will last a lifetime!">
+	<meta name="keywords" content="star, cruise, waterpark">
+	<link rel="icon" type="images/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage head -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+	
+<body>
+<header>
+	<nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+		<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+	<script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+		
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+					btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+					btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="waterpark">
+	<!-- Feedback sticky button -->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+	<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+		<img src="Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);	
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+	
+	<!-- Banner for Waterpark -->
+	<div class="main">
+		<img src="Images/waterparkbanner.jpg" alt="Banner for Waterpark"> <!-- This image is taken from https://www.the-sun.com/travel/8585038/worlds-biggest-cruise-ship-icon-of-seas-sails/ -->
+		<div class="text">
+			<h1>Wavesplash Waterworld</h1>
+			<p>Whatever your thrill threshold, you'll find firsts to test your bravery.</p>
+		</div>
+	</div>
+
+	<div class="upper-sect">
+		<p class="upper">FIND YOUR</p>
+		<h2>Chill Spot or Thrill Spot</h2>
+		<p>Just because our cruise is known for its lightning-fast waterslides and rip-roaring tides doesn't mean you can't also find your own little slice of poolside bliss.</p>
+	</div>
+	<div class="polygon">
+		<img src="Images/waterparkpolygon.png" alt="Thrill or Chill">
+		<!-- This image is taken from https://thepointsguy.com/guide/best-cruise-ship-waterslides/ & https://www.linkedin.com/posts/pointman_whirlpool-jacuzzi-cruiseship-activity-7026128305359601664-nAio -->
+		<div class="polygon-text">
+			<h3 class="text1">INCREASE HEART RATE INTENSITY</h3>
+			<h3 class="text2">UNWIND IN BETWEEN ADVENTURES</h3>
+		</div>
+	</div>
+	<div class="headings">
+		<span class="line"></span>
+		<h2>Wet and Wild Adventures</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p>Experience the ultimate aquatic thrill with Star Cruise's world-class waterpark facilities. From the largest vortex ride to interactive playgrounds and surf pools, it's wet and wild fun for all!</p>
+	</div>
+	<div class="image-text">
+		<figure>
+			<img src="Images/twister.jpg" alt="Typhoon Twister ">
+			<!--Taken from https://www.nationalgeographic.com/travel/article/cruises -->
+		</figure>
+		<div class="desc1">
+			<h3>Typhoon Twister </h3>
+			<p>Prepare for an electrifying rush as you brave the twists, turns, and vortex loops of our Typhoon Twister waterslide, an adrenaline-fueled adventure that propels you through a wild ride of high-speed thrills and exhilarating splashes, promising an unforgettable experience for thrill-seekers seeking the ultimate aquatic adventure.</p>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>Water Coaster</h3>
+			<p>Prepare for an adrenaline-pumping adventure on our High-Speed Water Coaster! This thrilling ride takes you on a wild journey filled with steep drops and sharp turns, propelling you at lightning-fast speeds. Perfect for thrill-seekers, this heart-racing experience promises unforgettable moments and an irresistible urge for more. Dive in and let the adventure begin!</p>
+		</div>
+		<figure>
+			<img src="Images/coaster.jpg" alt="Water Coaster">
+			<!--Taken from https://www.klook.com/activity/14639-desaru-coast-adventure-waterpark-ticket-johor-bahru/ -->
+		</figure>
+	</div>
+	<div class="image-text">
+		<figure>
+			<img src="Images/fived.jpg" alt="Waterplexx 5D">
+			<!--Taken from https://image-tc.galaxy.tf/wijpeg-6t3iuzvq3d90a5uhxu0aaftyk/theme-park-individual-page-14_wide.jpg?crop=0%2C83%2C1575%2C886&width=1100 -->
+		</figure>
+		<div class="desc1">
+			<h3>Waterplexx 5D</h3>
+			<p>Immerse yourself in a unique multi-sensory adventure at Waterplexx 5D. Feel the rush of wind, mist, and water sprays as you are dazzled by lasers, 3D visuals, and immersive sounds. This thrilling cinematic experience combines motion, light, and water effects to create an unforgettable journey.</p>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>High Speed Slide</h3>
+			<p>Get your heart racing on our High-Speed Slide! This exhilarating ride takes you on a wild journey with steep drops and sharp turns, propelling you at incredible speeds. Ideal for adrenaline junkies, this heart-pounding adventure guarantees an unforgettable experience that will leave you wanting more.</p>
+		</div>
+		<figure>
+			<img src="Images/speed.jpg" alt="High Speed Slide">
+			<!--Taken from https://www.polgunwaterparks.com/water-slides/high-speed-slides/ -->
+		</figure>
+	</div>
+	<div class="image-text">
+		<figure>
+			<img src="Images/lazy.jpg" alt="Lazy River">
+			<!--Taken from https://www.headout.com/hong-kong-ocean-park-tickets/water-world-ocean-park-hong-kong-e-22524/ -->
+		</figure>
+		<div class="desc1">
+			<h3>Lazy River</h3>
+			<p>Immerse yourself in a unique multi-sensory adventure at Waterplexx 5D. This thrilling cinematic experience combines motion, light, and water effects to create an unforgettable journey. Prepare to be soaked and exhilarated as you embark on this ultimate wet and wild ride!</p>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>Reptite Slide</h3>
+			<p>Experience the ultimate adrenaline rush on our Reptite Slide! Brace yourself for an electrifying ride filled with heart-pounding twists, turns, and drops. Feel the rush of wind as you speed down the slide at thrilling speeds, making for an unforgettable adventure that will leave you craving more.</p>
+		</div>
+		<figure>
+			<img src="Images/wrip.jpg" alt="Reptite Slide">
+			<!--Taken from https://www.royalcaribbean.com/content/royal/bhs/en/cruise-activities/riptide?country=BHS -->
+		</figure>
+	</div>
+
+	<!-- Open Bar -->
+	<div class="headings">
+		<span class="line"></span>
+		<h2>Open Bar</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p>Whether you're exhausted after a thrilling day on the waterslides or simply craving a refreshing glass of our signature cocktails, here is the perfect spot to unwind and indulge in your favorite beverages.</p>
+	</div>
+	<div class="image-text">
+		<figure>
+			<!-- This image is taken from https://cruise-with-points.marriott.com/shipdetail.do?c=71&v=670 -->
+			<img src="Images/wbar.jpg" alt="Open Bar">
+		</figure>
+		<div class="desc1">
+			<table>
+				<tr>
+					<td><i class="fa-solid fa-clock"></i></td>
+					<td>10:00 a.m. - 2.00 a.m.</td>
+				</tr>
+				<tr>
+					<td><i class='fas fa-map-marker-alt'></i></td>
+					<td>Deck 13, Top Deck</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-person"></i></td>
+					<td>21 years old and above</td>
+				</tr>
+				<tr>
+					<td><i class="fa fa-thumbs-up"></i></td>
+					<td>Have a sip of cocktail in our award-winning bar, where expert mixologists craft exquisite drinks. Enjoy the chic ambiance, curated music, and a memorable experience with every sip. Unwind and savor perfection.</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="signaturedr">
+		<h3>Signature Drinks</h3> 
+		<p>Every cocktail unfolds a sensory journey of tastes, textures, colours and aromas.</p>
+	</div>
+	<table id="sign_drinks1">
+		<tr>
+			<td rowspan="3"  class="drink drinkcolumn1">
+				<div class="overlay-menu">Inca</div>
+			</td>
+			<td colspan="2" rowspan="2" class="drink drinkcolumn2">
+				<div class="overlay-menu">Pastel</div>
+			</td>
+			<td rowspan="3" class="drink drinkcolumn3">
+				<div class="overlay-menu">Bumblebee</div>
+			</td>
+			<td class="drink drinkcolumn4below1">
+				<div class="overlay-menu">Scarlet</div>
+			</td>
+			<td class="drink drinkcolumn4below2">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Zen</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="2" class="drink drinkcolumn4">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Iris</div>		
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="2" class="drink drinkcolumn2below1">
+				<div class="overlay-menu">Trigona Penicillin</div>
+			</td>
+			<td rowspan="2" class="drink drinkcolumn2below2">
+				<div class="overlay-menu">Ambrosia</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+	<!-- for screenwidth smaller than 760px-->
+	<table id="sign_drinks2">
+		<tr>
+			<td rowspan="2"  class="drink drinkcolumn1">
+				<div class="overlay-menu">Inca</div>
+			</td>
+			<td colspan="2" class="drink drinkcolumn2">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Pastel</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="drink drinkcolumn2below1">
+				<div class="overlay-menu">Trigona Penicillin</div>
+			</td>
+			<td class="drink drinkcolumn2below2">
+				<div class="overlay-menu">Ambrosia</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="drink drinkcolumn4below1">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Scarlet</div>
+			</td>
+			<td class="drink drinkcolumn4below2">
+				<div class="overlay-menu">Zen</div>
+			</td>
+			<td rowspan="2" class="drink drinkcolumn3">
+				<div class="overlay-menu">Bumblebee</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="drink drinkcolumn4">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="overlay-menu">Iris</div>		
+			</td>
+		</tr>
+	</table>
+	
+	<!-- Swimming Equipment Shop -->
+	<div class="headings">
+		<span class="line"></span>
+		<h2>SwimMart</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p>If you need some extra swim essentials, we've got you covered. Our shop offers a wide range of high-quality swimming equipment for all ages and genders, perfect for both practical use and souvenirs. Don't let a forgotten item ruin your fun.</p>
+	</div>
+	<section class="gridbox">
+		<div class="gallery">
+			<img src="Images/wswimwear.jpg" alt="Swimwear Store"> <!-- This image is taken from https://www.scheels.com/stores/nevada/reno-sparks/features/reno-sparks-swimwear-shop.html -->
+			<h4>Clothing & Accessories</h4>
+			<p class="desc">Stay comfortable and stylish with our diverse range of swimwear and accessories. Whether you need a new swimsuit or a hat to keep your hair dry, we've got everything you need.</p>
+			<ul>
+				<li>Swimsuits</li>
+				<li>Swimming cap</li>
+				<li>Sunglasses</li>
+			</ul>
+		</div>
+		<div class="gallery">
+			<img src="Images/wswimequip.jpg" alt="Swimming Equipment"> <!-- This image is taken from https://i0.wp.com/remoteandafloat.com/wp-content/uploads/2019/08/backpacking-with-scuba-gear.jpg?fit=1600%2C960&ssl=1 -->
+			<h4>Swimming Equipment</h4>
+			<p class="desc">Ensure you have all the necessary gears for a safe and enjoyable swimming experience. From basic essentials to advanced diving equipment, our shop has it all.</p>
+			<ul>
+				<li>Scuba diving equipment</li>
+				<li>Goggles</li>
+				<li>Snorkel tubes</li>
+			</ul>
+		</div>
+		<div class="gallery">
+			<img src="Images/wraft.jpg" alt="Swimming Rings"> <!-- This image is taken  from https://img.kwcdn.com/product/fancy/099bc288-bd8d-4889-9540-96c47615bf58.jpg -->
+			<h4>Poolside Essentials</h4>
+			<p class="desc">Make your water adventures even more enjoyable with our selection of floats, rafts, and swimming rings. Perfect for both fun and safety in the water.</p>
+			<ul>
+				<li>Floats</li>
+				<li>Rafts</li>
+				<li>Swimming rings</li>
+			</ul>
+		</div>
+		<div class="gallery">
+			<img src="Images/wbeauty.jpg" alt="Beauty Products"> <!-- This image is taken from https://cdn.thewirecutter.com/wp-content/media/2023/06/facesunscreen-2048px-01008-2x1-1.jpg?auto=webp&quality=75&crop=1.91:1&width=1200 -->
+			<h4>Beauty Products</h4>
+			<p class="desc">Keep your skin and hair protected with our range of beauty products designed for water lovers.</p>
+			<ul>
+				<li>Sunscreen</li>
+				<li>Hair detangler spray</li>
+				<li>Moisturizing lotion</li>
+			</ul>
+		</div>
+		<div class="gallery">
+			<img src="Images/wkidwear.jpg" alt="Kids' Essentials"> <!-- This image is taken from https://www.loveandgrowclothing.com/products/preorder-barbie-palm-organza-one-shoulder-swimsuit?variant=40540508979274 -->
+			<h4>Kids' Essentials</h4>
+			<p class="desc">Ensure your little ones are safe and entertained with our range of kid-friendly swimming gear and toys.
+			</p>
+			<ul>
+				<li>Children's swimsuits</li>
+				<li>Water toys</li>
+				<li>Kids' floats</li>
+			</ul>
+		</div>
+		<div class="gallery">
+			<img src="Images/wfirstaidkit.jpg" alt="Health & Safety"> <!-- This image is taken from https://www.health.com/home/best-first-aid-kits -->
+			<h4>Health & Safety</h4>
+			<p class="desc">Stay safe with our health and safety products, ensuring you're prepared for any dangerous situation at the waterpark.
+			</p>
+			<ul>
+				<li>Waterproof bandages</li>
+				<li>First aid kits</li>
+				<li>Life vests</li>
+			</ul>
+		</div>
+	</section>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>

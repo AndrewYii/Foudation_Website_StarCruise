@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Facilities -->
+<!-- Author: Fam Sin Mim， Daphne Tang Li Yun -->
+<!-- Date: 09/05/2024 -->
+<!-- Validated: OK 11/05/2024 -->
+
+<head>
+	<title>Life Onboard | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Fam Sin Mim_Daphne Tang Li Yun">
+	<meta name="description" content="Set sail on an extraordinary voyage where each instant is a lavish ode to indulgence and tranquility. Our cruise liner transcends mere transportation; it's a luxurious oasis crafted to pamper your every desire.">
+	<meta name="keywords" content="star, cruise, waterpark, cinema, theatre, rock climbing, gym, spa, childcare service">
+	<link rel="icon" type="images/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage head -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<header>
+	<nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+			<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+    <script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="facilities">
+	<!--Feedback sticky button-->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+		<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);	
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+
+	<div class="main">
+		<!--Taken from https://hk.news.yahoo.com/%E9%83%B5%E8%BC%AA-%E7%9A%87%E5%AE%B6%E5%8A%A0%E5%8B%92%E6%AF%94%E5%9C%8B%E9%9A%9B%E9%83%B5%E8%BC%AA-%E6%B5%B7%E6%B4%8B%E6%A8%99%E8%AA%8C%E8%99%9F-%E6%B4%BB%E5%8B%95%E8%A8%AD%E6%96%BD-040011713.html?guccounter=1&guce_referrer=aHR0cHM6Ly9sZW5zLmdvb2dsZS5jb20v&guce_referrer_sig=AQAAAEYzJAUyglFwnySIHjugH2JNdm6t39GWM33Fu-OTcsgiRj4HJ6wpWlSF6i-6FWF-imWSehiGNnb76EtoAFG2_x5qM_Ip11Oqqm80yBORcUPuz61c4y7Yf6WgZONZVNdcVOM6bevRsifrORN1RX7BYHN7KiwqgQkJJUHI-2j4dPzl-->
+        <img src="Images/facilitiesbanner.jpg" alt="Banner for Facilities">
+        <div class="text">
+			<h1>Elevating the Seafaring Experience</h1>
+			<p>Get ready for an entertainment extravaganza like no other. From live shows to concerts, the stage is set for unforgettable moments</p>
+        </div>
+    </div>
+
+    <div class="upper-sect">
+        <p class="upper">UNMATCHED FACILITIES</p>
+        <h2>Create memories with us</h2>
+        <p>Indulge in luxury aboard our meticulously designed cruise ship, a floating paradise where every need is met. Relax, unwind, and immerse yourself in unparalleled comfort and unforgettable experiences.</p>
+    </div>
+	<ul class="tab-menu">
+		<li class="tab-btn active">Waterpark</li>
+		<li class="tab-btn">Cinema</li>
+		<li class="tab-btn">Theatre</li>
+	</ul>
+    
+	<div class="tab active">
+		<div class="img-card">
+			<!--Taken from https://hk.news.yahoo.com/%E9%83%B5%E8%BC%AA-%E7%9A%87%E5%AE%B6%E5%8A%A0%E5%8B%92%E6%AF%94%E5%9C%8B%E9%9A%9B%E9%83%B5%E8%BC%AA-%E6%B5%B7%E6%B4%8B%E6%A8%99%E8%AA%8C%E8%99%9F-%E6%B4%BB%E5%8B%95%E8%A8%AD%E6%96%BD-040011713.html?guccounter=1&guce_referrer=aHR0cHM6Ly9sZW5zLmdvb2dsZS5jb20v&guce_referrer_sig=AQAAAEYzJAUyglFwnySIHjugH2JNdm6t39GWM33Fu-OTcsgiRj4HJ6wpWlSF6i-6FWF-imWSehiGNnb76EtoAFG2_x5qM_Ip11Oqqm80yBORcUPuz61c4y7Yf6WgZONZVNdcVOM6bevRsifrORN1RX7BYHN7KiwqgQkJJUHI-2j4dPzl-->
+			<img src="Images/fwaterpark.jpg" alt="Waterpark">
+		</div>
+		<div class="desc_tab">
+			<h3>Wavesplash Waterworld</h3>
+			<p>We have the largest and coolest waterpark in the world! Come on! Dive into exhilarating fun with our onboard waterpark! Feel the rush of excitement as you zip down thrilling water slides and splash into refreshing and fantastic pools.</p>
+			<p><a href="waterpark.html">Explore more on waterpark</a></p>
+		</div>
+	</div>
+	<div class="tab">
+		<div class="img-card">
+			<!--Taken from https://www.cruisecritic.com/articles/dive-in-movies-at-the-seaside-theater-on-carnival-cruise-line?stay=1&posfrom=2-->
+			<img src="Images/fcinema.jpg" alt="Cinema">
+		</div>
+		<div class="desc_tab">
+			<h3>Cinema</h3>
+			<p>Experience the magic of the silver screen aboard our ship! Step into our state-of-the-art cinema and immerse yourself in captivating stories brought to life in stunning detail. From blockbuster hits to timeless classics, there's something for every movie enthusiast. Grab your popcorn, find your seat, and get ready for an unforgettable cinematic journey at sea!</p>
+			<p><a href="entertainment.html#movie">Discover more on our screening movies</a></p>
+		</div>
+	</div>
+	<div class="tab">
+		<div class="img-card">
+			<!--Taken from https://www.onlyinyourstate.com/florida/theaters-fl/-->
+			<img src="Images/ftheatre.jpg" alt="Theatre">
+		</div>
+		<div class="desc_tab">
+			<h3>Theatre</h3>
+			<p>Embark on a journey of theatrical wonder at our onboard theater! Prepare to be dazzled by captivating performances that will transport you to new worlds and ignite your imagination. From Broadway-style productions to mesmerizing live shows, our theater offers a stage for unforgettable entertainment. Join us for an evening of drama, laughter, and sheer spectacle as we celebrate the magic of live performance on the high seas!</p>
+			<p class="link"><a href="entertainment.html#theatre_section">Explore more about our shows & performances</a></p>
+		</div>	
+	</div>
+	<script>
+        const tab_Nav = function(tabBtnClick) {
+            const tabs = document.querySelectorAll(".tab");
+            const tabBtns = document.querySelectorAll(".tab-btn");
+            
+            tabBtns.forEach((tabBtn) => {
+                tabBtn.classList.remove("active");
+            });
+            tabs.forEach((tab) => {
+                tab.classList.remove("active");
+            });
+            tabBtns[tabBtnClick].classList.add("active");
+            tabs[tabBtnClick].classList.add("active");
+        }
+    
+        document.querySelectorAll(".tab-btn").forEach((tabBtn, i) => {
+            tabBtn.addEventListener("click", () => {
+                tab_Nav(i);
+            });
+        });
+    </script>
+
+	<div class="headings">
+        <span class="line"></span>
+        <h2>Discover Exceptional Amenities</h2>
+        <span class="line"></span>
+    </div>
+    <div class="sect2">
+        <p>Our cruise ship offers a range of exceptional facilities, including rock climbing, a gym, spa, children's program, casino, and sports court, ensuring there's something for everyone to enjoy.</p> 
+    </div>
+    <div class="image-text">
+        <figure>
+			<!--Taken from https://expatliving.hk/wp-content/uploads/2023/02/EMS-Vest.jpg-->
+			<img src="Images/frockclimbing.jpg" alt="Indoor Rock Climbing">
+		</figure>
+		<div class="desc1">
+			<h3>Rock Climbing</h3>
+			<p>Embark on an adventure aboard our cruise ship and discover the thrill of rock climbing! Scale our onboard wall with breathtaking ocean vistas. Ascend 12 meters above deck on our signature Rock Climbing Wall, offering excitement for climbers of all levels. No reservations required - enjoy this exhilarating activity again and again!
+			</p>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>Gym</h3>
+			<p>Discover cutting-edge fitness facilities aboard our cruise ship, equipped with treadmills, elliptical trainers, and more. Enjoy individual TVs on cardio machines and auto-counting pulse monitors for an engaging and effective workout. Stay refreshed with free water coolers and towels, making your wellness journey convenient and revitalizing.  
+			</p>
+		</div>
+        <figure>
+			<!--Taken from https://www.google.com/url?sa=i&url=https%3A%2F%2Fexpatliving.hk%2Fbest-gyms-in-hong-kong-fitness-classes-keeping-fit%2F&psig=AOvVaw1NeB5SB_p0fcCA3primCAb&ust=1714377915766000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLC3zcm55IUDFQAAAAAdAAAAABAg-->
+			<img src="Images/fgym.jpg" alt="Gym Room">
+		</figure>
+	</div>
+	<div class="image-text">
+        <figure>
+			<!--Taken from https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2018/12/BANYAN-TREE-MAYAKOBA-RIVIERA-MAYA-MEXICO.jpg?ssl=1-->
+			<img src="Images/fspa.jpg" alt="Spa">
+		</figure>
+		<div class="desc1">
+			<h3>Spa</h3>
+			<p>Experience pure relaxation at our onboard spa. Enjoy restorative massages, rejuvenating facials, and world-class fitness classes powered by Technogym. Our Vitality℠ Spa & Fitness center offers exclusive facilities to recharge between adventures, including a separate spa for teens and a beauty salon. Find balance and rejuvenation effortlessly while on holiday.</p>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>VR Gaming Room</h3>
+			<p>Experience the latest advancements in virtual reality technology with our VR gaming room amenities. With high-quality VR headsets, motion tracking controllers, and immersive audio, get ready for a gaming experience like no other.</p>
+		</div>
+        <figure>
+			<!--Taken from https://thatssotampa.com/vr-galaxy-lounge-tampa/-->
+			<img src="Images/gaming.jpg" alt="VR Gaming Room">
+		</figure>
+	</div>
+	<div class="image-text">
+		<figure>
+			<!--This image is taken from https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/16/73/c8/20190405-192906-largejpg.jpg?w=1200&h=-1&s=1-->
+			<img src="Images/fcasino.jpg" alt="Casino">
+		</figure>
+		<div class="desc1">
+			<h3>Casino</h3>
+			<p>Experience excitement and luxury in our cruise ship casino. With over 2000 slot machines and 150 table games, there's plenty of action in our sophisticated and smoke-free environment. Enjoy custom limits and better odds across a variety of games, all enhanced by state-of-the-art technology. Join us for thrilling entertainment on your vacation!
+			</p>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>Multi-Sports Court</h3>
+			<p>Get ready for action-packed basketball and volleyball games with an energizing ocean view on our cruise ship. Our versatile court design allows for multiple sports in one space, from pickleball to volleyball, badminton, hockey, and more. With thoughtful construction, we've created a space where you can enjoy a variety of sports while at sea. The choice is in your hands!
+			</p>
+		</div>
+		<figure>
+			<!--Taken from https://www.carnival-news.com/assets/collections/attractions/sportssquare-->
+			<img src="Images/fcourt.jpg" alt="Multi-Sports Court">
+		</figure>
+	</div>
+
+	<div class="table_time">
+		<table class="adv_table">
+			<caption>Facilities Location & Operation Time</caption>
+			<tr>
+				<th rowspan="2">Facilities</th>
+				<th rowspan="2">Venue Type</th>
+				<th rowspan="2">Location</th>
+				<th colspan="2">Operating Hours</th>
+			</tr>
+			<tr>
+				<th>Weekday</th>
+				<th>Weekend</th>
+			</tr>
+			<tr>
+				<td>Waterpark</td>
+				<td>Outdoor</td>
+				<td>Deck 13, Top Deck</td>
+				<td>6:00 a.m. - 2:00 a.m.</td>
+				<td>24 hours</td>
+			</tr>
+			<tr>
+				<td rowspan="2">Cinema</td>
+				<td>Indoor</td>
+				<td>Deck 10, Main Deck</td>
+				<td rowspan="2" colspan="2">According to upcoming movies</td>
+			</tr>
+			<tr>
+				<td>Outdoor</td>
+				<td>Deck 13, Top Deck</td>
+			</tr>
+			<tr>
+				<td>Theatre</td>
+				<td>Indoor</td>
+				<td>Deck 3, Entertainment Deck</td>
+				<td colspan="2">According to upcoming performances</td>
+			</tr>
+			<tr>
+				<td rowspan="2">Rock Climbing</td>
+				<td>Indoor</td>
+				<td>Deck 3, Sports Deck</td>
+				<td colspan="2">24 hours</td>
+			</tr>
+			<tr>
+				<td>Outdoor</td>
+				<td>Deck 12, Outdoor Area</td>
+				<td>6:00 a.m. - 12:00 p.m.<br>4:00 p.m. - 7:00 p.m.</td>
+				<td>24 hours</td>
+			</tr>
+			<tr>
+				<td>Gym</td>
+				<td>Indoor</td>
+				<td>Deck 11, Fitness Deck</td>
+				<td colspan="2">24 hours</td>
+			</tr>
+			<tr>
+				<td rowspan="2">Spa</td>
+				<td>Indoor</td>
+				<td>Deck 11, Wellness Deck</td>
+				<td>5:00 a.m. - 5:00 p.m.</td>
+				<td>24 hours</td>
+			</tr>
+			<tr>
+				<td>Outdoor</td>
+				<td>Deck 13, Sun Deck</td>
+				<td colspan="2">10:00 a.m. - 3:00 p.m.</td>
+			</tr>
+			<tr>
+				<td>Childcare Centre</td>
+				<td>Indoor</td>
+				<td>Deck 2, Family Deck</td>
+				<td>6:00 a.m. - 6:00 p.m.</td>
+				<td>24 hours</td>
+			</tr>
+			<tr>
+				<td>Library</td>
+				<td>Indoor</td>
+				<td>Deck 2, Family Deck</td>
+				<td>8:00 a.m. - 8:00 p.m.</td>
+				<td>24 hours</td>
+			</tr>
+			<tr>
+				<td>Casino</td>
+				<td>Indoor</td>
+				<td>Deck 9, Lido Deck</td>
+				<td>9:00 a.m. - 12:00 a.m.</td>
+				<td>24 hours</td>
+			</tr>
+			<tr>
+				<td>Multi-Sports Court</td>
+				<td>Outdoor</td>
+				<td>Deck 12, Sky Deck</td>
+				<td colspan="2">24 hours (Except for raining days)</td>
+			</tr>
+			<tr>
+				<td colspan="5">&ast;Please note that opening hours may vary on port days.</td>
+			</tr>
+		</table>		
+	</div>
+	<div class="headings" id="family">
+		<span class="line"></span>
+		<h2>Family Time</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p>Step aboard our magnificent cruise ship and join us for a delightful family-friendly event that promises fun, games, and entertainment for all ages. Gather your loved ones and get ready for an unforgettable afternoon filled with laughter and cherished moments.
+		</p>
+	</div>
+	<section class="gridbox">
+		<div class="gallery">
+			<!--Taken from https://www.freepik.com/premium-ai-image/family-karaoke-night-describe-lively-evening-celebration_112008230.htm-->
+			<img src="Images/karaoke.jpg" alt="Family Karaoke Night" >
+			<h4>Family Karaoke Night</h4>
+			<p class="desc">Sing your hearts out together at our family karaoke nights. Choose from a wide selection of songs and take turns belting out your favorite tunes in a fun and supportive atmosphere.</p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://www.cruiseandtravel.co.uk/first-time-cruiser-guide-part-1/-->
+			<img src="Images/movie.jpg" alt="Family Movie Marathon" >
+			<h4>Family Movie Marathon</h4>
+			<p class="desc">Enjoy quality time together with a family movie marathon in your stateroom or at our onboard cinema. Get your free blankets and popcorn as you watch a selection of family-friendly films and classics.</p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://www.heart.org/en/healthy-living/healthy-eating-->
+			<img src="Images/cooking.jpg" alt="Family Cooking Classes" >
+			<h4>Family Cooking Class</h4>
+			<p class="desc">Learn to cook delicious meals together as a family with our interactive cooking classes. From pizza making to cupcake decorating, discover new culinary skills and create tasty treats to enjoy together.</p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://www.shutterstock.com/search/kids-parents-crafting-->
+			<img src="Images/diy.jpg" alt="Family Craft Workshops" >
+			<h4>Family Craft Workshops</h4>
+			<p class="desc">Unleash your creativity with our family craft workshops. From DIY projects to scrapbooking, get hands-on and make unique keepsakes to commemorate your family vacation.</p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://www.hypnosisdownloads.com/fun-hypnosis/treasure-hunt-->
+			<img src="Images/hunt.jpg" alt="Family Scavenger Hunt">
+			<h4>Family Scavenger Hunt</h4>
+			<p class="desc">Embark on an exciting scavenger hunt adventure around the ship. Solve clues, complete challenges, and work together as a team to uncover hidden treasures and earn rewards along the way. </p>
+		</div>
+		<div class="gallery">
+			<!--Taken from https://www.cruisecritic.com/articles/photography-on-cruise-ships-what-to-expect-->
+			<img src="Images/photo.jpg" alt="Family Photo Sessions">
+			<h4>Family Photo Sessions</h4>
+			<p class="desc">Preserve your family vacation memories with onboard professional photo sessions. From formal portraits to candid snapshots, capture cherished moments that you'll treasure forever.</p>
+		</div>
+	</section>
+</article> 
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>

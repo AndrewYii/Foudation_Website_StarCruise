@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: About us -->
+<!-- Author: Andrew Yii Teck Foon, Joanne Chin Jia Xuan -->
+<!-- Date: 03/05/2024 -->
+<!-- Validated: OK 11/05/2024-->
+
+<head>
+    <title>About Us | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Andrew Yii Teck Foon">
+	<meta name="description" content="Discover the essence of luxury and adventure with Star Cruise. As a leading global cruise line, we offer unparalleled experiences tailored to your desires. From breathtaking destinations to world-class entertainment, immerse yourself in a journey like no other with Star Cruise.">
+	<meta name="keywords" content="star, cruise, cruise vacation, luxury cruise, family cruise, romantic cruise, cruise ship, onboard activities, shore excursions, cruise packages, book">
+	<link rel="icon" type="image/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage head -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<header>
+	<nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+			<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+	<script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="aboutus">
+	<!-- Feedback sticky button -->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+		<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);	
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+
+	<!--Main Title of About Us-->
+    <div class="main">
+		<!--From https://images.musement.com/cover/0156/81/thumb_15580297_cover_header.jpg?q=50&fit=crop&auto=format&w=1024&h=400-->
+        <img src="Images/aboutus.jpg" alt="About Us">
+        <div class="text">
+            <h1>Your Gateway to Unforgettable Journeys</h1>
+			<p>Join us for unforgettable journeys worldwide, turning your travel dreams into reality.</p>
+        </div>
+    </div>
+
+    <div class="upper-sect">
+        <p class="upper">LET YOU KNOW US </p>
+        <h2>All About Star Cruise</h2>
+		<p>Having called the sea our home for over 80 years, Star Cruise embraces the wonder, discovery, and responsibility it entails. On a Star Cruise voyage, guests embark on unforgettable journeys, explore breathtaking destinations, and experience unparalleled hospitality. Beyond providing exceptional experiences, we empower our guests to make a difference. From our dedicated crew to our innovative engineers and skilled shipbuilders, we are committed to safeguarding the ocean's future through proactive measures today.</p>
+    </div>
+
+	<div class="image-text">
+		<figure>
+            <!--From https://www.cruisemapper.com/Images/ships/2112-a46bd9fcc2b.jpg-->
+			<img src="Images/missioncruise.jpg" alt="Cruise">
+		</figure>
+		<div class="desc1">
+			<h3 class="title">Our Cruise</h3>
+			<p>At Star Cruises, our affinity for the ocean spans generations. Each cruise with us is a journey of exploration and indelible memories for every guest. We provide an immersive, enriching, and secure cruise encounter, where you can savor global cuisine, top-tier entertainment, acclaimed family activities, and cutting-edge technology onboard. Select from an array of diverse itineraries crafted to unveil the essence of the world's most captivating cultures, offering a symphony of sights, sounds, and flavors.</p>	
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3 class="title">Sustainability</h3>
+			<p>Star Cruises is committed to environmental stewardship, employing a multifaceted approach to sustainability. Through stringent practices like waste management and energy-saving initiatives, alongside alternative fuels and advanced wastewater treatment, the company minimizes its ecological footprint. Additionally, it prioritizes destination conservation, partnering with local organizations to protect natural habitats and cultural heritage. Its dedication extends to sustainable sourcing, employee engagement, and community outreach programs, fostering responsible tourism practices.</p>
+		</div>
+		<figure>
+			<!--From https://genv.org/wp-content/uploads/2021/11/Photo-by-Julia-Goralski-on-Unsplash.jpg-->
+			<img src="Images/sustain.jpg" alt="Sustainability Sea Creatures">
+		</figure>
+	</div>
+
+	<div class="headings">
+        <span class="line"></span>
+        <h2>Our History</h2>
+        <span class="line"></span>
+    </div>
+    <div class="sect2">
+        <p>Founded in 1934, Star Cruise service has been setting the standard for luxury travel on the high seas ever since.</p>
+    </div>
+	<div class="history">
+		<div class="left-component reveal">
+			<p class="year">1934</p>
+			<div class="tripdate_textbox">
+				<!--From https://www.dwell.com/article/evolution-of-modern-cruise-ship-design-5e3aa877/6573718826562707456-->
+				<img src="Images/1940.jpeg" alt="1940 Star Cruise">
+				<p>Leo Star come up an idea for the Star Cruise plan. Development phase begins as Star gathers a team of architects, engineers, and designers to bring his vision to life. Maiden voyage of the first Star Cruise Service ship sets sail, marking the official launch of the company.</p>
+			</div>
+		</div>
+		<div class="right-component reveal">
+			<p class="year">1960</p>
+			<div class="tripdate_textbox">
+				<!--From https://www.cruiseshipodyssey.com/canberra-1960-po-cruises/-->
+				<img src="Images/1960.jpg" alt="1960 Star Cruise">
+				<p>Star Cruise Service expands its fleet and route offerings, establishing itself as a leading player in the luxury travel industry</p>
+			</div>
+		</div>
+		<div class="left-component reveal">
+			<p class="year">1980</p>
+			<div class="tripdate_textbox">
+				<!--From https://images.boatsgroup.com/resize/1/47/17/7524717_20200717115755329_1_XLARGE.jpg-->
+				<img src="Images/1980.jpg" alt="1980 Star Cruise">
+				<p>Introduction of innovative amenities and onboard entertainment sets Star Cruise Service apart from competitors</p>
+			</div>
+		</div>
+		<div class="right-component reveal">
+			<p class="year">2000</p>
+			<div class="tripdate_textbox">
+				<!--From https://blog.paramountcruises.com/wp-content/uploads/2021/06/Mini-Suite-Cabin.jpg-->
+				<img src="Images/2000.jpg" alt="2000 Star Cruise">
+				<p>Star Cruise Service becomes a household name, known for its exceptional service and luxurious accommodations</p>
+			</div>
+		</div>
+		<div class="left-component reveal">
+			<p class="year">2020</p>
+			<div class="tripdate_textbox">
+				<!--From https://yourchennai.com/wp-content/uploads/2016/07/Harmony-of-the-Seas-View-3-Rear-Aerial-715x400.jpg-->
+				<img src="Images/2020.jpg" alt="2020 Star Cruise">
+				<p>Introduction of cutting-edge technologies and experiences, ensuring that Star Cruise Service remains at the forefront of the industry</p>
+			</div>
+		</div>	
+		<script>
+			//scroll animation for tripdate
+			function reveal() {
+  				var reveals = document.querySelectorAll(".reveal");
+
+  				for (var i = 0; i < reveals.length; i++) {
+    				var windowHeight = window.innerHeight;
+    				var elementTop = reveals[i].getBoundingClientRect().top;
+    				var elementVisible = 150;
+
+    				if (elementTop < windowHeight - elementVisible) {
+      				reveals[i].classList.add("active");
+    				} else {
+      				reveals[i].classList.remove("active");
+    				}
+  				}
+			}
+
+			window.addEventListener("scroll", reveal);
+		</script>	
+	</div>
+	
+	<div class="headings">
+        <span class="line"></span>
+        <h2>Our Captains</h2>
+        <span class="line"></span>
+    </div>
+	<div class="sect2">
+		<p>Our captains are celebrated with prestigious awards, recognizing their exceptional leadership and service. Trust in their expertise as they navigate your journey with skill and dedication.</p>
+	</div>
+	<figure class="captains">
+		<!--Taken from https://cmu.edu.jm/2019/01/13/acmf-and-royal-caribbean-awards-two-bahamian-scholarships-to-cmu/-->
+		<img src="Images/captainawards.jpg" alt="Captain Award">
+		<figcaption>Shipmaster of the Year Award received by the Star Cruise Captain Team</figcaption>
+	</figure>
+	
+	<div class="headings">
+        <span class="line"></span>
+        <h2>Our Awards</h2>
+        <span class="line"></span>
+    </div>
+	<div class="awards_images">
+		<!--From https://rwcruises.com/about-us/our-story-->
+		<img src="Images/Awards02.jpg" alt="Award 2023 Cuisine Travel Weekly Asia 2023 Reader's Choice Awards">
+		<!--From https://rwcruises.com/about-us/our-story-->
+		<img src="Images/Awards03.jpg" alt="Award 2023 Entertainment Travel Weekly Asia 2023 Reader's Choice Awards ">
+		<!--From https://rwcruises.com/about-us/our-story-->
+		<img src="Images/Awards06.jpg" alt="Awards TTG Travel Awards 2023">
+		<!--From https://rwcruises.com/about-us/our-story-->
+		<img src="Images/Awards05.jpg" alt="Awards Headline Daily No.1 Fun Travel Awards 2024">
+	</div>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>

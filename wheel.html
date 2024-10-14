@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Wheels -->
+<!-- Author:Fam Sin Mim -->
+<!-- Date: 25/03/2024 -->
+<!-- Validated: OK 11 May 2024 -->
+
+<head>
+	<title> Wheels | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Fam Sin Mim">
+	<meta name="description" content="Spin the Wheel of Luck and Win Big! Test your fortune with our thrilling game of chance. With exciting prizes waiting to be won, every spin is an opportunity for excitement and rewards. Try your luck now and see what fortune has in store for you!">
+	<meta name="keywords" content="deals, star, cruise, packages, promotions,discount, wheels, spin, lucky draw">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" type="images/x-icon" href="Images/wheel.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+</head>
+
+<body>
+<header>
+	<nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+		<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+	<script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+		
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+					btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+					btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="wheel">
+		<!--Feedback sticky button-->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+	<div class="desc_wheel">
+	    <h2>Wheel of Fortune</h2>
+		<p>Spin the wheel and test your luck with our exciting Wheel of Fortune! Stand a chance to win amazing prizes, discounts, and vouchers for your next cruise adventure. Simply click the "SPIN" button and see what awaits you!</p>
+	</div>
+	<div class="mainbox" id="mainbox">
+		<div class="box" id="box">
+			<div class="box1">
+				<div class="font option1"><h5>No Voucher</h5></div>
+				<div class="font option2"><h5>Room Upgrade Voucher</h5></div>
+				<div class="font option3"><h5>No Voucher</h5></div>
+				<div class="font option4"><h5>Casino Voucher</h5></div>
+				<div class="font option5"><h5>Shopping Voucher (200)</h5></div>
+				<div class="font option6"><h5>No Voucher</h5></div>
+				<div class="font option7"><h5>No Voucher</h5></div>
+			</div>
+			<div class="box2">
+				<div class="font option1"><h5>Shopping Voucher (100)</h5></div>
+				<div class="font option2"><h5>No Voucher</h5></div>
+				<div class="font option3"><h5>Bridge Tour Voucher</h5></div>
+				<div class="font option4"><h5>No Voucher</h5></div>
+				<div class="font option5"><h5>No Voucher</h5></div>
+				<div class="font option6"><h5>No Voucher</h5></div>
+				<div class="font option7"><h5>Souvenir Shop Voucher</h5></div>
+			</div>
+		</div>
+		<button class="spin" onclick="spin()">SPIN</button>
+		<div class="arrow">&darr;</div>
+		<script>
+			var Spin = false;
+			function spin() {
+			// Check if the wheel has already been spun
+			if (!Spin) {
+			// Set the flag to true to indicate that the wheel has been spun
+			Spin = true;
+			// Play the wheel spinning audio effects
+			wheel_effects.play();
+			// Show the spinning arrow
+			document.querySelector('.arrow').style.display = 'block';
+			// Generate a random angle for spinning
+			var randomAngle = Math.floor(Math.random() * 360) + 3600;
+			// Rotate the wheel using CSS transition
+			document.querySelector('.box').style.transform = 'rotate(' + randomAngle + 'deg)';
+			// Wait for the spinning animation to finish
+			setTimeout(function() {
+				// Calculate the angle of the arrow relative to the options
+				var arrowAngle = 90 - randomAngle % 360;
+				if (arrowAngle < 0) {
+					arrowAngle += 360; // Ensure arrow angle is positive
+				}
+				// Calculate the selected option based on the arrow angle
+				var numOptions = 14; // Adjust this to match the number of options on your wheel
+				var optionAngle = 360 / numOptions;
+				var selectedOptionIndex = Math.floor(arrowAngle / optionAngle) % numOptions;
+				// Retrieve the selected option text
+				var selectedOption = document.querySelectorAll('.box .font')[selectedOptionIndex].innerText;
+				// Display the result to the user
+				switch (selectedOption) {
+					case "No Voucher":
+						alert("Better luck next time! You didn't win any voucher.");
+						break;
+					case "Room Upgrade Voucher":
+						alert("Congratulations! You won a Room Upgrade Voucher. You can upgrade your cabin to a higher category for free.");
+						window.location.href = "mailto:starcruise@gmail.com?subject=Casino Voucher Claim&body=Dear Star Cruise,\u000A\u000A I am writing to claim my Casino Voucher. Thank you!";
+						break;
+					case "Casino Voucher":
+						alert("Congratulations! You won a Casino Voucher. You can receive SGD 100 credits for casino play onboard.");
+						window.location.href = "mailto:starcruise@gmail.com?subject=Casino Voucher Claim&body=Dear Star Cruise,\u000A\u000A I am writing to claim my Casino Voucher. Thank you!";
+						break;
+					case "Shopping Voucher (100)":
+						alert("Congratulations! You won a Shopping Voucher (100). You can receive a 10% discount on purchases made at onboard shops (minimum spending SGD 100).");
+						window.location.href = "mailto:starcruise@gmail.com?subject=Shopping Voucher (100) Claim&body=Dear Star Cruise,\u000A\u000A I am writing to claim my Shopping Voucher (100). Thank you!";
+						break;
+					case "Shopping Voucher (200)":
+						alert("Congratulations! You won a Shopping Voucher (200). You can receive a 30% discount on purchases made at onboard shops (minimum spending SGD 300).");
+						window.location.href = "mailto:starcruise@gmail.com?subject=Shopping Voucher (200) Claim&body=Dear Star Cruise,\u000A\u000A I am writing to claim my Shopping Voucher (200). Thank you!";
+						break;
+					case "Bridge Tour Voucher":
+						alert("Congratulations! You won a Bridge Tour Voucher. You can get a behind-the-scenes tour of the ship's bridge with the captain or crew members.");
+						window.location.href = "mailto:starcruise@gmail.com?subject=Bridge Tour Voucher Claim&body=Dear Star Cruise,\u000A\u000A I am writing to claim my Bridge Tour Voucher. Thank you!";
+						break;
+					case "Souvenir Shop Voucher":
+						alert("Congratulations! You won a Souvenir Shop Voucher. You can get a SGD 50 cash voucher to use at onboard souvenir shops for memorable keepsakes and gifts.");
+						window.location.href = "mailto:starcruise@gmail.com?subject=Souvenir Shop Voucher Claim&body=Dear Star Cruise,\u000A\u000A I am writing to claim my Souvenir Shop Voucher. Thank you!";
+						break;
+				}
+
+				// Hide the spinning arrow
+				document.querySelector('.arrow').style.display = 'none';
+				}, 5000); // Adjust this timeout value to match your CSS transition duration
+			} else {
+				// Alert the user that they have already spun the wheel
+				alert("Every user has only one chance to spin the wheel, you have already spun once.");
+			}
+		}
+	</script>
+	</div>
+	<audio controls id="wheel_effects" src="wheel-effects.wav"></audio>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>

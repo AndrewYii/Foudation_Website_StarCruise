@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Description: Rooms -->
+<!-- Author: Fam Sin Mim -->
+<!-- Date: 25/03/2024 -->
+<!-- Validated: OK 11/05/2024 -->
+
+<head>
+	<title>Rooms | Star Cruise</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Fam Sin Mim">
+	<meta name="description" content="Indulge in ultimate comfort and luxury with our exquisite rooms. Explore our range of meticulously designed accommodations, each offering a blend of modern amenities and timeless elegance. From spacious suites to cozy deluxe rooms, we cater to every traveler's preferences. Discover a sanctuary of relaxation and tranquility amidst the bustling city. Book your stay now and experience unparalleled hospitality at Star Cruise.">
+	<meta name="keywords" content="star, cruise, cruise vacation, Palace deluxe, balcony room, oceanview, interior, suites, deluxe rooms, accommodation, amenities, comfort, luxury, hospitality">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="images/x-icon" href="Images/favicon.ico"> <!-- small icon at webpage head -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- link for icons -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<header>
+	<nav>
+		<input type="checkbox" id="open-check">
+		<label for="open-check" class="close-menu"><i class="fa fa-times"></i></label>
+		<label for="open-check" class="open-menu"><i class="fa fa-bars"></i></label>
+		<a href="index.html"><img class="logo" src="Images/logo.png" alt="Star Cruise"></a>
+		<ul class="contact">
+			<li><a href="tel:+6088537840"><i class="fa fa-phone"></i> +6088537840</a></li>
+			<li><a href="mailto:starcruise@gmail.com"><i class="fa fa-envelope"></i> starcruise@gmail.com</a></li>
+		</ul>
+			<!-- Dropdown Menu using Unordered Nested Lists-->
+		<ul class="menu">
+			<li class="menubar" id="home"><a href="index.html">HOME</a></li>
+			<li class="menubar"><a href="deals.html">DEALS</a></li>
+			<li class="menubar"><a href="trip.html">TRIP</a></li>
+			<li class="menubar">
+				<span class="dropdown-btn">EXPERIENCES <i class="fa fa-caret-down"></i></span>
+				<ul class="dropdown-content">
+					<li><a href="lifeonboard.html">Life Onboard</a></li>
+					<li><a href="entertainment.html">Entertainment</a></li>
+					<li><a href="dining.html">Dining</a></li>
+					<li><a href="shopping.html">Shopping</a></li>
+					<li><a href="waterpark.html">Waterpark</a></li>
+				</ul>
+			</li>
+			<li class="menubar"><a href="rooms.html">ROOMS</a></li>
+			<li class="menubar"><a href="aboutus.html">ABOUT US</a></li>
+			<li class="special"><a href="booking.html">BOOKING</a></li>
+		</ul>
+	</nav>
+	<script>
+		function handleDropdownButtonClick() {
+			var dropdownContent = this.nextElementSibling;
+			var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+			if (dropdownContent.style.display === "block") {
+				dropdownContent.style.display = "none";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.remove("active");
+				});
+			} else {
+				dropdownContent.style.display = "block";
+				dropdownBtns.forEach(function(btn) {
+                	btn.classList.add("active");
+				});
+				
+			}
+		}
+
+		function handleDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "block";
+		}
+	
+		function handleRemoveDropdownHover() {
+			var dropdownContent = this.querySelector('.dropdown-content');
+			dropdownContent.style.display = "none";
+		}
+	
+		function checkScreenSize() {
+			if (window.matchMedia("(max-width: 1350px)").matches) {
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].addEventListener("click", handleDropdownButtonClick);
+				}
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.removeEventListener('mouseover', handleDropdownHover);
+					item.removeEventListener('mouseout', handleRemoveDropdownHover);
+				});
+			} else {
+				var dropdownItems = document.querySelectorAll('.menubar');
+				dropdownItems.forEach(function(item) {
+					item.addEventListener('mouseover', handleDropdownHover);
+					item.addEventListener('mouseout', handleRemoveDropdownHover);
+				});
+				var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+				for (var i = 0; i < dropdownBtns.length; i++) {
+					dropdownBtns[i].removeEventListener("click", handleDropdownButtonClick);
+				}
+			}
+		}
+	
+		checkScreenSize();
+	
+		window.addEventListener('resize', function() {
+			checkScreenSize();
+		});
+	</script>
+</header>
+
+<article class="room">
+	<!--Feedback sticky button-->
+	<div class="feedback-button">
+		<a href="feedback.html" target="feedback_blank">Feedback</a>
+	</div>
+		<!-- Pop-up window -->
+	<div id="popup-window">
+		<p><i class="fa-solid fa-xmark" id="close-button"></i></p>
+		<p>Cruise & Win: Sail into Luck</p>
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" id="luckydraw">
+		<p><a href="wheel.html" target="new_wheel" id="popup_link"><strong>START</strong></a></p>
+	</div>
+	<script>
+		// Get the elements by their ID
+		var popupWindow = document.getElementById("popup-window");
+		var closeButton = document.getElementById("close-button");
+		var wheelIcon = document.getElementById("luckydraw");
+
+		// Function to show the pop-up window
+		function showPopup() {
+			popupWindow.style.display = "block";
+		}
+
+		// Function to hide the pop-up window
+		function hidePopup() {
+			popupWindow.style.display = "none";
+		}
+		
+		// Hide the pop-up window when the close button is clicked
+		closeButton.addEventListener("click", hidePopup);
+
+		// Show the pop-up window when the wheel icon is clicked
+		wheelIcon.addEventListener("click", showPopup);
+	</script>
+		<!-- Wheels Sidekey -->
+	<div class="wheel-container">
+		<!--Taken from https://www.flaticon.com/free-icon/wheel-of-fortune_5052297-->
+		<img src="Images/wheel.png" alt="Wheel Icon" class="wheel-icon" id="wheel-icon-trigger">
+	</div>
+	<script>
+		// Get the wheel icon trigger element by its ID
+		var wheelIconTrigger = document.getElementById("wheel-icon-trigger");
+
+		// Show the pop-up window when the wheel icon trigger is clicked
+		wheelIconTrigger.addEventListener("click", showPopup);
+	</script>
+
+	<div class="main">
+		<!--Taken from https://yorkshiretimes.co.uk/article/Its-A-Girl-Viva-Cruises-Announces-2023-Ship-Christening-->
+		<img src="Images/room.jpg" alt="Room Picture">
+		<div class="text">
+			<h1>Experience Luxury Like Never Before</h1>
+			<p>Indulge in ultimate comfort and elegance with our luxurious rooms. </p>
+		</div>
+	</div>
+	<div class="upper-sect">
+		<p class="upper">TOP-NOTCH AMENITIES</p>
+		<h2>Spacious Accomodations</h2>
+		<p>Our staterooms are designed with every type of guest in mind. Whether you're sailing with your significant other, family, a group of friends, or traveling solo — we've got the perfect room to accommodate your party and budget. The options are endless, and the comfort is always guaranteed.</p>
+	</div>
+	
+	<div class="image-text">
+		<figure>
+			<!--Taken from https://travelution.com.my/royal-caribbean-singapore-to-tokyo-cruise/-->
+			<img src="Images/interior.jpg" alt="Interior Stateroom">
+		</figure>
+		<div class="desc1">
+			<h3>Interior Stateroom</h3>
+			<table>
+				<tr>
+					<td><i class="fa-solid fa-ruler-combined"></i></td> 
+					<td>Room size: 340 sq.ft</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-house"></i></td>
+					<td>Layout: Single Room</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-bed"></i></td>
+					<td>Bedding: 1 queen-sized bed (Request additional pull-out beds or bunk beds for free)</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-person"></i></td>
+					<td>Occupancy: Up to 4 guests</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>Oceanview Stateroom</h3>
+			<table>
+				<tr>
+					<td><i class="fa-solid fa-ruler-combined"></i></td> 
+					<td>Room size: 354 sq.ft</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-house"></i></td>
+					<td>Layout: Single Room</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-bed"></i></td>
+					<td>Bedding: 2 queen-sized bed (Request additional pull-out beds or bunk beds for free)</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-person"></i></td>
+					<td>Occupancy: Up to 6 guests</td>
+				</tr>
+			</table>
+		</div>
+		<figure>
+			<!--Taken from https://www.kkday.com/zh-my/product/165183-->
+			<img src="Images/oceanview.jpg" alt="Oceanview Stateroom">
+		</figure>
+	</div>
+	<div class="image-text">
+		<figure>
+			<!--Taken from https://www.gtstour.com.tw/eweb_gtstour/cruises/one-boracay-nhatrang.asp-->
+			<img src="Images/balcony.jpg" alt="Balcony Stateroom">
+		</figure>
+		<div class="desc1">
+			<h3>Balcony Stateroom</h3>
+			<table>
+				<tr>
+					<td><i class="fa-solid fa-ruler-combined"></i></td> 
+					<td>Room size: 400 sq.ft</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-house"></i></td>
+					<td>Layout: Double Room with balcony</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-bed"></i></td>
+					<td>Bedding: 2 queen-sized bed (Request additional pull-out beds or bunk beds for free)</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-person"></i></td>
+					<td>Occupancy: Up to 8 guests</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="image-text">
+		<div class="desc1">
+			<h3>Palace Deluxe Stateroom</h3>
+			<table>
+				<tr>
+					<td><i class="fa-solid fa-ruler-combined"></i></td> 
+					<td>Room size: 800 sq.ft</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-house"></i></td>
+					<td>Layout: Suite (4 rooms, 1 living room with balcony)</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-bed"></i></td>
+					<td>Bedding: 4 king-sized bed (Request additional pull-out beds or bunk beds for free)</td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-person"></i></td>
+					<td>Occupancy: Up to 10 guests</td>
+				</tr>
+			</table>
+		</div>
+		<figure>
+			<!--Taken from https://www.facebook.com/Travellution/posts/%E4%BD%A0%E4%BB%A5%E4%B8%BA%E6%B8%B8%E8%BD%AE%E7%9A%84%E6%88%BF%E9%97%B4%E9%83%BD%E6%98%AF%E7%94%B1%E7%AA%84%E5%8F%88%E5%B0%8F%E9%82%A3%E6%98%AF%E5%9B%A0%E4%B8%BA%E4%BD%A0%E8%BF%98%E6%B2%A1%E5%88%B0%E8%BF%87%E4%B8%BD%E6%99%B6%E4%B8%83%E6%B5%B7%E6%B8%B8%E8%BD%AE%E7%9A%84%E4%B8%BD%E6%99%B6%E5%A5%97%E6%88%BFregent-seven-seas-cruises%E4%B8%BD%E6%99%B6%E4%B8%83%E6%B5%B7%E6%B8%B8%E8%BD%AE%E7%9A%84%E4%B8%BD%E6%99%B6%E5%A5%97%E6%88%BF%E9%9D%A2%E7%A7%AF%E5%B9%BF%E8%BE%BE413%E5%B9%B3%E6%96%B9%E7%B1%B3/1307870365902310/?locale=zh_CN-->
+			<img src="Images/palace.jpg" alt="Palace Deluxe room">
+		</figure>
+	</div>
+
+	<div class="headings">
+		<span class="line"></span>
+		<h2>What's Included</h2>
+		<span class="line"></span>
+	</div>
+	<div class="sect2">
+		<p>The luxurious rooms aboard our cruise offer a range of amenities to ensure you have a comfortable and enjoyable stay.</p>
+	</div>
+	<div class="Slideshow">
+		<div class="slider-wrapper">
+			<button id="prev_slide" class="slidebutton"><i class="fa-solid fa-caret-left"></i></button>
+			<div class="image-list">
+				<div class="imgBx">
+					<!--Taken from https://zh-cn.facebook.com/oliviagcruise/-->
+					<img src="Images/freewifi.jpg" alt="Free Wi-fi" class="image-item">
+					<div class="content">
+						<p>Complimentary high-speed WiFi access throughout the cruise</p>
+					</div>
+				</div>
+				<div class="imgBx">
+					<!--Taken from https://chiefway.com.my/smart-glass-solutions-for-home-automation/-->
+					<img src="Images/climate.jpg" alt="Climate Control" class="image-item">
+					<div class="content">
+						<p>Enjoy personalized climate control in your cabin</p>
+					</div>
+				</div>
+				<div class="imgBx">
+					<!--Taken from https://casadesign.rs/tag/zid-sa-televizorom/-->
+					<img src="Images/flat-screen-TV.jpg" alt="Flat Screen TV" class="image-item">
+					<div class="content">
+						<p>Entertainment at your fingertips with a flat-screen TV</p>
+					</div>
+				</div>
+				<div class="imgBx">
+					<!--Taken from https://www.siepierskitruck.com.br/smeg-coffee-maker-does-style-match-tastelifeboost-coffee-C14709329-->
+					<img src="Images/coffee.jpg" alt="Coffee Maker" class="image-item">
+					<div class="content">
+						<p>Wake up to freshly brewed coffee with our in-room coffee maker</p>
+					</div>
+				</div>
+				<div class="imgBx">
+					<!--Taken from https://en.idei.club/53056-home-mini-bar.html-->
+					<img src="Images/bar.jpg" alt="Mini bar" class="image-item">
+					<div class="content">
+						<p>Indulge in a selection of beverages and snacks from the minibar (only provided in balcony & palace stateroom)</p>
+					</div>
+				</div>
+				<div class="imgBx">
+					<!--Taken from https://www.sohu.com/a/40458679_113504-->
+					<img src="Images/bathroom.jpg" alt="Bathroom" class="image-item">
+					<div class="content">
+						<p>Refresh yourself in the spacious and modern bathroom</p>
+					</div>
+				</div>
+				<div class="imgBx">
+					<!--Taken from https://peregreworks.jp/job/1870-->
+					<img src="Images/service.jpg" alt="Housekeeping service" class="image-item">
+					<div class="content">
+						<p>Relax and let our dedicated housekeeping staff take care of your room</p>
+					</div>
+				</div>
+				<div class="imgBx">
+					<!--Taken from https://www.snimayhome.com/kitchen-room/-->
+					<img src="Images/kitchen.jpg" alt="Kitchen" class="image-item">
+					<div class="content">
+						<p>Prepare your own meals with the fully equipped kitchen (only provided in balcony & palace stateroom)</p>
+					</div>
+				</div>
+			</div>
+			<button id="next_slide" class="slidebutton"><i class="fa-solid fa-caret-right"></i></button>
+		</div>
+		<div class="slider-scrollbar">
+			<div class="scrollbar-track">
+				<div class="scrollbar-thumb"></div>
+			</div>
+		</div>
+		<script>
+			const initSlider = () => {
+    		const imageList = document.querySelector(".slider-wrapper .image-list");
+    		const sliderScrollbar = document.querySelector(".Slideshow .slider-scrollbar");
+    		const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
+    		const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+    		const slideButtons = document.querySelectorAll(".slider-wrapper .slidebutton"); 
+			// Handle scrollbar thumb drag
+			scrollbarThumb.addEventListener("mousedown", (e) => {
+				const startX = e.clientX;
+				const thumbPosition = scrollbarThumb.offsetLeft;
+
+				// Calculate the maximum thumb position based on the slider width and thumb width
+				const maxThumbPosition = sliderScrollbar.offsetWidth - scrollbarThumb.offsetWidth;
+
+				// Update thumb position on mouse move
+				const handleMouseMove = (e) => {
+					const deltaX = e.clientX - startX;
+					let newThumbPosition = thumbPosition + deltaX;
+
+					// Constrain the thumb position within the slider bounds
+					newThumbPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
+					const scrollPosition =  (newThumbPosition/ maxThumbPosition) * maxScrollLeft;
+
+					scrollbarThumb.style.left = `${newThumbPosition}px`;
+					imageList.scrollLeft = scrollPosition;
+				}
+
+				// Remove event listeners on mouse up
+				const handleMouseUp = () => {
+					document.removeEventListener("mousemove", handleMouseMove);
+					document.removeEventListener("mouseup", handleMouseUp);
+				}
+
+				// Add event listeners for drag interaction
+				document.addEventListener("mousemove", handleMouseMove);
+				document.addEventListener("mouseup", handleMouseUp, { once: true });
+			});
+
+   		 // Slide images according to the slide button clicks
+    		slideButtons.forEach(button => {
+        		button.addEventListener("click", () => {
+            	const direction = button.id === "prev_slide" ? -1 : 1;
+            	const scrollAmount = imageList.clientWidth * direction;
+            	imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+       			 });
+   			 });
+
+    		const handleSlideButtons = () => {
+        		slideButtons[0].style.display = imageList.scrollLeft <= 0 ? "none" : "block";
+        		slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? "none" : "block";
+    		}
+
+    	// Update scrollbar thumb position based on image scroll
+    		const updateScrollThumbPosition = () => {
+        		const scrollPosition = imageList.scrollLeft;
+        		const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
+        		scrollbarThumb.style.left = `${thumbPosition}px`;
+    		}
+
+    		imageList.addEventListener("scroll", () => {
+        		handleSlideButtons();
+        		updateScrollThumbPosition(); 
+    		});
+
+    	// Initial check for slide buttons visibility
+   			 	handleSlideButtons();
+			}
+
+			window.addEventListener("load", initSlider);
+		</script>
+	</div>	
+	
+	<div class="headings">
+		<span class="line"></span>
+		<h2>Additional Services</h2>
+		<span class="line"></span>
+	</div>
+	<div class="service-container">
+		<ul class="service-list">
+			<li>Dedicated Stateroom Attendant</li>
+			<li>Daily Cleaning Service</li>
+			<li>Exclusive Bedding Collection</li>
+		</ul>
+		<ul class="service-list">
+			<li>Hair Dryer</li>
+			<li>Deluxe Toiletries: Shampoo, Conditioner, Body Wash</li>
+			<li>Ample Closet and Storage</li>
+		</ul>
+		<ul class="service-list">
+			<li>In-Room Safe for Valuables</li>
+			<li>Refrigerator</li>
+			<li>In-Room HD-TV</li>
+		</ul>
+	</div>
+	
+	<div class="request">
+		<div class="headings">
+			<span class="line"></span>
+			<h2>Our Guests are Always Our Priority</h2>
+			<span class="line"></span>
+		</div>
+		<p>At Star Cruise, we strive to make your cruise experience extraordinary by accommodating your unique preferences and needs. Our guest services team is dedicated to fulfilling your special requests to ensure your journey is nothing short of exceptional.</p>
+		<section class="request-container">	
+			<div class="gallery">
+				<!--Taken from https://www.mousesteps.com/tag/disney-wish-birthday/-->
+				<img src="Images/roomdeco.jpg" alt="Room Customized Celebration" title="Guest can have a free decoration for their room.">
+				<h4>Room Customized Celebration</h4>
+				<p class="desc">Celebrating a special occasion onboard? Let us create a customized celebration package tailored to your needs. Whether it's a birthday, anniversary, honeymoon, or other milestone, we'll arrange for decorations, special treats, and personalized touches to make your celebration unforgettable.</p>
+			</div>
+			<div class="gallery">
+				<!--Taken from http://radiani.ro/english-job/-->
+			    <img src="Images/aminities.jpg" alt="Customized In-Room Amenities" title="Guest can have additional aminities for room for free.">
+				<h4>Customized In-Room Amenities</h4>
+				<p class="desc">Make your stateroom feel like home with customized amenities. Whether you prefer a specific brand of toiletries, a selection of your favorite snacks and beverages, or additional comfort items like pillows or blankets, we'll do our best to accommodate your preferences.</p>
+			</div>
+			<div class="gallery">
+				<!--Taken from https://issuu.com/thelaundrypress/docs/6_tips_to_prepare_your_clothes_for_professional_dr-->
+				<img src="Images/laundry.jpg" alt="Laundry and Dry Cleaning" title="Guest can have laundry and dry cleaning service for free.">
+			 	<h4>Laundry and Dry Cleaning</h4>
+				<p class="desc">Ensure your garments stay fresh and clean throughout your voyage with our onboard laundry and dry cleaning services. Whether it's a quick wash or a full dry cleaning, our expert staff will handle your garments with care and return them promptly, so you can focus on enjoying your time at sea.</p>
+			</div>
+		</section>
+	</div>
+</article>
+
+<footer>
+	<ul>
+		<li class="footer-list">
+			<a href="deals.html">DEALS</a>
+			<ul class="footer-content">
+				<li><a href="deals.html#promotion">Promotion</a></li>
+				<li><a href="deals.html#package">Packages</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<a href="trip.html">TRIP</a>
+			<ul class="footer-content">
+				<li><a href="trip.html#Langkawi">Langkawi</a></li>
+				<li><a href="trip.html#Phuket">Phuket</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="experience-ft">EXPERIENCES</span>
+			<ul class="footer-content">
+				<li><a href="entertainment.html">Entertainment</a></li>
+				<li><a href="lifeonboard.html">Life Onboard</a></li>
+				<li><a href="dining.html">Dining</a></li>
+				<li><a href="shopping.html">Shopping</a></li>
+				<li><a href="waterpark.html">Waterpark</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<ul class="footer-content2">
+				<li><a href="rooms.html">ROOMS</a></li>
+				<li><a href="booking.html">BOOKING</a></li>
+				<li><a href="aboutus.html">ABOUT US</a></li>
+				<li><a href="tel:+6088537840">CALL US</a></li>
+				<li><a href="mailto:starcruise@gmail.com">EMAIL US</a></li>
+			</ul>
+		</li>
+		<li class="footer-list">
+			<span id="connected">STAY CONNECTED</span>
+			<ul class="social_media">
+				<li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fa-brands fa-square-facebook"></i></a></li>
+				<li><a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+				<li><a href="https://www.youtube.com/" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+				<li><a href="https://www.tiktok.com/en/" title="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+				<li><a href="https://web.telegram.org/a/" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+				<li><a href="https://twitter.com/?lang=en" title="X-Twitter" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class=ft-bottom>
+		<p><a href="miracledreamers.html">&copy; Miracle Dreamers</a> | Last updated: 27 May 2024</p>
+	</div>
+</footer>
+</body>
+</html>
